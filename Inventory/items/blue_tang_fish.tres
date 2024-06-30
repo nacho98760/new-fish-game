@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://ju0ufcdbxbdw"]
+
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_nmiaf"]
+[ext_resource type="Texture2D" uid="uid://c7mnp40i1sa2u" path="res://fishing/fish/fish_textures/blue_tang_fish.png" id="2_8tcft"]
+
+[resource]
+script = ExtResource("1_nmiaf")
+name = "bluetangfish"
+texture = ExtResource("2_8tcft")
