@@ -75,13 +75,3 @@ layout_mode = 2
 
 [node name="Slot9" parent="NinePatchRect/GridContainer" instance=ExtResource("2_ny31k")]
 layout_mode = 2
-
-[connection signal="sell_fish_UI_stuff" from="NinePatchRect/GridContainer/Slot" to="." method="_on_slot_sell_fish_ui_stuff"]
-[connection signal="sell_fish_UI_stuff" from="NinePatchRect/GridContainer/Slot2" to="." method="_on_slot_2_sell_fish_ui_stuff"]
-[connection signal="sell_fish_UI_stuff" from="NinePatchRect/GridContainer/Slot3" to="." method="_on_slot_3_sell_fish_ui_stuff"]
-[connection signal="sell_fish_UI_stuff" from="NinePatchRect/GridContainer/Slot4" to="." method="_on_slot_4_sell_fish_ui_stuff"]
-[connection signal="sell_fish_UI_stuff" from="NinePatchRect/GridContainer/Slot5" to="." method="_on_slot_5_sell_fish_ui_stuff"]
-[connection signal="sell_fish_UI_stuff" from="NinePatchRect/GridContainer/Slot6" to="." method="_on_slot_6_sell_fish_ui_stuff"]
-[connection signal="sell_fish_UI_stuff" from="NinePatchRect/GridContainer/Slot7" to="." method="_on_slot_7_sell_fish_ui_stuff"]
-[connection signal="sell_fish_UI_stuff" from="NinePatchRect/GridContainer/Slot8" to="." method="_on_slot_8_sell_fish_ui_stuff"]
-[connection signal="sell_fish_UI_stuff" from="NinePatchRect/GridContainer/Slot9" to="." method="_on_slot_9_sell_fish_ui_stuff"]

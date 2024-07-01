@@ -7,3 +7,4 @@
 script = ExtResource("1_0nbav")
 name = "rarefish"
 texture = ExtResource("2_oeo05")
+value = 20

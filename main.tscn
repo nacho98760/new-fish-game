@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bx15fvqd0m5ju"]
+[gd_scene load_steps=19 format=3 uid="uid://bx15fvqd0m5ju"]
 
 [ext_resource type="Texture2D" uid="uid://cmxhxvt2ywubf" path="res://assets/tilesets/grass tilemap.png" id="1_5grux"]
 [ext_resource type="Script" path="res://main.gd" id="1_6p1ww"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://deghux3vsmge3" path="res://player/player.tscn" id="3_0oq2p"]
 [ext_resource type="Texture2D" uid="uid://ciat32vfeu5ic" path="res://assets/selfmadehouse.png" id="4_6ba6v"]
 [ext_resource type="Texture2D" uid="uid://cuqxotly4b0vb" path="res://assets/simpletree.png" id="5_7cgi1"]
+[ext_resource type="Texture2D" uid="uid://c8jkjaao213b7" path="res://assets/gold-dollar-coin-18550(3).png" id="6_a6wdc"]
 [ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/OpenSans-VariableFont_wdth,wght.ttf" id="7_46pfm"]
+[ext_resource type="Script" path="res://coins_label.gd" id="8_fa0i4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ruyo"]
 texture = ExtResource("1_5grux")
@@ -74,8 +76,12 @@ size = Vector2(5.5, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6tum"]
 size = Vector2(8, 86)
 
+[sub_resource type="Theme" id="Theme_v0bmd"]
+default_font = ExtResource("7_46pfm")
+default_font_size = 15
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4q0p"]
-size = Vector2(19, 20)
+size = Vector2(18.5, 20)
 
 [sub_resource type="Theme" id="Theme_0ued0"]
 default_font = ExtResource("7_46pfm")
@@ -127,30 +133,6 @@ position = Vector2(606, 282)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActualSpot"]
 shape = SubResource("RectangleShape2D_l6tum")
 
-[node name="ShopConceptArea" type="Area2D" parent="."]
-position = Vector2(519, 308)
-
-[node name="Simpletree" type="Sprite2D" parent="ShopConceptArea"]
-position = Vector2(1, 2)
-scale = Vector2(1.2, 1.2)
-texture = ExtResource("5_7cgi1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ShopConceptArea"]
-position = Vector2(0.5, 2)
-shape = SubResource("RectangleShape2D_w4q0p")
-
-[node name="OpenShopButton" type="Button" parent="ShopConceptArea"]
-visible = false
-anchors_preset = -1
-anchor_right = 0.048
-anchor_bottom = 0.029
-offset_left = -17.0
-offset_top = -29.0
-offset_right = 17.0
-offset_bottom = -13.0
-theme = SubResource("Theme_0ued0")
-text = "Open shop"
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
 
@@ -166,8 +148,83 @@ offset_right = 0.159973
 offset_bottom = 0.119995
 text = "SAVE"
 
+[node name="CoinsPanel" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.016
+anchor_top = 0.889
+anchor_right = 0.133
+anchor_bottom = 0.972
+offset_left = -0.240001
+offset_top = -0.0400085
+offset_right = -0.120003
+offset_bottom = 0.0799866
+grow_vertical = 0
+pivot_offset = Vector2(30, 15)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CoinsPanel"]
+texture_filter = 1
+layout_mode = 2
+anchor_left = 0.067
+anchor_top = 0.1
+anchor_right = 0.373
+anchor_bottom = 0.9
+offset_left = -1.025
+offset_right = 0.0249977
+texture = ExtResource("6_a6wdc")
+expand_mode = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/CoinsPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.413
+anchor_top = 0.133
+anchor_right = 0.983
+anchor_bottom = 0.867
+offset_left = 0.0249996
+offset_top = 0.00999999
+offset_right = 0.274994
+offset_bottom = -0.0100021
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/CoinsPanel/CenterContainer" groups=["ThingsToSave"]]
+layout_mode = 2
+theme = SubResource("Theme_v0bmd")
+script = ExtResource("8_fa0i4")
+
+[node name="Shop" type="Node2D" parent="."]
+position = Vector2(521, 308)
+
+[node name="ShopConceptArea" type="Area2D" parent="Shop"]
+
+[node name="Simpletree" type="Sprite2D" parent="Shop/ShopConceptArea"]
+position = Vector2(1, 2)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_7cgi1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/ShopConceptArea"]
+position = Vector2(0.25, 2)
+shape = SubResource("RectangleShape2D_w4q0p")
+
+[node name="OpenShopButton" type="Button" parent="Shop/ShopConceptArea"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.027
+anchor_right = 0.971
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -29.0
+offset_right = 17.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_0ued0")
+text = "Open shop"
+
 [connection signal="body_entered" from="ActualSpot" to="Player" method="_on_actual_spot_body_entered"]
 [connection signal="body_exited" from="ActualSpot" to="Player" method="_on_actual_spot_body_exited"]
-[connection signal="body_entered" from="ShopConceptArea" to="Player" method="_on_shop_concept_area_body_entered"]
-[connection signal="body_exited" from="ShopConceptArea" to="Player" method="_on_shop_concept_area_body_exited"]
 [connection signal="pressed" from="CanvasLayer/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="body_entered" from="Shop/ShopConceptArea" to="Player" method="_on_shop_concept_area_body_entered"]
+[connection signal="body_exited" from="Shop/ShopConceptArea" to="Player" method="_on_shop_concept_area_body_exited"]
+[connection signal="mouse_exited" from="Shop/ShopConceptArea/OpenShopButton" to="." method="_on_open_shop_button_mouse_exited"]

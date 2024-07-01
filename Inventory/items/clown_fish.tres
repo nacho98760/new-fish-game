@@ -7,3 +7,4 @@
 script = ExtResource("1_jinbb")
 name = "clownfish"
 texture = ExtResource("2_knnso")
+value = 10

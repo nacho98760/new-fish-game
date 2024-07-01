@@ -7,3 +7,4 @@
 script = ExtResource("1_nmiaf")
 name = "bluetangfish"
 texture = ExtResource("2_8tcft")
+value = 30

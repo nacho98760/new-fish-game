@@ -3,6 +3,7 @@ extends Panel
 @onready var item_sprite = $CenterContainer/Panel/Item
 @onready var item_amount: Label = $CenterContainer/Panel/Label
 
+signal sell_fish_UI_stuff
 
 func update(slot: InventorySlot):
 	if slot.item == null:
@@ -15,5 +16,7 @@ func update(slot: InventorySlot):
 		item_amount.text = str(slot.amount)
 
 
-func _on_button_pressed():
-	pass 
+func _on_sell_button_pressed():
+	sell_fish_UI_stuff.emit()
+	
+	
