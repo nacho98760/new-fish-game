@@ -96,7 +96,7 @@ func _on_actual_spot_body_exited(body: PhysicsBody2D):
 func _on_shop_concept_area_body_entered(body: PhysicsBody2D):
 	check_if_its_player(body)
 	$"../Shop/ShopConceptArea/OpenShopButton".visible = true
-
+	
 func _on_shop_concept_area_body_exited(body: PhysicsBody2D):
 	check_if_its_player(body)
 	$"../Shop/ShopConceptArea/OpenShopButton".visible = false
@@ -113,11 +113,17 @@ func _on_animation_player_animation_finished(anim_name):
 func handle_selling(slot):
 	if inventory.slots[slot].item == null:
 		return
+	
+	if inventory.slots[slot].amount == 1:
+		GameManager.update_coins.emit(inventory.slots[slot].item.value)
+		inventory.slots[slot].item = null
+		inventory.slots[slot].amount = 0
+		$InventoryGUI.update(inventory)
 		
-	GameManager.update_coins.emit(inventory.slots[slot].item.value, inventory.slots[slot].amount)
-	inventory.slots[slot].item = null
-	inventory.slots[slot].amount = 0
-	$InventoryGUI.update(inventory)
+	if inventory.slots[slot].amount > 1:
+		GameManager.update_coins.emit(inventory.slots[slot].item.value)
+		inventory.slots[slot].amount -= 1
+		$InventoryGUI.update(inventory)
 
 func save_data(save: PlayerData):
 	save.player_inventory = inventory
