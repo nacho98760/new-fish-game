@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bx15fvqd0m5ju"]
+[gd_scene load_steps=21 format=3 uid="uid://bx15fvqd0m5ju"]
 
 [ext_resource type="Texture2D" uid="uid://cmxhxvt2ywubf" path="res://assets/tilesets/grass tilemap.png" id="1_5grux"]
 [ext_resource type="Script" path="res://main.gd" id="1_6p1ww"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c8jkjaao213b7" path="res://assets/gold-dollar-coin-18550(3).png" id="6_a6wdc"]
 [ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/OpenSans-VariableFont_wdth,wght.ttf" id="7_46pfm"]
 [ext_resource type="Script" path="res://coins_label.gd" id="8_fa0i4"]
+[ext_resource type="Shader" path="res://water.gdshader" id="10_0rjtn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ruyo"]
 texture = ExtResource("1_5grux")
@@ -86,6 +87,20 @@ size = Vector2(18.5, 20)
 [sub_resource type="Theme" id="Theme_0ued0"]
 default_font = ExtResource("7_46pfm")
 default_font_size = 5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x2xo2"]
+shader = ExtResource("10_0rjtn")
+shader_parameter/progress = 0.9
+shader_parameter/wave_1_color = Color(0.356863, 0.611765, 0.85098, 1)
+shader_parameter/wave_1_amplitude = 0.05
+shader_parameter/wave_1_frequency = -1.0
+shader_parameter/wave_1_speed = 1.5
+shader_parameter/wave_2_color = Color(0.396078, 0.709804, 0.898039, 1)
+shader_parameter/wave_2_amplitude = 0.05
+shader_parameter/wave_2_frequency = 1.0
+shader_parameter/wave_2_speed = 1.5
+shader_parameter/wave_2_shift = 1.0
+shader_parameter/bg_color = Color(0.299548, 0.299547, 0.299547, 1)
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_6p1ww")
@@ -246,6 +261,13 @@ grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_0ued0")
 text = "Open shop"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_x2xo2")
+offset_left = 608.0
+offset_top = 323.0
+offset_right = 943.0
+offset_bottom = 422.0
 
 [connection signal="body_entered" from="ActualSpot" to="Player" method="_on_actual_spot_body_entered"]
 [connection signal="body_exited" from="ActualSpot" to="Player" method="_on_actual_spot_body_exited"]

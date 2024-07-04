@@ -3,7 +3,7 @@ class_name Fish
 
 @export var inventory_item: InventoryItem
 @export var hook_force_x: int = 40
-@export var hook_force_y: int = 175
+@export var hook_force_y: int = 205
 @export var is_being_hooked: bool = false
 
 @onready var fish_sprite = $Sprite2D
