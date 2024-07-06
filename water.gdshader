@@ -3,15 +3,15 @@ shader_type canvas_item;
 uniform float progress: hint_range(0.0, 1.0) = 0.5;
 
 uniform vec4 wave_1_color: source_color;
-uniform float wave_1_amplitude = 0.13;
-uniform float wave_1_frequency = 2.0;
-uniform float wave_1_speed = -1.0;
+uniform float wave_1_amplitude = 0.05;
+uniform float wave_1_frequency = -1.5;
+uniform float wave_1_speed = 1.5;
 
 uniform vec4 wave_2_color: source_color;
-uniform float wave_2_amplitude = 0.1;
-uniform float wave_2_frequency = 2.5;
-uniform float wave_2_speed = 1.0;
-uniform float wave_2_shift = 0.75;
+uniform float wave_2_amplitude = 0.05;
+uniform float wave_2_frequency = 1.5;
+uniform float wave_2_speed = 1.5;
+uniform float wave_2_shift = 0.1;
 
 uniform vec4 bg_color: source_color;
 

@@ -30,6 +30,7 @@ func close():
 	isOpen = false
 	get_tree().paused = false
 
+
 func _on_slot_sell_fish_ui_stuff():
 	GameManager.sell_fish_actual_inv_stuff.emit(0)
 func _on_slot_2_sell_fish_ui_stuff():
@@ -48,5 +49,3 @@ func _on_slot_8_sell_fish_ui_stuff():
 	GameManager.sell_fish_actual_inv_stuff.emit(7)
 func _on_slot_9_sell_fish_ui_stuff():
 	GameManager.sell_fish_actual_inv_stuff.emit(8)
-
-

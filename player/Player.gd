@@ -124,6 +124,7 @@ func handle_selling(slot):
 		GameManager.update_coins.emit(inventory.slots[slot].item.value)
 		inventory.slots[slot].amount -= 1
 		$InventoryGUI.update(inventory)
+		
 
 func save_data(save: PlayerData):
 	save.player_inventory = inventory

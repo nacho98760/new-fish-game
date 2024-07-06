@@ -1,6 +1,7 @@
 extends Node
 
 signal updated
+
 signal sell_fish_actual_inv_stuff
 signal update_coins
 
