@@ -8,10 +8,10 @@
 process_mode = 3
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 3
-anchor_right = 0.036
-anchor_bottom = 0.065
-offset_right = 0.879997
-offset_bottom = -0.200005
+anchor_right = 0.109
+anchor_bottom = 0.194
+offset_right = -45.84
+offset_bottom = -46.64
 script = ExtResource("1_ja06b")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]

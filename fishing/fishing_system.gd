@@ -34,7 +34,7 @@ func handle_casting(parent, exclamation_mark_sprite):
 		
 	time_when_there_is_no_fish = Timer.new()
 	time_when_there_is_no_fish.set_one_shot(true)
-	time_when_there_is_no_fish.set_wait_time(randi_range(4,9))
+	time_when_there_is_no_fish.set_wait_time(randi_range(3,7))
 	time_when_there_is_no_fish.set_autostart(false)
 	
 	time_when_there_is_a_fish = Timer.new()

@@ -17,7 +17,7 @@ uniform vec4 bg_color: source_color;
 
 vec4 wave( vec2 uv, vec4 wave_color, float level, float freq, float amp, float sin_shift, float speed ){
 float sinus = sin( (uv.x + sin_shift + TIME * speed) * freq) * amp;
-float shifted_level = ( 1.0 + 2.0 * amp ) * level - amp; //shift to completely hide or fill
+float shifted_level = ( 1.0 + 2.0 * amp ) * level - amp;
 float treshold = step(1.0 - sinus - shifted_level, uv.y);
 return wave_color * treshold;
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bx15fvqd0m5ju"]
+[gd_scene load_steps=21 format=3 uid="uid://bx15fvqd0m5ju"]
 
 [ext_resource type="Texture2D" uid="uid://cmxhxvt2ywubf" path="res://assets/tilesets/grass tilemap.png" id="1_5grux"]
 [ext_resource type="Script" path="res://main.gd" id="1_6p1ww"]
@@ -8,9 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cuqxotly4b0vb" path="res://assets/simpletree.png" id="5_7cgi1"]
 [ext_resource type="Texture2D" uid="uid://c8jkjaao213b7" path="res://assets/gold-dollar-coin-18550(3).png" id="6_a6wdc"]
 [ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/OpenSans-VariableFont_wdth,wght.ttf" id="7_46pfm"]
-[ext_resource type="Script" path="res://player/coins_label.gd" id="8_fa0i4"]
-[ext_resource type="Shader" path="res://Shaders/water.gdshader" id="10_0rjtn"]
-[ext_resource type="PackedScene" uid="uid://dijpk10vvju1t" path="res://shopStuff/shop_ui.tscn" id="11_7wbxs"]
+[ext_resource type="Script" path="res://coins_label.gd" id="8_fa0i4"]
+[ext_resource type="Shader" path="res://water.gdshader" id="10_0rjtn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ruyo"]
 texture = ExtResource("1_5grux")
@@ -263,14 +262,6 @@ mouse_default_cursor_shape = 2
 theme = SubResource("Theme_0ued0")
 text = "Open shop"
 
-[node name="ShopUI" parent="Shop" instance=ExtResource("11_7wbxs")]
-visible = false
-z_index = 1
-offset_left = -103.0
-offset_top = -109.0
-offset_right = 97.0
-offset_bottom = 21.0
-
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_x2xo2")
 offset_left = 608.0
@@ -282,6 +273,6 @@ offset_bottom = 422.0
 [connection signal="body_exited" from="ActualSpot" to="Player" method="_on_actual_spot_body_exited"]
 [connection signal="pressed" from="CanvasLayer/CloseGamePanel/SaveAndQuitButton" to="." method="_on_save_and_quit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/CloseGamePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="body_entered" from="Shop/ShopConceptArea" to="." method="_on_shop_concept_area_body_entered"]
-[connection signal="body_exited" from="Shop/ShopConceptArea" to="." method="_on_shop_concept_area_body_exited"]
-[connection signal="pressed" from="Shop/ShopConceptArea/OpenShopButton" to="." method="_on_open_shop_button_pressed"]
+[connection signal="body_entered" from="Shop/ShopConceptArea" to="Player" method="_on_shop_concept_area_body_entered"]
+[connection signal="body_exited" from="Shop/ShopConceptArea" to="Player" method="_on_shop_concept_area_body_exited"]
+[connection signal="mouse_exited" from="Shop/ShopConceptArea/OpenShopButton" to="." method="_on_open_shop_button_mouse_exited"]

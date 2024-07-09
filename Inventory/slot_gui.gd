@@ -2,8 +2,8 @@ extends Panel
 
 @onready var item_sprite = $CenterContainer/MainPanel/Item
 @onready var item_amount: Label = $CenterContainer/MainPanel/Label
-@onready var item_price_texture = $CenterContainer/MainPanel/PricePanel/TextureRect
-@onready var item_price = $CenterContainer/MainPanel/PricePanel/Label
+@onready var item_price_texture = $PricePanel/TextureRect
+@onready var item_price = $PricePanel/Label
 
 signal sell_fish_UI_stuff 
 

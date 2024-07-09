@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://degpypdmjjsul"]
+
+[ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="1_5wnxx"]
+[ext_resource type="Texture2D" uid="uid://cuqxotly4b0vb" path="res://assets/simpletree.png" id="1_45ph7"]
+[ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/OpenSans-VariableFont_wdth,wght.ttf" id="3_clo7w"]
+
+[sub_resource type="Theme" id="Theme_ymd5m"]
+default_font = ExtResource("3_clo7w")
+default_font_size = 6
+
+[node name="ShopItemPanel" type="Panel"]
+custom_minimum_size = Vector2(70, 100)
+anchors_preset = -1
+anchor_right = 0.109
+anchor_bottom = 0.278
+offset_right = -69.76
+offset_bottom = -100.08
+pivot_offset = Vector2(35, 50)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(35, 50)
+texture = ExtResource("1_5wnxx")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect"]
+custom_minimum_size = Vector2(70, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(35, 50)
+
+[node name="Panel" type="Panel" parent="NinePatchRect/CenterContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(60, 90)
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/CenterContainer/Panel"]
+custom_minimum_size = Vector2(60, 90)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="NinePatchRect/CenterContainer/Panel/CenterContainer"]
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel"]
+position = Vector2(0, -17)
+scale = Vector2(3, 3)
+texture = ExtResource("1_45ph7")
+
+[node name="Button" type="Button" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel"]
+layout_mode = 2
+offset_left = -16.0
+offset_top = 22.0
+offset_right = 16.0
+offset_bottom = 36.0
+theme = SubResource("Theme_ymd5m")
+text = "Buy"

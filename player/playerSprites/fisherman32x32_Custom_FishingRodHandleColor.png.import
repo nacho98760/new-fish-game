@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw22ggb6bwy0j"
-path="res://.godot/imported/fisherman32x32_Custom_Structure.png-2f2c46c8c1b752c8ac91834ebb23c650.ctex"
+uid="uid://g83bt0ofdtrs"
+path="res://.godot/imported/fisherman32x32_Custom_FishingRodHandleColor.png-6f66c4d8f8d7049ba544fd50075c71fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/fisherman32x32_Custom_Structure.png"
-dest_files=["res://.godot/imported/fisherman32x32_Custom_Structure.png-2f2c46c8c1b752c8ac91834ebb23c650.ctex"]
+source_file="res://player/playerSprites/fisherman32x32_Custom_FishingRodHandleColor.png"
+dest_files=["res://.godot/imported/fisherman32x32_Custom_FishingRodHandleColor.png-6f66c4d8f8d7049ba544fd50075c71fb.ctex"]
 
 [params]
 

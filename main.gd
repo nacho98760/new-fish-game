@@ -1,6 +1,7 @@
 extends Node2D
 
 var is_close_menu_open: bool = false
+@onready var open_shop_button = $Shop/ShopConceptArea/OpenShopButton
 
 func _ready():
 	get_tree().set_auto_accept_quit(false)
@@ -33,3 +34,13 @@ func _on_resume_button_pressed():
 func _notification(what):
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		pause_game()
+
+func _on_shop_concept_area_body_entered(body: PhysicsBody2D):
+	if body.name == "Player":
+		open_shop_button.visible = true
+func _on_shop_concept_area_body_exited(body: PhysicsBody2D):
+	if body.name == "Player":
+		open_shop_button.visible = false
+
+func _on_open_shop_button_pressed():
+	$Shop/ShopUI.visible = true

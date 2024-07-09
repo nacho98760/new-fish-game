@@ -59,37 +59,6 @@ text = "1
 "
 horizontal_alignment = 2
 
-[node name="PricePanel" type="Panel" parent="CenterContainer/MainPanel"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = -10.88
-offset_top = -7.6
-offset_right = -0.879999
-offset_bottom = -2.6
-
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/MainPanel/PricePanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.1
-anchor_top = -0.2
-anchor_right = 0.4
-anchor_bottom = 0.8
-texture = ExtResource("3_r505x")
-expand_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/MainPanel/PricePanel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_right = 0.9
-anchor_bottom = 1.4
-offset_left = 1.0
-offset_top = -2.0
-offset_right = 1.0
-offset_bottom = -2.0
-theme = SubResource("Theme_yng5e")
-text = "20"
-
 [node name="SellButton" type="Button" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -102,6 +71,40 @@ offset_right = 0.120001
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
+
+[node name="PricePanel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(10, 5)
+layout_mode = 0
+offset_left = -3.88
+offset_top = -0.599999
+offset_right = 4.12
+offset_bottom = 4.4
+
+[node name="TextureRect" type="TextureRect" parent="PricePanel"]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -2.5
+offset_right = 5.0
+offset_bottom = 2.5
+grow_vertical = 2
+texture = ExtResource("3_r505x")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="PricePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -0.2
+anchor_right = 1.0
+anchor_bottom = 1.2
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_yng5e")
+text = "20"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

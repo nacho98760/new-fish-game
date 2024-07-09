@@ -26,7 +26,6 @@ func _ready() -> void:
 
 func _process(delta):
 	var direction = Input.get_axis("left", "right")
-	
 	handle_most_player_animations(direction)
 	check_fishing_rod_visibility()
 	fishing_system_script.handle_inventory_items(self, direction, player_sprite)
@@ -68,14 +67,10 @@ func handle_most_player_animations(direction):
 			else:
 				animation_player.play("idle")
 			
-			
 	if !is_on_floor():
 		animation_player.play("idle")
 
 
-func check_if_its_player(body) -> bool:
-	return (body.name == "Player")
-	
 func check_fishing_rod_visibility():
 	if fishing_system_script.action_being_performed == "not fishing stuff":
 		$PlayerFishingRodColor.visible = false
@@ -85,21 +80,13 @@ func check_fishing_rod_visibility():
 		$PlayerEndOfFishingRodColor.visible = true
 
 func _on_actual_spot_body_entered(body: PhysicsBody2D):
-	check_if_its_player(body)
-	fishing_system_script.is_able_to_fish = true
-	
+	if body.name == "Player":
+		fishing_system_script.is_able_to_fish = true
+
 func _on_actual_spot_body_exited(body: PhysicsBody2D):
-	check_if_its_player(body)
-	fishing_system_script.is_able_to_fish = false
-	fishing_system_script.action_being_performed = "not fishing stuff"
-	
-func _on_shop_concept_area_body_entered(body: PhysicsBody2D):
-	check_if_its_player(body)
-	$"../Shop/ShopConceptArea/OpenShopButton".visible = true
-	
-func _on_shop_concept_area_body_exited(body: PhysicsBody2D):
-	check_if_its_player(body)
-	$"../Shop/ShopConceptArea/OpenShopButton".visible = false
+	if body.name == "Player":
+		fishing_system_script.is_able_to_fish = false
+		fishing_system_script.action_being_performed = "not fishing stuff"
 
 func _on_animation_player_animation_finished(anim_name):
 	match anim_name:

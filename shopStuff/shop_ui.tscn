@@ -1,0 +1,111 @@
+[gd_scene load_steps=10 format=3 uid="uid://dijpk10vvju1t"]
+
+[ext_resource type="Script" path="res://shopStuff/shop_ui.gd" id="1_k0nt6"]
+[ext_resource type="Texture2D" uid="uid://kggivwqrhn2x" path="res://Inventory/inventoryBackground.png" id="1_qvwv5"]
+[ext_resource type="PackedScene" uid="uid://degpypdmjjsul" path="res://shopStuff/ShopItem.tscn" id="2_dl77k"]
+[ext_resource type="Texture2D" uid="uid://cncn1lkr6pl1x" path="res://assets/closeMenuButton.png" id="4_r7sp1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yt2ra"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sq3r7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snpy1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yd73m"]
+
+[sub_resource type="Theme" id="Theme_g2arq"]
+HScrollBar/styles/grabber = SubResource("StyleBoxEmpty_yt2ra")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_sq3r7")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_snpy1")
+HScrollBar/styles/scroll = SubResource("StyleBoxEmpty_yd73m")
+
+[node name="ShopUI" type="Control"]
+custom_minimum_size = Vector2(200, 130)
+layout_mode = 3
+anchor_right = 0.312
+anchor_bottom = 0.361
+offset_right = 0.319992
+offset_bottom = 0.0399933
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(100, 65)
+script = ExtResource("1_k0nt6")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(200, 130)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -10.0
+texture = ExtResource("1_qvwv5")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect"]
+custom_minimum_size = Vector2(192, 130)
+layout_mode = 2
+anchor_right = 0.96
+anchor_bottom = 1.0
+theme = SubResource("Theme_g2arq")
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/ScrollContainer"]
+custom_minimum_size = Vector2(200, 130)
+layout_mode = 2
+theme_override_constants/margin_left = 7
+
+[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/ScrollContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 130)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="ShopItemPanel" parent="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer" instance=ExtResource("2_dl77k")]
+layout_mode = 2
+
+[node name="ShopItemPanel2" parent="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer" instance=ExtResource("2_dl77k")]
+layout_mode = 2
+
+[node name="ShopItemPanel3" parent="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer" instance=ExtResource("2_dl77k")]
+layout_mode = 2
+
+[node name="ShopItemPanel4" parent="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer" instance=ExtResource("2_dl77k")]
+layout_mode = 2
+
+[node name="ShopItemPanel5" parent="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer" instance=ExtResource("2_dl77k")]
+layout_mode = 2
+
+[node name="CloseShopPanel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -15.0
+offset_bottom = 15.0
+grow_horizontal = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="CloseShopPanel"]
+texture = ExtResource("4_r7sp1")
+centered = false
+offset = Vector2(6.5, -7.7)
+
+[node name="Button" type="Button" parent="CloseShopPanel/Sprite2D"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.5
+offset_top = -15.7
+offset_right = 14.5
+offset_bottom = 0.3
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[connection signal="pressed" from="CloseShopPanel/Sprite2D/Button" to="." method="_on_button_pressed"]
