@@ -82,7 +82,7 @@ theme = SubResource("Theme_ymd5m")
 text = "Buy"
 
 [node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel/BuyButton"]
-self_modulate = Color(0.882353, 0.411765, 0.282353, 1)
+self_modulate = Color(0.153906, 0.564214, 0.47222, 1)
 texture = ExtResource("4_vwl7q")
 centered = false
 

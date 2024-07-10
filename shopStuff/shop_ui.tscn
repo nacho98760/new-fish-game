@@ -19,7 +19,7 @@ HScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_sq3r7")
 HScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_snpy1")
 HScrollBar/styles/scroll = SubResource("StyleBoxEmpty_yd73m")
 
-[node name="ShopUI" type="Control"]
+[node name="ShopUI" type="Control" groups=["ThingsToSave"]]
 process_mode = 3
 custom_minimum_size = Vector2(200, 130)
 layout_mode = 3
