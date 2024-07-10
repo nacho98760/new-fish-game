@@ -44,3 +44,4 @@ func _on_shop_concept_area_body_exited(body: PhysicsBody2D):
 
 func _on_open_shop_button_pressed():
 	$Shop/ShopUI.visible = true
+	get_tree().paused = true

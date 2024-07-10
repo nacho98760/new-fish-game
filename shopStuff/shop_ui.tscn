@@ -20,6 +20,7 @@ HScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_snpy1")
 HScrollBar/styles/scroll = SubResource("StyleBoxEmpty_yd73m")
 
 [node name="ShopUI" type="Control"]
+process_mode = 3
 custom_minimum_size = Vector2(200, 130)
 layout_mode = 3
 anchor_right = 0.312
@@ -72,12 +73,6 @@ layout_mode = 2
 [node name="ShopItemPanel3" parent="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer" instance=ExtResource("2_dl77k")]
 layout_mode = 2
 
-[node name="ShopItemPanel4" parent="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer" instance=ExtResource("2_dl77k")]
-layout_mode = 2
-
-[node name="ShopItemPanel5" parent="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer" instance=ExtResource("2_dl77k")]
-layout_mode = 2
-
 [node name="CloseShopPanel" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -93,7 +88,7 @@ texture = ExtResource("4_r7sp1")
 centered = false
 offset = Vector2(6.5, -7.7)
 
-[node name="Button" type="Button" parent="CloseShopPanel/Sprite2D"]
+[node name="CloseShopPanelButton" type="Button" parent="CloseShopPanel/Sprite2D"]
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
@@ -108,4 +103,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 
-[connection signal="pressed" from="CloseShopPanel/Sprite2D/Button" to="." method="_on_button_pressed"]
+[connection signal="buy_button_pressed" from="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel" to="." method="_on_shop_item_panel_buy_button_pressed"]
+[connection signal="buy_button_pressed" from="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel2" to="." method="_on_shop_item_panel_2_buy_button_pressed"]
+[connection signal="buy_button_pressed" from="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel3" to="." method="_on_shop_item_panel_3_buy_button_pressed"]
+[connection signal="pressed" from="CloseShopPanel/Sprite2D/CloseShopPanelButton" to="." method="_on_close_shop_panel_button_pressed"]
