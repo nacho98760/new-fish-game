@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 var inventory: Inventory
+var amount_of_inv_slots = 9
 
 var speed: int = 100
 var jump_force: int = 100
@@ -118,9 +119,9 @@ func save_data(save: PlayerData):
 	save.player_position = global_position
 
 func load_data(save: PlayerData):
-	if not save:
+	if save == null:
 		inventory = Inventory.new()
-		for i in range(9):
+		for i in range(amount_of_inv_slots):
 			inventory.slots.append(InventorySlot.new())
 		return
 		
