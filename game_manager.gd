@@ -5,7 +5,7 @@ signal sell_fish_actual_inv_stuff
 signal update_coins
 signal update_rod
 
-var fish_array: Array
+var fish_array: Array = ["clown_fish"]
 
 func _ready():
 	GameManager.update_rod.connect(handle_rod_types)
@@ -31,10 +31,16 @@ func save_game():
 	ResourceSaver.save(save, "user://savefile.tres")
 
 func load_game():
-	var save = PlayerData.new()
-	save = ResourceLoader.load("user://savefile.tres", "", ResourceLoader.CACHE_MODE_REPLACE)
-	
+	var save = null
 	var saved_nodes = get_tree().get_nodes_in_group("ThingsToSave")
 	
-	for node in saved_nodes:
-		node.load_data(save)
+	if ResourceLoader.exists("user://savefile.tres"):
+		save = PlayerData.new()
+		save = ResourceLoader.load("user://savefile.tres", "", ResourceLoader.CACHE_MODE_REPLACE)
+		
+		for node in saved_nodes:
+			node.load_data(save)
+	else:
+		for node in saved_nodes:
+			node.load_data(save)
+		#ResourceSaver.save(save, "user://savefile.tres")

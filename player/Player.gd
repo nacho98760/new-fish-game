@@ -120,7 +120,7 @@ func save_data(save: PlayerData):
 func load_data(save: PlayerData):
 	if not save:
 		inventory = Inventory.new()
-		for i in range(inventory.slots.size()):
+		for i in range(9):
 			inventory.slots.append(InventorySlot.new())
 		return
 		
