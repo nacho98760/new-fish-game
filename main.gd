@@ -6,12 +6,10 @@ var is_close_menu_open: bool = false
 func _ready():
 	get_tree().set_auto_accept_quit(false)
 	resume_game()
-	
+
 func _process(delta):
 	if Input.is_action_just_pressed("close_game"):
-		if is_close_menu_open:
-			resume_game()
-		else:
+		if is_close_menu_open == false:
 			pause_game()
 
 func pause_game():

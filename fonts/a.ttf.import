@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dwvnucq3ajek6"
-path="res://.godot/imported/OpenSans-VariableFont_wdth,wght.ttf-7cd8160bc9221b1f02276278a74ee648.fontdata"
+path="res://.godot/imported/a.ttf-7ed7ea75e45d5e83deee06344fe89d4b.fontdata"
 
 [deps]
 
-source_file="res://fonts/OpenSans-VariableFont_wdth,wght.ttf"
-dest_files=["res://.godot/imported/OpenSans-VariableFont_wdth,wght.ttf-7cd8160bc9221b1f02276278a74ee648.fontdata"]
+source_file="res://fonts/a.ttf"
+dest_files=["res://.godot/imported/a.ttf-7ed7ea75e45d5e83deee06344fe89d4b.fontdata"]
 
 [params]
 

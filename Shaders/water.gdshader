@@ -26,5 +26,5 @@ void fragment() {
 vec4 wave1 = wave(UV, wave_1_color, progress, wave_1_frequency, wave_1_amplitude, 0.0, wave_1_speed);
 vec4 wave2 = wave(UV, wave_2_color, progress, wave_2_frequency, wave_2_amplitude, wave_2_shift*TIME, wave_2_speed);
 vec4 combined_waves = mix(wave1, wave2, wave2.a);
-COLOR.rgb = mix( bg_color, combined_waves, combined_waves.a ).rgb;
+COLOR.rgb = mix(bg_color, combined_waves, combined_waves.a ).rgb;
 }

@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Inventory/slot_gui.gd" id="1_i4l32"]
 [ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="1_qfwe5"]
-[ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/OpenSans-VariableFont_wdth,wght.ttf" id="3_ge2r4"]
 [ext_resource type="Texture2D" uid="uid://c8jkjaao213b7" path="res://assets/gold-dollar-coin-18550(3).png" id="3_r505x"]
+[ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="4_ggs33"]
 
 [sub_resource type="Theme" id="Theme_yng5e"]
-default_font = ExtResource("3_ge2r4")
+default_font = ExtResource("4_ggs33")
 default_font_size = 4
 
 [node name="Slot" type="Panel"]

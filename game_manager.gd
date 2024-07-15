@@ -30,11 +30,6 @@ func save_game():
 		
 	ResourceSaver.save(save, "user://savefile.tres")
 
-
-func search_and_load_each_node(save, saved_nodes):
-	for node in saved_nodes:
-		node.load_data(save)
-
 func load_game():
 	var save = null
 	var saved_nodes = get_tree().get_nodes_in_group("ThingsToSave")
@@ -42,6 +37,8 @@ func load_game():
 	if ResourceLoader.exists("user://savefile.tres"):
 		save = PlayerData.new()
 		save = ResourceLoader.load("user://savefile.tres", "", ResourceLoader.CACHE_MODE_REPLACE)	
-		search_and_load_each_node(save, saved_nodes)
+		for node in saved_nodes:
+			node.load_data(save)
 	else:
-		search_and_load_each_node(save, saved_nodes)
+		for node in saved_nodes:
+			node.load_data(save)

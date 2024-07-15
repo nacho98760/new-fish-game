@@ -11,7 +11,8 @@ var time_when_there_is_a_fish
 	
 func handle_inventory_items(parent, direction, player_sprite):
 	if Input.is_action_just_pressed("equipRod") && is_able_to_fish:
-		if not parent.is_on_floor() or player_sprite.flip_h or is_already_fishing: return
+		if not parent.is_on_floor() or player_sprite.flip_h or is_already_fishing: 
+			return
 		
 		if action_being_performed == "equipping rod":
 			action_being_performed = "not fishing stuff"
@@ -27,7 +28,7 @@ func fishing_system(parent, end_of_fishing_rod, exclamation_mark_sprite):
 				
 			if action_being_performed == "equipping rod" && !is_already_fishing:
 				handle_casting(parent, exclamation_mark_sprite)
-		
+
 func handle_casting(parent, exclamation_mark_sprite):
 	action_being_performed = "casting"
 	is_already_fishing = true
@@ -44,7 +45,7 @@ func handle_casting(parent, exclamation_mark_sprite):
 				
 	time_when_there_is_no_fish.connect(
 		"timeout", 
-		func():
+		func can_fish():
 			is_there_a_fish = true
 			exclamation_mark_sprite.visible = true
 			time_when_there_is_a_fish.start()
@@ -52,7 +53,7 @@ func handle_casting(parent, exclamation_mark_sprite):
 	
 	time_when_there_is_a_fish.connect(
 		"timeout", 
-		func():
+		func cannot_fish():
 			is_there_a_fish = false
 			exclamation_mark_sprite.visible = false
 			time_when_there_is_no_fish.start()
@@ -62,6 +63,7 @@ func handle_casting(parent, exclamation_mark_sprite):
 	parent.add_child(time_when_there_is_a_fish)
 	
 	time_when_there_is_no_fish.start()
+
 
 func handle_hooking(parent, end_of_fishing_rod, exclamation_mark_sprite):
 	
@@ -76,4 +78,3 @@ func handle_hooking(parent, end_of_fishing_rod, exclamation_mark_sprite):
 	hooked_fish.position = end_of_fishing_rod.position
 	hooked_fish.being_hooked()
 	exclamation_mark_sprite.visible = false
-	

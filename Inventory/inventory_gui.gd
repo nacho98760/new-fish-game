@@ -7,7 +7,7 @@ var isOpen: bool = false
 func _ready():
 	GameManager.updated.connect(update)
 	close()
-	
+
 func _process(delta):
 	if Input.is_action_just_pressed("openInv"):
 		if isOpen:
@@ -24,7 +24,7 @@ func open():
 	visible = true
 	isOpen = true
 	get_tree().paused = true
-	
+
 func close():
 	visible = false
 	isOpen = false

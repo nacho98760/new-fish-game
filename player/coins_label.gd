@@ -5,11 +5,14 @@ var total_coins: int
 func _ready():
 	GameManager.update_coins.connect(handle_coins_update)
 	text = str(total_coins)
-	
+
+func get_coins():
+	return total_coins
+
 func handle_coins_update(value):
 	total_coins += value
 	text = str(total_coins)
-	
+
 func save_data(save: PlayerData):
 	save.player_coins = total_coins
 

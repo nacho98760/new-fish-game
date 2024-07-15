@@ -11,5 +11,3 @@ class_name PlayerData
 @export var button_1_equipped: bool
 @export var button_2_equipped: bool
 @export var button_3_equipped: bool
-@export var gatito: String = "Miau"
-
