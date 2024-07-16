@@ -8,6 +8,7 @@ script = ExtResource("1_jinbb")
 name = "Clown Fish"
 texture = ExtResource("2_knnso")
 value = 10
+description = "A rare ocean fish."
 rarity = "Rare"
 rarity_color = Color(0.227451, 0.843137, 0.294118, 1)
 width = 50

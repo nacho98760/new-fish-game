@@ -25,6 +25,7 @@ func _ready() -> void:
 	GameManager.load_game()
 	GameManager.updated.emit(inventory)
 	GameManager.sell_fish_actual_inv_stuff.connect(handle_selling)
+	GameManager.show_item_info.connect(show_actual_info)
 
 func _process(delta):
 	var direction = Input.get_axis("left", "right")
@@ -109,7 +110,20 @@ func handle_selling(slot):
 		GameManager.update_coins.emit(inventory.slots[slot].item.value)
 		inventory.slots[slot].amount -= 1
 		$InventoryGUI.update(inventory)
-		
+
+
+func show_actual_info(slot, item_info, item_name, item_rarity, item_description, item_value):
+	if inventory.slots[slot].item == null:
+		item_info.visible = false
+		return
+	
+	item_info.visible = true
+	item_name.text = inventory.slots[slot].item.name
+	item_rarity.text = "(" + str(inventory.slots[slot].item.rarity) + ")"
+	item_rarity.self_modulate = inventory.slots[slot].item.rarity_color
+	item_description.text = inventory.slots[slot].item.description
+	item_value.text = str(inventory.slots[slot].item.value)
+
 
 func save_data(save: PlayerData):
 	save.player_inventory = inventory

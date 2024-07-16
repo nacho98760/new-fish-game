@@ -5,6 +5,18 @@ var isOpen: bool = false
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
 func _ready():
+	for slot in slots.size():
+		var item_info = slots[slot].get_item_info()
+		var item_name = slots[slot].get_item_name()
+		var item_rarity = slots[slot].get_item_rarity()
+		var item_description = slots[slot].get_item_description()
+		var item_value =  slots[slot].get_item_value()
+		
+		slots[slot].connect("mouse_entered", show_info.bind(slot, item_info, item_name, item_rarity, item_description, item_value))
+		
+		var sell_button = slots[slot].get_sell_button()
+		sell_button.connect("pressed", sell_fish.bind(slot))
+	
 	GameManager.updated.connect(update)
 	close()
 
@@ -15,10 +27,15 @@ func _process(delta):
 		else:
 			open()
 
-
 func update(inventory):
 	for i in range(min(inventory.slots.size(), slots.size())):
 		slots[i].update(inventory.slots[i])
+
+func sell_fish(slot):
+	GameManager.sell_fish_actual_inv_stuff.emit(slot)
+
+func show_info(slot, item_info, item_name, item_rarity, item_description, item_value):
+	GameManager.show_item_info.emit(slot, item_info, item_name, item_rarity, item_description, item_value)
 
 func open():
 	visible = true
@@ -29,23 +46,3 @@ func close():
 	visible = false
 	isOpen = false
 	get_tree().paused = false
-
-
-func _on_slot_sell_fish_ui_stuff():
-	GameManager.sell_fish_actual_inv_stuff.emit(0)
-func _on_slot_2_sell_fish_ui_stuff():
-	GameManager.sell_fish_actual_inv_stuff.emit(1)
-func _on_slot_3_sell_fish_ui_stuff():
-	GameManager.sell_fish_actual_inv_stuff.emit(2)
-func _on_slot_4_sell_fish_ui_stuff():
-	GameManager.sell_fish_actual_inv_stuff.emit(3)
-func _on_slot_5_sell_fish_ui_stuff():
-	GameManager.sell_fish_actual_inv_stuff.emit(4)
-func _on_slot_6_sell_fish_ui_stuff():
-	GameManager.sell_fish_actual_inv_stuff.emit(5)
-func _on_slot_7_sell_fish_ui_stuff():
-	GameManager.sell_fish_actual_inv_stuff.emit(6)
-func _on_slot_8_sell_fish_ui_stuff():
-	GameManager.sell_fish_actual_inv_stuff.emit(7)
-func _on_slot_9_sell_fish_ui_stuff():
-	GameManager.sell_fish_actual_inv_stuff.emit(8)

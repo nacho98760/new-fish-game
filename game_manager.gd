@@ -5,6 +5,8 @@ signal sell_fish_actual_inv_stuff
 signal update_coins
 signal update_rod
 
+signal show_item_info
+
 var fish_array: Array = ["clown_fish"]
 
 func _ready():

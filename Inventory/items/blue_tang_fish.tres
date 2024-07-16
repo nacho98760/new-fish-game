@@ -8,6 +8,7 @@ script = ExtResource("1_nmiaf")
 name = "Blue Tang Fish"
 texture = ExtResource("2_8tcft")
 value = 30
+description = "An epic ocean fish!"
 rarity = "Epic"
 rarity_color = Color(0.872996, 0.000654193, 0.872997, 1)
 width = 40
