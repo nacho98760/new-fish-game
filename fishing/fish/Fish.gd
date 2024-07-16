@@ -1,11 +1,15 @@
 extends CharacterBody2D
 class_name Fish
 
+@onready var player = get_tree().get_first_node_in_group("Player")
+@onready var fish_catch_UI = player.get_node("FishCatchUI")
+
+@onready var fish_sprite = $Sprite2D
+
 @export var inventory_item: InventoryItem
 @export var hook_force_x: int = 40
 @export var hook_force_y: int = 205
 @export var is_being_hooked: bool = false
-@onready var fish_sprite = $Sprite2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -25,7 +29,25 @@ func being_hooked():
 func _on_area_2d_body_entered(body: PhysicsBody2D):
 	if body.name == "Player":
 		body.inventory.insert(inventory_item)
-		queue_free()
+		
+		fish_catch_UI.visible = true
+		var fish_frame = fish_catch_UI.get_fish_frame()
+		var fish_name = fish_catch_UI.get_fish_name()
+		var fish_rarity = fish_catch_UI.get_fish_rarity()
+		var fish_value = fish_catch_UI.get_fish_value()
+		var fish_width = fish_catch_UI.get_fish_width()
+		var fish_weight = fish_catch_UI.get_fish_weight()
+		
+		fish_frame.texture = inventory_item.texture
+		fish_name.text = inventory_item.name
+		fish_rarity.text = "(" + inventory_item.rarity + ")"
+		fish_rarity.self_modulate = inventory_item.rarity_color
+		fish_value.text = "$" + str(inventory_item.value)
+		fish_width.text = str(inventory_item.width) + "cm"
+		fish_weight.text = str(inventory_item.weight) + "kg"
+		
+		queue_free() 
+		
 
 
 func randomize_fish():

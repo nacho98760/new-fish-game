@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cuqxotly4b0vb" path="res://assets/simpletree.png" id="1_45ph7"]
 [ext_resource type="Script" path="res://shopStuff/shop_item.gd" id="1_vxbdw"]
 [ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="3_clo7w"]
-[ext_resource type="Texture2D" uid="uid://cdfs8q8a0ft8e" path="res://assets/shopUIBuyButton.png" id="4_vwl7q"]
+[ext_resource type="Texture2D" uid="uid://cdfs8q8a0ft8e" path="res://shopStuff/shopAssets/shopUIBuyButton.png" id="5_fi34i"]
 
 [sub_resource type="Theme" id="Theme_ymd5m"]
 default_font = ExtResource("3_clo7w")
@@ -83,7 +83,7 @@ text = "Buy"
 
 [node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel/BuyButton"]
 self_modulate = Color(0.153906, 0.564214, 0.47222, 1)
-texture = ExtResource("4_vwl7q")
+texture = ExtResource("5_fi34i")
 centered = false
 
 [node name="Label" type="Label" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel/BuyButton/Sprite2D"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8jkjaao213b7"
-path="res://.godot/imported/gold-dollar-coin-18550(3).png-57e072c166810696570db01fc990393a.ctex"
+uid="uid://uf6e13xotbsf"
+path="res://.godot/imported/training-8494.png-6ad0d2f9ab860bd4654bd65300247a00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gold-dollar-coin-18550(3).png"
-dest_files=["res://.godot/imported/gold-dollar-coin-18550(3).png-57e072c166810696570db01fc990393a.ctex"]
+source_file="res://assets/training-8494.png"
+dest_files=["res://.godot/imported/training-8494.png-6ad0d2f9ab860bd4654bd65300247a00.ctex"]
 
 [params]
 

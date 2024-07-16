@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://deghux3vsmge3"]
+[gd_scene load_steps=19 format=3 uid="uid://deghux3vsmge3"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_nyciw"]
 [ext_resource type="PackedScene" uid="uid://dcr32uc5rttem" path="res://Inventory/inventory_gui.tscn" id="2_7c5we"]
 [ext_resource type="Texture2D" uid="uid://cp8mvr88ln3wm" path="res://assets/exclamationmark.png" id="4_fwnop"]
+[ext_resource type="PackedScene" uid="uid://b4cu3ihy5hegm" path="res://FishCatchUIStuff/fish_catch_ui.tscn" id="4_ykwso"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_otw6w"]
 load_path = "res://.godot/imported/fisherman32x32_Custom_Structure.png-2f2c46c8c1b752c8ac91834ebb23c650.ctex"
@@ -893,7 +894,7 @@ hframes = 24
 frame = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4.17233e-06, 4.23869)
+position = Vector2(0, 4)
 scale = Vector2(0.988678, 0.804524)
 shape = SubResource("RectangleShape2D_rx5fr")
 
@@ -915,7 +916,6 @@ libraries = {
 }
 
 [node name="InventoryGUI" parent="." instance=ExtResource("2_7c5we")]
-visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -928,5 +928,18 @@ offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(35, 35)
+
+[node name="FishCatchUI" parent="." instance=ExtResource("4_ykwso")]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -112.0
+offset_right = 50.0
+offset_bottom = 13.0
+grow_vertical = 0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

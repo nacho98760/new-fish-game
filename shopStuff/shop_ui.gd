@@ -1,22 +1,22 @@
 extends Control
 
-var player
-var rod_end_part
 var type_of_rod
-var fish_array
 
 @onready var shop_item_panel_1 = $NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel
 @onready var shop_item_panel_2 = $NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel2 
 @onready var shop_item_panel_3 = $NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel3
 @onready var coins = $"../../CanvasLayer/CoinsPanel/CenterContainer/Label"
 
-var buy_button_1
-var buy_button_2
-var buy_button_3
+@onready var player = get_tree().get_first_node_in_group("Player")
+@onready var rod_end_part = player.get_node("PlayerEndOfFishingRodColor")
 
-var sprite_1
-var sprite_2
-var sprite_3
+@onready var sprite_1 = shop_item_panel_1.get_sprite()
+@onready var sprite_2 = shop_item_panel_2.get_sprite()
+@onready var sprite_3 = shop_item_panel_3.get_sprite()
+
+@onready var buy_button_1 = sprite_1.get_node("Label")
+@onready var buy_button_2 = sprite_2.get_node("Label")
+@onready var buy_button_3 = sprite_3.get_node("Label")
 
 var red_rod_color = Color(0.845, 0.173, 0.246, 1)
 var blue_rod_color = Color(0.369, 0.427, 0.835, 1)
@@ -48,9 +48,6 @@ func _on_close_shop_panel_button_pressed():
 	get_tree().paused = false
 
 func _ready():
-	player = get_tree().get_first_node_in_group("Player")
-	rod_end_part = player.get_node("PlayerEndOfFishingRodColor")
-	
 	match type_of_rod:
 		"default":
 			rod_end_part.self_modulate = Color(1, 1, 1, 1)
@@ -64,14 +61,6 @@ func _ready():
 		"turquoise_rod":
 			rod_end_part.self_modulate = turquoise_rod_color
 			GameManager.update_rod.emit("turquoise_rod")
-	
-	sprite_1 = shop_item_panel_1.get_sprite()
-	sprite_2 = shop_item_panel_2.get_sprite()
-	sprite_3 = shop_item_panel_3.get_sprite()
-	
-	buy_button_1 = sprite_1.get_node("Label")
-	buy_button_2 = sprite_2.get_node("Label")
-	buy_button_3 = sprite_3.get_node("Label")
 	
 	check_all_buttons()
 

@@ -17,8 +17,9 @@ var fishing_system_script = FishingSystem.new()
 @onready var player_sprite = $PlayerStructure
 @onready var fishing_rod_handle_sprite = $PlayerFishingRodColor
 @onready var fishing_rod_end_part_sprite = $PlayerEndOfFishingRodColor
-@onready var end_of_fishing_rod = $EndOfFishingRod
+@onready var end_of_rod = $EndOfFishingRod
 @onready var exclamation_mark_sprite = $FishAlert
+@onready var fish_catch_ui = $FishCatchUI
 
 func _ready() -> void:
 	GameManager.load_game()
@@ -30,7 +31,7 @@ func _process(delta):
 	handle_most_player_animations(direction)
 	check_fishing_rod_visibility()
 	fishing_system_script.handle_inventory_items(self, direction, player_sprite)
-	fishing_system_script.fishing_system(self, end_of_fishing_rod, exclamation_mark_sprite)
+	fishing_system_script.fishing_system(self, end_of_rod, exclamation_mark_sprite, fish_catch_ui)
 	
 func _physics_process(delta):
 	handle_player_physics()
@@ -73,12 +74,8 @@ func handle_most_player_animations(direction):
 
 
 func check_fishing_rod_visibility():
-	if fishing_system_script.action_being_performed == "not fishing stuff":
-		$PlayerFishingRodColor.visible = false
-		$PlayerEndOfFishingRodColor.visible = false
-	else:
-		$PlayerFishingRodColor.visible = true
-		$PlayerEndOfFishingRodColor.visible = true
+	$PlayerFishingRodColor.visible = (fishing_system_script.action_being_performed != "not fishing stuff")
+	$PlayerEndOfFishingRodColor.visible = (fishing_system_script.action_being_performed != "not fishing stuff")
 
 func _on_actual_spot_body_entered(body: PhysicsBody2D):
 	if body.name == "Player":

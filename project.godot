@@ -22,6 +22,7 @@ GameManager="*res://game_manager.gd"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=4
 window/size/borderless=true
 window/size/window_width_override=1920
 window/size/window_height_override=1080
@@ -107,3 +108,4 @@ close_game={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true

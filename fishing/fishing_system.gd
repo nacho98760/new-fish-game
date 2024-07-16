@@ -20,8 +20,8 @@ func handle_inventory_items(parent, direction, player_sprite):
 			action_being_performed = "equipping rod"
 
 
-func fishing_system(parent, end_of_fishing_rod, exclamation_mark_sprite):
-	if Input.is_action_just_pressed("leftclick") && is_able_to_fish:
+func fishing_system(parent, end_of_fishing_rod, exclamation_mark_sprite, fish_catch_UI):
+	if Input.is_action_just_pressed("leftclick") && is_able_to_fish && fish_catch_UI.visible == false:
 			if is_already_fishing && is_there_a_fish:
 				handle_hooking(parent, end_of_fishing_rod, exclamation_mark_sprite)
 				is_there_a_fish = false
