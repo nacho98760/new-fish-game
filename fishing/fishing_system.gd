@@ -22,17 +22,18 @@ func handle_inventory_items(parent, direction, player_sprite):
 
 func fishing_system(parent, end_of_fishing_rod, exclamation_mark_sprite, fish_catch_UI):
 	if Input.is_action_just_pressed("leftclick") && is_able_to_fish && fish_catch_UI.visible == false:
-			if is_already_fishing && is_there_a_fish:
-				handle_hooking(parent, end_of_fishing_rod, exclamation_mark_sprite)
-				is_there_a_fish = false
-				
-			if action_being_performed == "equipping rod" && !is_already_fishing:
-				handle_casting(parent, exclamation_mark_sprite)
+		if is_already_fishing && is_there_a_fish:
+			handle_hooking(parent, end_of_fishing_rod, exclamation_mark_sprite)
+			is_there_a_fish = false
+		
+		if action_being_performed == "equipping rod" && !is_already_fishing:
+			handle_casting(parent, exclamation_mark_sprite)
+
 
 func handle_casting(parent, exclamation_mark_sprite):
 	action_being_performed = "casting"
 	is_already_fishing = true
-		
+	
 	time_when_there_is_no_fish = Timer.new()
 	time_when_there_is_no_fish.set_one_shot(true)
 	time_when_there_is_no_fish.set_wait_time(randi_range(3,7))
@@ -42,7 +43,7 @@ func handle_casting(parent, exclamation_mark_sprite):
 	time_when_there_is_a_fish.set_one_shot(true)
 	time_when_there_is_a_fish.set_wait_time(randi_range(2,4))
 	time_when_there_is_a_fish.set_autostart(false)
-				
+	
 	time_when_there_is_no_fish.connect(
 		"timeout", 
 		func can_fish():

@@ -33,11 +33,11 @@ func _process(delta):
 	check_fishing_rod_visibility()
 	fishing_system_script.handle_inventory_items(self, direction, player_sprite)
 	fishing_system_script.fishing_system(self, end_of_rod, exclamation_mark_sprite, fish_catch_ui)
-	
+
 func _physics_process(delta):
 	handle_player_physics()
 	move_and_slide()
-	
+
 func handle_player_physics():
 	var direction = Input.get_axis("left", "right")
 	
@@ -69,7 +69,7 @@ func handle_most_player_animations(direction):
 				animation_player.play("walk")
 			else:
 				animation_player.play("idle")
-			
+	
 	if !is_on_floor():
 		animation_player.play("idle")
 
@@ -96,7 +96,7 @@ func _on_animation_player_animation_finished(anim_name):
 			fishing_system_script.is_already_fishing = false
 
 
-func handle_selling(slot):
+func handle_selling(slot, item_info, sell_button):
 	if inventory.slots[slot].item == null:
 		return
 	
@@ -104,17 +104,20 @@ func handle_selling(slot):
 		GameManager.update_coins.emit(inventory.slots[slot].item.value)
 		inventory.slots[slot].item = null
 		inventory.slots[slot].amount = 0
+		item_info.visible = false
+		sell_button.set_default_cursor_shape(Input.CURSOR_ARROW)
 		$InventoryGUI.update(inventory)
-		
+	
 	if inventory.slots[slot].amount > 1:
 		GameManager.update_coins.emit(inventory.slots[slot].item.value)
 		inventory.slots[slot].amount -= 1
 		$InventoryGUI.update(inventory)
 
 
-func show_actual_info(slot, item_info, item_name, item_rarity, item_description, item_value):
+func show_actual_info(slot, item_info, item_name, item_rarity, item_description, item_value, sell_button):
 	if inventory.slots[slot].item == null:
 		item_info.visible = false
+		sell_button.set_default_cursor_shape(Input.CURSOR_ARROW)
 		return
 	
 	item_info.visible = true
@@ -123,6 +126,7 @@ func show_actual_info(slot, item_info, item_name, item_rarity, item_description,
 	item_rarity.self_modulate = inventory.slots[slot].item.rarity_color
 	item_description.text = inventory.slots[slot].item.description
 	item_value.text = str(inventory.slots[slot].item.value)
+	sell_button.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 
 func save_data(save: PlayerData):
@@ -135,7 +139,7 @@ func load_data(save: PlayerData):
 		for i in range(amount_of_inv_slots):
 			inventory.slots.append(InventorySlot.new())
 		return
-		
+	
 	if save.player_inventory == null:
 		return
 	

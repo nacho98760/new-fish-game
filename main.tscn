@@ -103,7 +103,7 @@ layer_1/tile_data = PackedInt32Array(1703974, 1, 1, 1638438, 1, 1, 1572902, 1, 1
 
 [node name="Player" parent="." instance=ExtResource("3_0oq2p")]
 z_index = 1
-position = Vector2(441, 307)
+position = Vector2(601, 307)
 
 [node name="PlayerHouse" type="StaticBody2D" parent="."]
 position = Vector2(284, 263)

@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://71g5iuto87hk"]
+
+[ext_resource type="Script" path="res://fish_catching_minigame_ui.gd" id="1_1d6sh"]
+[ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="1_yi3m5"]
+[ext_resource type="Texture2D" uid="uid://hm4o58rqkt13" path="res://assets/arrow_down.png" id="2_4vtqs"]
+[ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="2_rtxxv"]
+
+[node name="FishCatchingMinigameUI" type="Control"]
+custom_minimum_size = Vector2(46, 221)
+layout_mode = 3
+anchor_right = 0.072
+anchor_bottom = 0.614
+offset_right = -0.0800018
+offset_bottom = -0.0400085
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1d6sh")
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(60, 246)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.696
+anchor_bottom = 1.113
+offset_right = -7.01601
+offset_bottom = 0.0269928
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel"]
+custom_minimum_size = Vector2(20, 229)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.333
+anchor_top = 0.033
+anchor_right = 0.606
+anchor_bottom = 0.963
+offset_left = -0.643
+offset_top = -0.118
+offset_right = -0.026001
+offset_bottom = 0.10199
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yi3m5")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel/NinePatchRect"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.083
+anchor_top = 0.271
+anchor_right = 0.917
+anchor_bottom = 0.445
+offset_left = 0.0079999
+offset_top = -0.0590057
+offset_right = -4.008
+offset_bottom = 0.0949936
+texture = ExtResource("2_rtxxv")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.113
+anchor_top = 0.033
+anchor_right = 0.31
+anchor_bottom = 0.963
+offset_left = -0.0230007
+offset_top = 228.882
+offset_right = 215.79
+offset_bottom = 14.102
+rotation = -1.5708
+show_percentage = false
+
+[node name="Arrow" type="Sprite2D" parent="Panel"]
+position = Vector2(51, 13)
+texture = ExtResource("2_4vtqs")

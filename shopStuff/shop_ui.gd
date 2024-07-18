@@ -70,7 +70,7 @@ func change_rod_color_and_emit_signal(rod, color):
 	type_of_rod = rod
 	GameManager.update_rod.emit(rod)
 
-func equip_rod(button_to_equip, other_button_1, other_button_2, color, rod_color):
+func equip_button(button_to_equip, other_button_1, other_button_2, color, rod_color):
 	buttons[button_to_equip]["Equipped"] = true
 	buttons[other_button_1]["Equipped"] = false
 	buttons[other_button_2]["Equipped"] = false
@@ -105,9 +105,9 @@ func _on_shop_item_panel_buy_button_pressed():
 			GameManager.update_coins.emit(-(ROD_PRICES.RED)) # <- rod's price
 			buttons["1"]["Bought"] = true
 			
-			equip_rod("1", "2", "3", "red", red_rod_color)
+			equip_button("1", "2", "3", "red", red_rod_color)
 	else:
-		equip_rod("1", "2", "3", "red", red_rod_color)
+		equip_button("1", "2", "3", "red", red_rod_color)
 
 
 func _on_shop_item_panel_2_buy_button_pressed():
@@ -117,9 +117,9 @@ func _on_shop_item_panel_2_buy_button_pressed():
 			GameManager.update_coins.emit(-(ROD_PRICES.BLUE)) # <- rod's price
 			buttons["2"]["Bought"] = true
 			
-			equip_rod("2", "1", "3", "blue", blue_rod_color)
+			equip_button("2", "1", "3", "blue", blue_rod_color)
 	else:
-		equip_rod("2", "1", "3", "blue", blue_rod_color)
+		equip_button("2", "1", "3", "blue", blue_rod_color)
 
 
 func _on_shop_item_panel_3_buy_button_pressed():
@@ -129,9 +129,9 @@ func _on_shop_item_panel_3_buy_button_pressed():
 			GameManager.update_coins.emit(-(ROD_PRICES.TURQUOISE)) # <- rod's price
 			buttons["3"]["Bought"] = true
 			
-			equip_rod("3", "1", "2", "turquoise", turquoise_rod_color)
+			equip_button("3", "1", "2", "turquoise", turquoise_rod_color)
 	else:
-		equip_rod("3", "1", "2", "turquoise", turquoise_rod_color)
+		equip_button("3", "1", "2", "turquoise", turquoise_rod_color)
 
 
 func save_data(save: PlayerData):
