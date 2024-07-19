@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="2_rtxxv"]
 
 [node name="FishCatchingMinigameUI" type="Control"]
-custom_minimum_size = Vector2(71, 221)
+custom_minimum_size = Vector2(46, 221)
 layout_mode = 3
 anchor_right = 0.111
 anchor_bottom = 0.683
@@ -17,7 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_1d6sh")
 
 [node name="MainPanel" type="Panel" parent="."]
-custom_minimum_size = Vector2(71, 246)
+custom_minimum_size = Vector2(60, 246)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -69,11 +69,11 @@ custom_minimum_size = Vector2(16, 16)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
-anchor_top = -0.026
+anchor_top = -0.03
 anchor_right = 1.8
-anchor_bottom = 0.043
-offset_top = -0.02
-offset_bottom = 0.11
+anchor_bottom = 0.039
+offset_top = -0.0999999
+offset_bottom = 0.0299997
 pivot_offset = Vector2(8, 8)
 
 [node name="Sprite2D" type="Sprite2D" parent="MainPanel/NinePatchRect/Arrow"]
@@ -81,16 +81,15 @@ texture = ExtResource("2_4vtqs")
 centered = false
 
 [node name="ProgressBar" type="ProgressBar" parent="MainPanel"]
-custom_minimum_size = Vector2(230, 14)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.113
 anchor_top = 0.033
 anchor_right = 0.31
-anchor_bottom = 0.967
-offset_left = -0.0229998
-offset_top = 229.882
-offset_right = 215.99
-offset_bottom = 14.118
+anchor_bottom = 0.963
+offset_left = -0.0230007
+offset_top = 228.882
+offset_right = 215.79
+offset_bottom = 14.102
 rotation = -1.5708
 show_percentage = false
