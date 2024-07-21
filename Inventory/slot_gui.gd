@@ -8,10 +8,9 @@ extends Panel
 @onready var item_rarity = $ItemInfo/MarginContainer/VBoxContainer/NinePatchRect/VBoxContainer/ItemRarity
 @onready var item_description = $ItemInfo/MarginContainer/VBoxContainer/NinePatchRect2/ItemDescription
 @onready var item_value = $ItemInfo/MarginContainer/VBoxContainer/NinePatchRect2/ItemValue
-
 @onready var sell_button = $SellButton
 
-func update(slot: InventorySlot):
+func update(slot: InventorySlot) -> void:
 	if slot.item == null:
 		item_sprite.visible = false
 		item_amount.visible = false
@@ -21,23 +20,20 @@ func update(slot: InventorySlot):
 		item_amount.visible = true
 		item_amount.text = str(slot.amount)
 
-func _on_mouse_exited():
-	$ItemInfo.visible = false
-	
-func get_sell_button():
+func get_sell_button() -> Button:
 	return sell_button
 
-func get_item_info():
+func get_item_info() -> NinePatchRect:
 	return item_info
 
-func get_item_name():
+func get_item_name() -> Label:
 	return item_name
 
-func get_item_rarity():
+func get_item_rarity() -> Label:
 	return item_rarity
 
-func get_item_description():
+func get_item_description() -> Label:
 	return item_description
 
-func get_item_value():
+func get_item_value() -> Label:
 	return item_value

@@ -2,25 +2,23 @@ extends CharacterBody2D
 class_name Player
 
 var inventory: Inventory
-var amount_of_inv_slots = 9
+var amount_of_inv_slots: int = 9
 
 var speed: int = 100
 var jump_force: int = 100
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var entered_area_to_transition: bool = false
 var area_name: String
 
-var fishing_system_script = FishingSystem.new()
-
-@onready var animation_player = $AnimationPlayer
-@onready var player_sprite = $PlayerStructure
-@onready var fishing_rod_handle_sprite = $PlayerFishingRodColor
-@onready var fishing_rod_end_part_sprite = $PlayerEndOfFishingRodColor
-@onready var end_of_rod = $EndOfFishingRod
-@onready var exclamation_mark_sprite = $FishAlert
-@onready var fish_catch_ui = $FishCatchUI
-@onready var fishing_minigame = $FishCatchingMinigameUI
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var player_sprite: Sprite2D = $PlayerStructure
+@onready var fishing_rod_handle_sprite: Sprite2D = $PlayerFishingRodColor
+@onready var fishing_rod_end_part_sprite: Sprite2D = $PlayerEndOfFishingRodColor
+@onready var end_of_rod: Marker2D = $EndOfFishingRod
+@onready var exclamation_mark_sprite: Sprite2D = $FishAlert
+@onready var fish_catch_ui: Control = $FishCatchUI
+@onready var fishing_minigame: Control = $FishCatchingMinigameUI
 
 func _ready() -> void:
 	GameManager.load_game()
@@ -30,24 +28,24 @@ func _ready() -> void:
 	
 	GameManager.player_won_minigame.connect(
 		func():
-			fishing_system_script.handle_hooking(self, end_of_rod, exclamation_mark_sprite, fishing_minigame)
+			FishingSystem.handle_hooking(self, end_of_rod, exclamation_mark_sprite, fishing_minigame)
 	)
-func _process(delta):
+func _process(_delta: float) -> void:
 	var direction = Input.get_axis("left", "right")
 	handle_most_player_animations(direction)
 	check_fishing_rod_visibility()
-	fishing_system_script.handle_inventory_items(self, direction, player_sprite)
-	fishing_system_script.fishing_system(self, end_of_rod, exclamation_mark_sprite, fish_catch_ui, fishing_minigame)
+	FishingSystem.handle_inventory_items(self, direction, player_sprite)
+	FishingSystem.fishing_system(self, end_of_rod, exclamation_mark_sprite, fish_catch_ui, fishing_minigame)
 
 
-func _physics_process(delta):
+func _physics_process(_delta: float) -> void:
 	handle_player_physics()
 	move_and_slide()
 
-func handle_player_physics():
-	var direction = Input.get_axis("left", "right")
+func handle_player_physics() -> void:
+	var direction: float = Input.get_axis("left", "right")
 	
-	if fishing_system_script.action_being_performed != "not fishing stuff":
+	if FishingSystem.action_being_performed != "not fishing stuff":
 		velocity = Vector2.ZERO
 	else:
 		velocity.x = direction * speed
@@ -59,8 +57,8 @@ func handle_player_physics():
 			velocity.y -= jump_force
 
 
-func handle_most_player_animations(direction):
-	match fishing_system_script.action_being_performed:
+func handle_most_player_animations(direction: float) -> void:
+	match FishingSystem.action_being_performed:
 		"equipping rod":
 			animation_player.play("equipping_rod")
 		"casting":
@@ -80,26 +78,26 @@ func handle_most_player_animations(direction):
 		animation_player.play("idle")
 
 
-func check_fishing_rod_visibility():
-	$PlayerFishingRodColor.visible = (fishing_system_script.action_being_performed != "not fishing stuff")
-	$PlayerEndOfFishingRodColor.visible = (fishing_system_script.action_being_performed != "not fishing stuff")
+func check_fishing_rod_visibility() -> void:
+	$PlayerFishingRodColor.visible = (FishingSystem.action_being_performed != "not fishing stuff")
+	$PlayerEndOfFishingRodColor.visible = (FishingSystem.action_being_performed != "not fishing stuff")
 
-func _on_actual_spot_body_entered(body: PhysicsBody2D):
+func _on_actual_spot_body_entered(body: PhysicsBody2D) -> void:
 	if body.name == "Player":
-		fishing_system_script.is_able_to_fish = true
+		FishingSystem.is_able_to_fish = true
 
-func _on_actual_spot_body_exited(body: PhysicsBody2D):
+func _on_actual_spot_body_exited(body: PhysicsBody2D) -> void:
 	if body.name == "Player":
-		fishing_system_script.is_able_to_fish = false
-		fishing_system_script.action_being_performed = "not fishing stuff"
+		FishingSystem.is_able_to_fish = false
+		FishingSystem.action_being_performed = "not fishing stuff"
 
-func _on_animation_player_animation_finished(anim_name):
+func _on_animation_player_animation_finished(anim_name) -> void:
 	match anim_name:
 		"cast":
-			fishing_system_script.action_being_performed = "fishing"
+			FishingSystem.action_being_performed = "fishing"
 		"hook":
-			fishing_system_script.action_being_performed = "equipping rod"
-			fishing_system_script.is_already_fishing = false
+			FishingSystem.action_being_performed = "equipping rod"
+			FishingSystem.is_already_fishing = false
 
 
 func handle_selling(slot, item_info, sell_button):

@@ -1,18 +1,11 @@
 extends CharacterBody2D
 
-@onready var player = get_tree().get_first_node_in_group("Player")
-@onready var fish_catch_UI = player.get_node("FishCatchUI")
-@onready var fish_sprite = $Sprite2D
-
 @export var inventory_item: InventoryItem
 @export var hook_force_x: int = 40
 @export var hook_force_y: int = 205
 @export var is_being_hooked: bool = false
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-var selected_fish
-
 
 var arrow_speed: Dictionary = {
 	"RARE": 3,
@@ -21,14 +14,16 @@ var arrow_speed: Dictionary = {
 	"LEGENDARY": 0.5,
 }
 
-var target_size: Dictionary = {
+var target_height: Dictionary = {
 	"RARE": 40,
 	"SUPER_RARE": 30,
 	"EPIC": 20,
 	"LEGENDARY": 10,
 }
 
-func _physics_process(delta):
+@onready var fish_sprite = $Sprite2D
+
+func _physics_process(_delta: float) -> void:
 	if !(is_on_floor() and is_being_hooked):
 		velocity.y += gravity
 	else:
@@ -36,15 +31,17 @@ func _physics_process(delta):
 		
 	move_and_slide()
 
-func being_hooked():
+func being_hooked() -> void:
 	is_being_hooked = true
 	velocity = Vector2(-hook_force_x, -hook_force_y)
 
-func _on_area_2d_body_entered(body: PhysicsBody2D):
+func _on_area_2d_body_entered(body: PhysicsBody2D) -> void:
 	if body.name == "Player":
 		body.inventory.insert(inventory_item)
 		
+		var fish_catch_UI = body.get_node("FishCatchUI")
 		fish_catch_UI.visible = true
+		
 		var fish_frame = fish_catch_UI.get_fish_frame()
 		var fish_name = fish_catch_UI.get_fish_name()
 		var fish_rarity = fish_catch_UI.get_fish_rarity()
@@ -63,8 +60,8 @@ func _on_area_2d_body_entered(body: PhysicsBody2D):
 		queue_free() 
 
 
-func randomize_fish():
-	selected_fish = GameManager.fish_array[randi_range(0, GameManager.fish_array.size() - 1)]
+func randomize_fish() -> void:
+	var selected_fish = GameManager.fish_array[randi_range(0, GameManager.fish_array.size() - 1)]
 	
 	match selected_fish:
 		"clown_fish":
@@ -79,8 +76,8 @@ func randomize_fish():
 	
 	match inventory_item.rarity:
 		"Rare":
-			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["RARE"], target_size["RARE"])
+			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["RARE"], target_height["RARE"])
 		"Super Rare":
-			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["SUPER_RARE"], target_size["SUPER_RARE"])
+			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["SUPER_RARE"], target_height["SUPER_RARE"])
 		"Epic":
-			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["EPIC"], target_size["EPIC"])
+			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["EPIC"], target_height["EPIC"])

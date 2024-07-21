@@ -1,22 +1,22 @@
 [gd_scene load_steps=9 format=3 uid="uid://cg6gjyuj2dmal"]
 
-[ext_resource type="Script" path="res://Inventory/slot_gui.gd" id="1_i4l32"]
-[ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="1_qfwe5"]
-[ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/coin.png" id="3_ydp6j"]
-[ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="4_ggs33"]
-[ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="5_7yb83"]
+[ext_resource type="Script" path="res://Inventory/slot_gui.gd" id="1_210oq"]
+[ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="2_dwaeu"]
+[ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="3_5ygxn"]
+[ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="4_vppwn"]
+[ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/coin.png" id="5_y4vb1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5u2cg"]
-font = ExtResource("4_ggs33")
+font = ExtResource("4_vppwn")
 font_size = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_nx4o3"]
-font = ExtResource("4_ggs33")
+font = ExtResource("4_vppwn")
 font_size = 4
 
 [sub_resource type="LabelSettings" id="LabelSettings_mvayo"]
 line_spacing = -1.0
-font = ExtResource("4_ggs33")
+font = ExtResource("4_vppwn")
 font_size = 5
 
 [node name="Slot" type="Panel"]
@@ -28,10 +28,10 @@ anchor_bottom = 0.044
 offset_bottom = 0.159999
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_i4l32")
+script = ExtResource("1_210oq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_qfwe5")
+texture = ExtResource("2_dwaeu")
 centered = false
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -84,7 +84,7 @@ anchor_right = 4.125
 anchor_bottom = 4.75
 offset_left = -0.992001
 pivot_offset = Vector2(20, 20)
-texture = ExtResource("5_7yb83")
+texture = ExtResource("3_5ygxn")
 patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1
@@ -111,7 +111,7 @@ theme_override_constants/separation = 1
 [node name="NinePatchRect" type="NinePatchRect" parent="ItemInfo/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(36, 15)
 layout_mode = 2
-texture = ExtResource("1_qfwe5")
+texture = ExtResource("2_dwaeu")
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
@@ -145,7 +145,7 @@ vertical_alignment = 1
 [node name="NinePatchRect2" type="NinePatchRect" parent="ItemInfo/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(46, 40)
 layout_mode = 2
-texture = ExtResource("1_qfwe5")
+texture = ExtResource("2_dwaeu")
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
@@ -163,7 +163,7 @@ offset_left = -0.016
 offset_top = -0.00400019
 offset_right = 0.00799942
 offset_bottom = 0.0139999
-theme_override_fonts/font = ExtResource("4_ggs33")
+theme_override_fonts/font = ExtResource("4_vppwn")
 theme_override_font_sizes/font_size = 4
 text = "A common ocean fish."
 label_settings = SubResource("LabelSettings_mvayo")
@@ -185,7 +185,7 @@ offset_right = 0.0100002
 offset_bottom = -0.0199966
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("3_ydp6j")
+texture = ExtResource("5_y4vb1")
 expand_mode = 2
 
 [node name="ItemValue" type="Label" parent="ItemInfo/MarginContainer/VBoxContainer/NinePatchRect2"]
@@ -199,12 +199,10 @@ anchor_bottom = 0.975
 offset_right = 0.00799942
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("4_ggs33")
+theme_override_fonts/font = ExtResource("4_vppwn")
 theme_override_font_sizes/font_size = 6
 text = "20"
 horizontal_alignment = 2
 vertical_alignment = 1
 autowrap_mode = 3
 clip_text = true
-
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

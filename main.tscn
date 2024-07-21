@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/coin.png" id="6_jdgaa"]
 [ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="7_46pfm"]
 [ext_resource type="Script" path="res://player/coins_label.gd" id="8_fa0i4"]
-[ext_resource type="PackedScene" uid="uid://dijpk10vvju1t" path="res://shopStuff/shop_ui.tscn" id="11_7wbxs"]
+[ext_resource type="PackedScene" uid="uid://dijpk10vvju1t" path="res://shop_stuff/shop_ui.tscn" id="11_7wbxs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ruyo"]
 texture = ExtResource("1_5grux")

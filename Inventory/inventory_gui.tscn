@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="1_gh863"]
 [ext_resource type="Script" path="res://Inventory/inventory_gui.gd" id="1_ja06b"]
-[ext_resource type="PackedScene" uid="uid://cg6gjyuj2dmal" path="res://Inventory/slotGUI.tscn" id="2_ny31k"]
+[ext_resource type="PackedScene" uid="uid://cg6gjyuj2dmal" path="res://Inventory/slot_gui.tscn" id="2_ny31k"]
 
 [node name="InventoryGUI" type="Control"]
 process_mode = 3

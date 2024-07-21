@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://player/Player.gd" id="1_nyciw"]
 [ext_resource type="PackedScene" uid="uid://dcr32uc5rttem" path="res://Inventory/inventory_gui.tscn" id="2_7c5we"]
 [ext_resource type="Texture2D" uid="uid://cp8mvr88ln3wm" path="res://assets/exclamationmark.png" id="4_fwnop"]
-[ext_resource type="PackedScene" uid="uid://b4cu3ihy5hegm" path="res://fishing/FishCatchUIStuff/fish_catch_ui.tscn" id="4_lnbcy"]
+[ext_resource type="PackedScene" uid="uid://b4cu3ihy5hegm" path="res://fishing/fish_catch_ui/fish_catch_ui.tscn" id="4_lnbcy"]
 [ext_resource type="PackedScene" uid="uid://71g5iuto87hk" path="res://fishing/fishing_minigame/fish_catching_minigame_ui.tscn" id="5_yypvd"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_otw6w"]

@@ -1,22 +1,26 @@
 extends Control
 
+var arrow_speed: int
+var target_height: int
+var default_target_width: int = 16
+var arrow_minimum_range: int = 0
+var arrow_maximum_range: int = 220
+
+var target_scene: PackedScene = preload("res://fishing/fishing_minigame/target.tscn")
+
 @onready var arrow = $MainPanel/NinePatchRect/Arrow
 @onready var nine_patch_rect = $MainPanel/NinePatchRect
 @onready var progress_bar = $MainPanel/ProgressBar
 
-var arrow_speed: int
-var target_size: int
-
-
-func _ready():
+func _ready() -> void:
 	GameManager.set_arrow_speed_AND_target_size.connect(set_speed_and_size)
 
-func _process(delta):
+func _process(_delta: float) -> void:
 	if progress_bar.value >= 100:
 		GameManager.player_won_minigame.emit()
 		progress_bar.value = 0
 
-func _physics_process(delta):
+func _physics_process(_delta: float) -> void:
 	if not visible:
 		return
 	
@@ -28,20 +32,19 @@ func _physics_process(delta):
 			spawn_target()
 
 
-func set_speed_and_size(SPEED, SIZE):
+func set_speed_and_size(SPEED, HEIGHT) -> void:
 	arrow_speed = SPEED
-	target_size = SIZE
+	target_height = HEIGHT
 
-func spawn_target():
-	var target_scene = preload("res://fishing/fishing_minigame/target.tscn")
+func spawn_target() -> void:
 	var new_target = target_scene.instantiate()
 	nine_patch_rect.add_child(new_target)
-	new_target.size = Vector2(16, target_size)
-	new_target.position = Vector2(2, randf_range(1, nine_patch_rect.size.y - target_size))
+	new_target.size = Vector2(default_target_width, target_height)
+	new_target.position = Vector2(2, randf_range(1, nine_patch_rect.size.y - target_height))
 
 
-func move_arrow():
+func move_arrow() -> void:
 	var tween1 = create_tween()
-	tween1.tween_property(arrow, "position", Vector2(20, 0), arrow_speed)
-	tween1.tween_property(arrow, "position", Vector2(20, 220), arrow_speed)
+	tween1.tween_property(arrow, "position", Vector2(20, arrow_minimum_range), arrow_speed)
+	tween1.tween_property(arrow, "position", Vector2(20, arrow_maximum_range), arrow_speed)
 	tween1.set_loops(0)

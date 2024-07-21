@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://dijpk10vvju1t"]
 
-[ext_resource type="Script" path="res://shopStuff/shop_ui.gd" id="1_k0nt6"]
+[ext_resource type="Script" path="res://shop_stuff/shop_ui.gd" id="1_k0nt6"]
 [ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="1_qvwv5"]
-[ext_resource type="PackedScene" uid="uid://degpypdmjjsul" path="res://shopStuff/ShopItem.tscn" id="2_dl77k"]
-[ext_resource type="Texture2D" uid="uid://cncn1lkr6pl1x" path="res://shopStuff/shopAssets/closeMenuButton.png" id="4_sq0xd"]
+[ext_resource type="PackedScene" uid="uid://degpypdmjjsul" path="res://shop_stuff/shop_item.tscn" id="2_dl77k"]
+[ext_resource type="Texture2D" uid="uid://cncn1lkr6pl1x" path="res://shop_stuff/shop_assets/closeMenuButton.png" id="4_sq0xd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yt2ra"]
 

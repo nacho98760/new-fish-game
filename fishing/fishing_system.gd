@@ -1,5 +1,4 @@
 extends Node2D
-class_name FishingSystem
 
 @export var action_being_performed: String = "not fishing stuff"
 @export var is_able_to_fish: bool = false
@@ -7,13 +6,15 @@ class_name FishingSystem
 @export var is_already_fishing: bool = false
 @export var is_already_catching_a_fish: bool = false
 
-var time_when_there_is_no_fish
-var time_when_there_is_a_fish
-var hooked_fish
+var time_when_there_is_no_fish: Timer
+var time_when_there_is_a_fish: Timer
 
-func handle_inventory_items(parent, direction, player_sprite):
-	if Input.is_action_just_pressed("equipRod") && is_able_to_fish:
-		if not parent.is_on_floor() or player_sprite.flip_h or is_already_fishing: 
+var fish_scene: PackedScene = preload("res://fishing/fish/fish.tscn")
+var hooked_fish: CharacterBody2D
+
+func handle_inventory_items(parent: Player, direction: float, player_sprite: Sprite2D) -> void:
+	if Input.is_action_just_pressed("equipRod") and is_able_to_fish:
+		if not parent.is_on_floor() or is_already_fishing or player_sprite.flip_h: 
 			return
 		
 		if action_being_performed == "equipping rod":
@@ -22,17 +23,17 @@ func handle_inventory_items(parent, direction, player_sprite):
 			action_being_performed = "equipping rod"
 
 
-func fishing_system(parent, end_of_fishing_rod, exclamation_mark_sprite, fish_catch_UI, fishing_minigame):
-	if Input.is_action_just_pressed("leftclick") && is_able_to_fish && fish_catch_UI.visible == false:
-		if is_already_fishing && is_there_a_fish:
-			handle_hooking(parent, end_of_fishing_rod, exclamation_mark_sprite, fishing_minigame)
+func fishing_system(parent: Player, end_of_rod: Marker2D, exclamation_mark_sprite: Sprite2D, fish_catch_UI: Control, fishing_minigame: Control) -> void:
+	if Input.is_action_just_pressed("leftclick") and is_able_to_fish and fish_catch_UI.visible == false:
+		if is_already_fishing and is_there_a_fish:
+			handle_hooking(parent, end_of_rod, exclamation_mark_sprite, fishing_minigame)
 			is_there_a_fish = false
 		
-		if action_being_performed == "equipping rod" && !is_already_fishing:
+		if action_being_performed == "equipping rod" and is_already_fishing == false:
 			handle_casting(parent, exclamation_mark_sprite)
 
 
-func handle_casting(parent, exclamation_mark_sprite):
+func handle_casting(parent: Player, exclamation_mark_sprite: Sprite2D) -> void:
 	action_being_performed = "casting"
 	is_already_fishing = true
 	
@@ -68,7 +69,7 @@ func handle_casting(parent, exclamation_mark_sprite):
 	time_when_there_is_no_fish.start()
 
 
-func handle_hooking(parent, end_of_fishing_rod, exclamation_mark_sprite, fishing_minigame):
+func handle_hooking(parent: Player, end_of_rod: Marker2D, exclamation_mark_sprite: Sprite2D, fishing_minigame: Control) -> void:
 	
 	var fishing_minigame_container = fishing_minigame.get_node("MainPanel").get_node("NinePatchRect")
 	
@@ -77,9 +78,7 @@ func handle_hooking(parent, end_of_fishing_rod, exclamation_mark_sprite, fishing
 		time_when_there_is_no_fish.stop()
 		time_when_there_is_a_fish.stop()
 		
-		var fish_scene = preload("res://fishing/fish/fish.tscn")
 		hooked_fish = fish_scene.instantiate()
-		
 		parent.add_child(hooked_fish)
 		hooked_fish.randomize_fish()
 		hooked_fish.position = Vector2(1000, 1000)
@@ -91,9 +90,9 @@ func handle_hooking(parent, end_of_fishing_rod, exclamation_mark_sprite, fishing
 	else:
 		fishing_minigame.visible = false
 		action_being_performed = "hooking"
-		hooked_fish.position = end_of_fishing_rod.position
+		hooked_fish.position = end_of_rod.position
 		hooked_fish.being_hooked()
 		is_already_catching_a_fish = false
 		
-		if fishing_minigame_container.get_child_count() >= 1:
+		if fishing_minigame_container.get_child_count() > 1:
 			fishing_minigame_container.get_child(1).queue_free()

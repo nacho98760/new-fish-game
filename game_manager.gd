@@ -8,13 +8,13 @@ signal show_item_info
 signal set_arrow_speed_AND_target_size
 signal player_won_minigame
 
-var fish_array: Array = ["clown_fish"]
+var fish_array: Array[String] = ["clown_fish"]
 
 
 func _ready():
 	GameManager.update_rod.connect(handle_rod_types)
 
-func handle_rod_types(rod):
+func handle_rod_types(rod) -> void:
 	match rod:
 		"default":
 			fish_array = ["clown_fish"]
@@ -25,7 +25,7 @@ func handle_rod_types(rod):
 		"turquoise_rod":
 			fish_array = ["clown_fish", "rare_fish", "blue_tang_fish"]
 
-func save_game():
+func save_game() -> void:
 	var save = PlayerData.new()
 	var saved_nodes = get_tree().get_nodes_in_group("ThingsToSave")
 	
@@ -34,7 +34,7 @@ func save_game():
 		
 	ResourceSaver.save(save, "user://savefile.tres")
 
-func load_game():
+func load_game() -> void:
 	var save = null
 	var saved_nodes = get_tree().get_nodes_in_group("ThingsToSave")
 	
