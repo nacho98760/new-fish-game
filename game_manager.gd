@@ -4,10 +4,12 @@ signal updated
 signal sell_fish_actual_inv_stuff
 signal update_coins
 signal update_rod
-
 signal show_item_info
+signal set_arrow_speed_AND_target_size
+signal player_won_minigame
 
 var fish_array: Array = ["clown_fish"]
+
 
 func _ready():
 	GameManager.update_rod.connect(handle_rod_types)

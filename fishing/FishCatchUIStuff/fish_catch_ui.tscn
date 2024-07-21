@@ -1,19 +1,19 @@
 [gd_scene load_steps=10 format=3 uid="uid://b4cu3ihy5hegm"]
 
-[ext_resource type="Script" path="res://FishCatchUIStuff/fish_catch_UI.gd" id="1_mgi7o"]
-[ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="2_5f8qv"]
-[ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="3_83meb"]
-[ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="4_f202a"]
-[ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/coin.png" id="5_loehd"]
-[ext_resource type="Texture2D" uid="uid://uf6e13xotbsf" path="res://assets/Weight.png" id="6_6qs6g"]
-[ext_resource type="Texture2D" uid="uid://cncn1lkr6pl1x" path="res://shopStuff/shopAssets/closeMenuButton.png" id="6_wccbk"]
+[ext_resource type="Script" path="res://fishing/FishCatchUIStuff/fish_catch_UI.gd" id="1_ul1rp"]
+[ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="2_7vtg0"]
+[ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="3_ieuat"]
+[ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="4_qqwkh"]
+[ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/coin.png" id="5_465bj"]
+[ext_resource type="Texture2D" uid="uid://uf6e13xotbsf" path="res://assets/Weight.png" id="6_dq0hb"]
+[ext_resource type="Texture2D" uid="uid://cncn1lkr6pl1x" path="res://shopStuff/shopAssets/closeMenuButton.png" id="7_fg1ap"]
 
 [sub_resource type="Theme" id="Theme_t1xiw"]
-default_font = ExtResource("4_f202a")
+default_font = ExtResource("4_qqwkh")
 default_font_size = 5
 
 [sub_resource type="Theme" id="Theme_q0ni2"]
-default_font = ExtResource("4_f202a")
+default_font = ExtResource("4_qqwkh")
 default_font_size = 4
 
 [node name="FishCatchUI" type="Control"]
@@ -25,7 +25,7 @@ offset_right = 0.159996
 offset_bottom = -0.12001
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_mgi7o")
+script = ExtResource("1_ul1rp")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(100, 150)
@@ -35,7 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_5f8qv")
+texture = ExtResource("2_7vtg0")
 patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1
@@ -88,7 +88,7 @@ offset_top = 0.0299988
 offset_right = -0.0400085
 offset_bottom = 0.0399971
 grow_horizontal = 2
-texture = ExtResource("3_83meb")
+texture = ExtResource("3_ieuat")
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
@@ -133,7 +133,7 @@ theme_override_constants/separation = 5
 [node name="Stat1" type="NinePatchRect" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer"]
 custom_minimum_size = Vector2(90, 12)
 layout_mode = 2
-texture = ExtResource("3_83meb")
+texture = ExtResource("3_ieuat")
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
@@ -150,7 +150,7 @@ offset_left = 0.0199999
 offset_top = -0.00400019
 offset_right = 0.00999928
 offset_bottom = 0.00399971
-texture = ExtResource("5_loehd")
+texture = ExtResource("5_465bj")
 expand_mode = 4
 
 [node name="Label" type="Label" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer/Stat1"]
@@ -166,14 +166,14 @@ offset_right = 0.029995
 offset_bottom = 0.00399971
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_f202a")
+theme_override_fonts/font = ExtResource("4_qqwkh")
 theme_override_font_sizes/font_size = 5
 text = "10"
 
 [node name="Stat2" type="NinePatchRect" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer"]
 custom_minimum_size = Vector2(90, 12)
 layout_mode = 2
-texture = ExtResource("3_83meb")
+texture = ExtResource("3_ieuat")
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
@@ -205,14 +205,14 @@ offset_right = 0.029995
 offset_bottom = 0.00399971
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_f202a")
+theme_override_fonts/font = ExtResource("4_qqwkh")
 theme_override_font_sizes/font_size = 5
 text = "10"
 
 [node name="Stat3" type="NinePatchRect" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer"]
 custom_minimum_size = Vector2(90, 12)
 layout_mode = 2
-texture = ExtResource("3_83meb")
+texture = ExtResource("3_ieuat")
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
@@ -226,7 +226,7 @@ anchor_right = 0.144
 anchor_bottom = 1.0
 offset_left = 0.00999999
 offset_right = 0.039999
-texture = ExtResource("6_6qs6g")
+texture = ExtResource("6_dq0hb")
 expand_mode = 4
 
 [node name="Label" type="Label" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer/Stat3"]
@@ -242,14 +242,14 @@ offset_right = 0.029995
 offset_bottom = 0.00399971
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_f202a")
+theme_override_fonts/font = ExtResource("4_qqwkh")
 theme_override_font_sizes/font_size = 5
 text = "10"
 
 [node name="Stat4" type="NinePatchRect" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer"]
 custom_minimum_size = Vector2(90, 12)
 layout_mode = 2
-texture = ExtResource("3_83meb")
+texture = ExtResource("3_ieuat")
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
@@ -281,7 +281,7 @@ offset_right = 0.029995
 offset_bottom = 0.00399971
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_f202a")
+theme_override_fonts/font = ExtResource("4_qqwkh")
 theme_override_font_sizes/font_size = 5
 text = "10"
 
@@ -296,7 +296,7 @@ offset_bottom = 15.0
 grow_horizontal = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="CloseShopPanel"]
-texture = ExtResource("6_wccbk")
+texture = ExtResource("7_fg1ap")
 centered = false
 offset = Vector2(6.5, -7.7)
 

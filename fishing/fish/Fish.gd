@@ -1,9 +1,7 @@
 extends CharacterBody2D
-class_name Fish
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 @onready var fish_catch_UI = player.get_node("FishCatchUI")
-
 @onready var fish_sprite = $Sprite2D
 
 @export var inventory_item: InventoryItem
@@ -16,9 +14,25 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var selected_fish
 
 
+var arrow_speed: Dictionary = {
+	"RARE": 3,
+	"SUPER_RARE": 2,
+	"EPIC": 1,
+	"LEGENDARY": 0.5,
+}
+
+var target_size: Dictionary = {
+	"RARE": 40,
+	"SUPER_RARE": 30,
+	"EPIC": 20,
+	"LEGENDARY": 10,
+}
+
 func _physics_process(delta):
-	if not(is_on_floor() and is_being_hooked):
+	if !(is_on_floor() and is_being_hooked):
 		velocity.y += gravity
+	else:
+		velocity = Vector2.ZERO
 		
 	move_and_slide()
 
@@ -47,7 +61,6 @@ func _on_area_2d_body_entered(body: PhysicsBody2D):
 		fish_weight.text = str(inventory_item.weight) + "kg"
 		
 		queue_free() 
-		
 
 
 func randomize_fish():
@@ -63,3 +76,11 @@ func randomize_fish():
 		"blue_tang_fish":
 			fish_sprite.texture = load("res://fishing/fish/fish_textures/blue_tang_fish.png")
 			inventory_item = preload("res://Inventory/items/blue_tang_fish.tres")
+	
+	match inventory_item.rarity:
+		"Rare":
+			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["RARE"], target_size["RARE"])
+		"Super Rare":
+			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["SUPER_RARE"], target_size["SUPER_RARE"])
+		"Epic":
+			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["EPIC"], target_size["EPIC"])

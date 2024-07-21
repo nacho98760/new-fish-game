@@ -20,19 +20,25 @@ var fishing_system_script = FishingSystem.new()
 @onready var end_of_rod = $EndOfFishingRod
 @onready var exclamation_mark_sprite = $FishAlert
 @onready var fish_catch_ui = $FishCatchUI
+@onready var fishing_minigame = $FishCatchingMinigameUI
 
 func _ready() -> void:
 	GameManager.load_game()
 	GameManager.updated.emit(inventory)
 	GameManager.sell_fish_actual_inv_stuff.connect(handle_selling)
 	GameManager.show_item_info.connect(show_actual_info)
-
+	
+	GameManager.player_won_minigame.connect(
+		func():
+			fishing_system_script.handle_hooking(self, end_of_rod, exclamation_mark_sprite, fishing_minigame)
+	)
 func _process(delta):
 	var direction = Input.get_axis("left", "right")
 	handle_most_player_animations(direction)
 	check_fishing_rod_visibility()
 	fishing_system_script.handle_inventory_items(self, direction, player_sprite)
-	fishing_system_script.fishing_system(self, end_of_rod, exclamation_mark_sprite, fish_catch_ui)
+	fishing_system_script.fishing_system(self, end_of_rod, exclamation_mark_sprite, fish_catch_ui, fishing_minigame)
+
 
 func _physics_process(delta):
 	handle_player_physics()
