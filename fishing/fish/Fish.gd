@@ -31,8 +31,9 @@ func _physics_process(_delta: float) -> void:
 		
 	move_and_slide()
 
-func being_hooked() -> void:
+func being_hooked(end_of_rod: Marker2D) -> void:
 	is_being_hooked = true
+	position = end_of_rod.position
 	velocity = Vector2(-hook_force_x, -hook_force_y)
 
 func _on_area_2d_body_entered(body: PhysicsBody2D) -> void:

@@ -30,17 +30,22 @@ func _ready() -> void:
 		func():
 			FishingSystem.handle_hooking(self, end_of_rod, exclamation_mark_sprite, fishing_minigame)
 	)
+
 func _process(_delta: float) -> void:
 	var direction = Input.get_axis("left", "right")
 	handle_most_player_animations(direction)
 	check_fishing_rod_visibility()
-	FishingSystem.handle_inventory_items(self, direction, player_sprite)
+	FishingSystem.handle_inventory_items(self, player_sprite)
 	FishingSystem.fishing_system(self, end_of_rod, exclamation_mark_sprite, fish_catch_ui, fishing_minigame)
-
 
 func _physics_process(_delta: float) -> void:
 	handle_player_physics()
 	move_and_slide()
+
+func _input(event) -> void:
+	if event.is_action_pressed("jump") and is_on_floor():
+		velocity.y -= jump_force
+
 
 func handle_player_physics() -> void:
 	var direction: float = Input.get_axis("left", "right")
@@ -52,12 +57,13 @@ func handle_player_physics() -> void:
 		
 		if !is_on_floor():
 			velocity.y += gravity
-		
-		if Input.is_action_just_pressed("jump") && is_on_floor():
-			velocity.y -= jump_force
 
 
 func handle_most_player_animations(direction: float) -> void:
+	
+	if not is_on_floor():
+		animation_player.play("idle")
+
 	match FishingSystem.action_being_performed:
 		"equipping rod":
 			animation_player.play("equipping_rod")
@@ -73,9 +79,6 @@ func handle_most_player_animations(direction: float) -> void:
 				animation_player.play("walk")
 			else:
 				animation_player.play("idle")
-	
-	if !is_on_floor():
-		animation_player.play("idle")
 
 
 func check_fishing_rod_visibility() -> void:
@@ -101,6 +104,7 @@ func _on_animation_player_animation_finished(anim_name) -> void:
 
 
 func handle_selling(slot, item_info, sell_button):
+
 	if inventory.slots[slot].item == null:
 		return
 	
@@ -119,6 +123,7 @@ func handle_selling(slot, item_info, sell_button):
 
 
 func show_actual_info(slot, item_info, item_name, item_rarity, item_description, item_value, sell_button):
+	
 	if inventory.slots[slot].item == null:
 		item_info.visible = false
 		sell_button.set_default_cursor_shape(Input.CURSOR_ARROW)
@@ -133,11 +138,11 @@ func show_actual_info(slot, item_info, item_name, item_rarity, item_description,
 	sell_button.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 
-func save_data(save: PlayerData):
+func save_data(save: PlayerData) -> void:
 	save.player_inventory = inventory
 	save.player_position = global_position
 
-func load_data(save: PlayerData):
+func load_data(save: PlayerData) -> void:
 	if save == null:
 		inventory = Inventory.new()
 		for i in range(amount_of_inv_slots):

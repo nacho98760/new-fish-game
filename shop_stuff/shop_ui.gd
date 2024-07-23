@@ -45,9 +45,11 @@ var buttons: Dictionary = {
 @onready var buy_button_3: Label = sprite_3.get_node("Label")
 
 
+
 func _on_close_shop_panel_button_pressed() -> void:
 	self.visible = false
 	get_tree().paused = false
+
 
 func _ready() -> void:
 	match type_of_rod:

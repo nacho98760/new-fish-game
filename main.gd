@@ -3,16 +3,22 @@ extends Node2D
 var is_close_menu_open: bool = false
 
 @onready var open_shop_button: Button = $Shop/ShopConceptArea/OpenShopButton
+@onready var anim_player = $AnimationPlayer
+
 
 func _ready() -> void:
 	get_tree().set_auto_accept_quit(false)
 	resume_game()
+	anim_player.play("water")
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("close_game"):
-		if is_close_menu_open == false:
+func _input(event) -> void:
+	if event.is_action_pressed("close_game"):
+		if is_close_menu_open == false:	
 			pause_game()
+		else:
+			resume_game()
 
+		
 func pause_game() -> void:
 	$CanvasLayer/CloseGamePanel.visible = true
 	is_close_menu_open = true
@@ -22,6 +28,7 @@ func resume_game() -> void:
 	$CanvasLayer/CloseGamePanel.visible = false
 	is_close_menu_open = false
 	get_tree().paused = false
+
 
 func _on_save_and_quit_button_pressed() -> void:
 	GameManager.save_game()
