@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://daplgumm3yau7"
-path="res://.godot/imported/animatedwater.png-d3284dadbac64663bba2236c2795e22e.ctex"
+uid="uid://hm4o58rqkt13"
+path="res://.godot/imported/arrow_down.png-751c1ba046839324e0ebf253a55c2e0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/animatedwater.png"
-dest_files=["res://.godot/imported/animatedwater.png-d3284dadbac64663bba2236c2795e22e.ctex"]
+source_file="res://fishing/fishing_minigame/arrow_down.png"
+dest_files=["res://.godot/imported/arrow_down.png-751c1ba046839324e0ebf253a55c2e0f.ctex"]
 
 [params]
 

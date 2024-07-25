@@ -42,10 +42,6 @@ func _physics_process(_delta: float) -> void:
 	handle_player_physics()
 	move_and_slide()
 
-func _input(event) -> void:
-	if event.is_action_pressed("jump") and is_on_floor():
-		velocity.y -= jump_force
-
 
 func handle_player_physics() -> void:
 	var direction: float = Input.get_axis("left", "right")
@@ -54,9 +50,12 @@ func handle_player_physics() -> void:
 		velocity = Vector2.ZERO
 	else:
 		velocity.x = direction * speed
+
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y -= jump_force
 		
-		if !is_on_floor():
-			velocity.y += gravity
+	if not is_on_floor():
+		velocity.y += gravity
 
 
 func handle_most_player_animations(direction: float) -> void:

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://fishing/fishing_minigame/fish_catching_minigame_ui.gd" id="1_1d6sh"]
 [ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="1_yi3m5"]
-[ext_resource type="Texture2D" uid="uid://hm4o58rqkt13" path="res://assets/arrow_down.png" id="2_4vtqs"]
+[ext_resource type="Texture2D" uid="uid://hm4o58rqkt13" path="res://fishing/fishing_minigame/arrow_down.png" id="3_ecpnl"]
 
 [node name="FishCatchingMinigameUI" type="Control"]
 process_mode = 3
@@ -58,7 +58,7 @@ offset_bottom = -0.1
 pivot_offset = Vector2(8, 8)
 
 [node name="Sprite2D" type="Sprite2D" parent="MainPanel/NinePatchRect/Arrow"]
-texture = ExtResource("2_4vtqs")
+texture = ExtResource("3_ecpnl")
 centered = false
 
 [node name="ProgressBar" type="ProgressBar" parent="MainPanel"]

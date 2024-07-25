@@ -7,6 +7,7 @@ enum ROD_PRICES {
 }
 
 var type_of_rod: String
+var coins: Coins
 
 var default_rod_color := Color(1, 1, 1, 1)
 var red_rod_color := Color(0.845, 0.173, 0.246, 1)
@@ -31,7 +32,6 @@ var buttons: Dictionary = {
 @onready var shop_item_panel_1: Panel = $NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel
 @onready var shop_item_panel_2: Panel = $NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel2 
 @onready var shop_item_panel_3: Panel = $NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel3
-@onready var coins: Coins = $"../../CanvasLayer/CoinsPanel/CenterContainer/Label"
 
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
 @onready var rod_end_part: Sprite2D = player.get_node("PlayerEndOfFishingRodColor")
@@ -52,6 +52,8 @@ func _on_close_shop_panel_button_pressed() -> void:
 
 
 func _ready() -> void:
+	coins = get_tree().get_first_node_in_group("Coins")
+	
 	match type_of_rod:
 		"default":
 			change_rod_color_and_emit_signal("default", default_rod_color)
