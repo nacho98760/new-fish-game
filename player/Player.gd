@@ -59,9 +59,6 @@ func handle_player_physics() -> void:
 
 
 func handle_most_player_animations(direction: float) -> void:
-	
-	if not is_on_floor():
-		animation_player.play("idle")
 
 	match FishingSystem.action_being_performed:
 		"equipping rod":
@@ -78,6 +75,9 @@ func handle_most_player_animations(direction: float) -> void:
 				animation_player.play("walk")
 			else:
 				animation_player.play("idle")
+
+	if !is_on_floor():
+		animation_player.play("idle")
 
 
 func check_fishing_rod_visibility() -> void:

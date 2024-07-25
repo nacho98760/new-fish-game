@@ -16,7 +16,7 @@ load_path = "res://.godot/imported/fisherman32x32_Custom_FishingRodHandleColor.p
 load_path = "res://.godot/imported/fisherman32x32_Custom_FishingRodEndPartColor.png-3e426daaba082b7b4b624275e74509c1.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rx5fr"]
-size = Vector2(8.09161, 21.7801)
+size = Vector2(16, 22)
 
 [sub_resource type="Animation" id="Animation_euyhw"]
 length = 0.001
@@ -895,8 +895,7 @@ hframes = 24
 frame = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
-scale = Vector2(0.988678, 0.804524)
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_rx5fr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
