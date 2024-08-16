@@ -8,17 +8,17 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var arrow_speed: Dictionary = {
-	"RARE": 3,
-	"SUPER_RARE": 2,
-	"EPIC": 1,
-	"LEGENDARY": 0.5,
+	"RARE": 2.5,
+	"SUPER_RARE": 1.85,
+	"EPIC": 1.2,
+	"LEGENDARY": 0.8,
 }
 
 var target_height: Dictionary = {
-	"RARE": 40,
-	"SUPER_RARE": 30,
-	"EPIC": 20,
-	"LEGENDARY": 10,
+	"RARE": 45,
+	"SUPER_RARE": 35,
+	"EPIC": 25,
+	"LEGENDARY": 15,
 }
 
 @onready var fish_sprite = $Sprite2D
@@ -74,6 +74,9 @@ func randomize_fish() -> void:
 		"blue_tang_fish":
 			fish_sprite.texture = load("res://fishing/fish/fish_textures/blue_tang_fish.png")
 			inventory_item = preload("res://Inventory/items/blue_tang_fish.tres")
+		"shiny_fish":
+			fish_sprite.texture = load("res://fishing/fish/fish_textures/shiny_fish.png")
+			inventory_item = preload("res://Inventory/items/shiny_fish.tres")
 	
 	match inventory_item.rarity:
 		"Rare":
@@ -82,3 +85,5 @@ func randomize_fish() -> void:
 			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["SUPER_RARE"], target_height["SUPER_RARE"])
 		"Epic":
 			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["EPIC"], target_height["EPIC"])
+		"Legendary":
+			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["LEGENDARY"], target_height["LEGENDARY"])

@@ -1,5 +1,7 @@
 extends Control
 
+signal rod_color_changed
+
 enum ROD_PRICES {
 	RED = 60,
 	BLUE = 100,
@@ -29,20 +31,20 @@ var buttons: Dictionary = {
 	},
 }
 
+@onready var player: Player = get_tree().get_first_node_in_group("Player")
+@onready var rod_end_part: Sprite2D = player.get_node("PlayerEndOfFishingRodColor")
+
 @onready var shop_item_panel_1: Panel = $NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel
 @onready var shop_item_panel_2: Panel = $NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel2 
 @onready var shop_item_panel_3: Panel = $NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel3
-
-@onready var player: Player = get_tree().get_first_node_in_group("Player")
-@onready var rod_end_part: Sprite2D = player.get_node("PlayerEndOfFishingRodColor")
 
 @onready var sprite_1: Sprite2D = shop_item_panel_1.get_sprite()
 @onready var sprite_2: Sprite2D = shop_item_panel_2.get_sprite()
 @onready var sprite_3: Sprite2D = shop_item_panel_3.get_sprite()
 
-@onready var buy_button_1: Label = sprite_1.get_node("Label")
-@onready var buy_button_2: Label = sprite_2.get_node("Label")
-@onready var buy_button_3: Label = sprite_3.get_node("Label")
+@onready var buy_button_1: Label = sprite_1.get_child(0) # <- button's name ("Buy", "Equip", or "Equipped")
+@onready var buy_button_2: Label = sprite_2.get_child(0) # <- button's name ("Buy", "Equip", or "Equipped")
+@onready var buy_button_3: Label = sprite_3.get_child(0) # <- button's name ("Buy", "Equip", or "Equipped")
 
 
 
@@ -102,6 +104,7 @@ func check_all_buttons() -> void:
 
 func _on_shop_item_panel_buy_button_pressed() -> void:
 	if buttons["1"]["Bought"] == false:
+		
 		var current_coins_amount = coins.get_coins()
 
 		if current_coins_amount >= ROD_PRICES.RED:

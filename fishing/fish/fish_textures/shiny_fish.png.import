@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2y0ebtqdn3i4"
-path="res://.godot/imported/grass tilemap.png-0d51ff451efba1c857e109e5e5dba9e5.ctex"
+uid="uid://dv5uppi2avolp"
+path="res://.godot/imported/shiny_fish.png-4f9c4031e91fc846d302bd8fd5eadf3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/grass tilemap.png"
-dest_files=["res://.godot/imported/grass tilemap.png-0d51ff451efba1c857e109e5e5dba9e5.ctex"]
+source_file="res://fishing/fish/fish_textures/shiny_fish.png"
+dest_files=["res://.godot/imported/shiny_fish.png-4f9c4031e91fc846d302bd8fd5eadf3f.ctex"]
 
 [params]
 

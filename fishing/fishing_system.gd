@@ -1,5 +1,13 @@
 extends Node2D
 
+enum ACTION_BEING_PERFORMED {
+	NOT_FISHING_STUFF,
+	EQUIPPING_ROD,
+	CASTING,
+	FISHING,
+	HOOKING,
+}
+
 @export var action_being_performed: String = "not fishing stuff"
 @export var is_able_to_fish: bool = false
 @export var is_there_a_fish: bool = false

@@ -15,9 +15,6 @@ load_path = "res://.godot/imported/fisherman32x32_Custom_FishingRodHandleColor.p
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_isdyy"]
 load_path = "res://.godot/imported/fisherman32x32_Custom_FishingRodEndPartColor.png-3e426daaba082b7b4b624275e74509c1.ctex"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rx5fr"]
-size = Vector2(16, 22)
-
 [sub_resource type="Animation" id="Animation_euyhw"]
 length = 0.001
 tracks/0/type = "value"
@@ -875,6 +872,9 @@ _data = {
 "walk": SubResource("Animation_o5axr")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jguw4"]
+size = Vector2(16, 22)
+
 [node name="Player" type="CharacterBody2D" groups=["Player", "ThingsToSave"]]
 collision_mask = 10
 script = ExtResource("1_nyciw")
@@ -893,10 +893,6 @@ frame = 9
 texture = SubResource("CompressedTexture2D_isdyy")
 hframes = 24
 frame = 9
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_rx5fr")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -70)
@@ -955,5 +951,11 @@ offset_right = 161.0
 offset_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_jguw4")
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

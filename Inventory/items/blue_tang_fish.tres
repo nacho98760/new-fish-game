@@ -11,5 +11,5 @@ value = 30
 description = "An epic ocean fish!"
 rarity = "Epic"
 rarity_color = Color(0.872996, 0.000654193, 0.872997, 1)
-width = 40
-weight = 70
+width = 35
+weight = 4

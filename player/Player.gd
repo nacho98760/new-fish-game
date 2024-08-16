@@ -20,6 +20,7 @@ var area_name: String
 @onready var fish_catch_ui: Control = $FishCatchUI
 @onready var fishing_minigame: Control = $FishCatchingMinigameUI
 
+
 func _ready() -> void:
 	GameManager.load_game()
 	GameManager.updated.emit(inventory)
@@ -30,6 +31,7 @@ func _ready() -> void:
 		func():
 			FishingSystem.handle_hooking(self, end_of_rod, exclamation_mark_sprite, fishing_minigame)
 	)
+	
 
 func _process(_delta: float) -> void:
 	var direction = Input.get_axis("left", "right")
@@ -37,6 +39,7 @@ func _process(_delta: float) -> void:
 	check_fishing_rod_visibility()
 	FishingSystem.handle_inventory_items(self, player_sprite)
 	FishingSystem.fishing_system(self, end_of_rod, exclamation_mark_sprite, fish_catch_ui, fishing_minigame)
+
 
 func _physics_process(_delta: float) -> void:
 	handle_player_physics()
@@ -51,7 +54,7 @@ func handle_player_physics() -> void:
 	else:
 		velocity.x = direction * speed
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and FishingSystem.action_being_performed == "not fishing stuff" and is_on_floor():
 		velocity.y -= jump_force
 		
 	if not is_on_floor():
@@ -121,7 +124,7 @@ func handle_selling(slot, item_info, sell_button):
 		$InventoryGUI.update(inventory)
 
 
-func show_actual_info(slot, item_info, item_name, item_rarity, item_description, item_value, sell_button):
+func show_actual_info(slot, item_info, item_name, item_rarity, item_description, item_value, sell_button) -> void:
 	
 	if inventory.slots[slot].item == null:
 		item_info.visible = false

@@ -23,7 +23,11 @@ func handle_rod_types(rod) -> void:
 		"blue_rod":
 			fish_array = ["blue_tang_fish"]
 		"turquoise_rod":
-			fish_array = ["clown_fish", "rare_fish", "blue_tang_fish"]
+			fish_array = ["shiny_fish"]
+
+			
+
+# -------------------------------- SAVING AND LOADING DATA --------------------------------
 
 func save_game() -> void:
 	var save = PlayerData.new()

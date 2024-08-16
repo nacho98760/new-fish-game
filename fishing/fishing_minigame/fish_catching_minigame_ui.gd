@@ -1,10 +1,13 @@
 extends Control
 
-var arrow_speed: int
+var arrow_speed: float
 var target_height: int
 var default_target_width: int = 16
 var arrow_minimum_range: int = 0
 var arrow_maximum_range: int = 220
+
+var cooldown_timer: Timer
+var on_cooldown: bool = false
 
 var target_scene: PackedScene = preload("res://fishing/fishing_minigame/target.tscn")
 
@@ -16,11 +19,29 @@ var target_scene: PackedScene = preload("res://fishing/fishing_minigame/target.t
 func _ready() -> void:
 	GameManager.set_arrow_speed_AND_target_size.connect(set_speed_and_size)
 
+	cooldown_timer = Timer.new()
+	cooldown_timer.set_one_shot(true)
+	cooldown_timer.set_wait_time(1)
+	cooldown_timer.set_autostart(false)
+
+	cooldown_timer.connect("timeout", func(): on_cooldown = false)
+
+	self.add_child(cooldown_timer)
+
+
+
 func _process(_delta: float) -> void:
 	check_progress_bar_value()
 
 func _input(event) -> void:
 	if event.is_action_pressed("fishing_minigame_key") and self.visible == true:
+
+		if on_cooldown:
+			return
+
+		on_cooldown = true
+		cooldown_timer.start()
+
 		var target = nine_patch_rect.get_child(1)
 
 		if ((arrow.position.y + arrow.size.y / 2) > target.position.y) and ((arrow.position.y - arrow.size.y / 2) < target.position.y + target.size.y):
