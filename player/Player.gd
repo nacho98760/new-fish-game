@@ -84,8 +84,13 @@ func handle_most_player_animations(direction: float) -> void:
 
 
 func check_fishing_rod_visibility() -> void:
-	$PlayerFishingRodColor.visible = (FishingSystem.action_being_performed != "not fishing stuff")
-	$PlayerEndOfFishingRodColor.visible = (FishingSystem.action_being_performed != "not fishing stuff")
+	if FishingSystem.action_being_performed == "not fishing stuff":
+		$PlayerFishingRodColor.visible = false
+		$PlayerEndOfFishingRodColor.visible = false
+	else:
+		$PlayerFishingRodColor.visible = true
+		$PlayerEndOfFishingRodColor.visible = true
+		
 
 func _on_actual_spot_body_entered(body: PhysicsBody2D) -> void:
 	if body.name == "Player":
