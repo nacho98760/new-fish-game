@@ -43,16 +43,9 @@ func handle_casting(parent: Player, exclamation_mark_sprite: Sprite2D) -> void:
 	
 	action_being_performed = "casting"
 	is_already_fishing = true
-	
-	time_when_there_is_no_fish = Timer.new()
-	time_when_there_is_no_fish.set_one_shot(true)
-	time_when_there_is_no_fish.set_wait_time(randi_range(3,7))
-	time_when_there_is_no_fish.set_autostart(false)
-	
-	time_when_there_is_a_fish = Timer.new()
-	time_when_there_is_a_fish.set_one_shot(true)
-	time_when_there_is_a_fish.set_wait_time(randi_range(2,4))
-	time_when_there_is_a_fish.set_autostart(false)
+
+	time_when_there_is_no_fish = GameManager.create_timer(randi_range(3, 7), false, true)
+	time_when_there_is_a_fish = GameManager.create_timer(randi_range(2, 4), false, true)
 	
 	time_when_there_is_no_fish.connect(
 		"timeout", 

@@ -1,0 +1,109 @@
+[gd_scene load_steps=5 format=3 uid="uid://8mikgurld41e"]
+
+[ext_resource type="Script" path="res://SellUI.gd" id="1_4icgv"]
+[ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="2_dw8qn"]
+[ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="3_fxtbv"]
+[ext_resource type="Texture2D" uid="uid://cncn1lkr6pl1x" path="res://shop_stuff/shop_assets/closeMenuButton.png" id="4_6kfrb"]
+
+[node name="SellUI" type="Control" groups=["SELLUI"]]
+process_mode = 3
+z_index = 3
+custom_minimum_size = Vector2(191, 101)
+layout_mode = 3
+anchor_right = 0.298
+anchor_bottom = 0.281
+offset_right = 0.279999
+offset_bottom = -0.160004
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4icgv")
+
+[node name="Background" type="NinePatchRect" parent="."]
+custom_minimum_size = Vector2(191, 100)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.99
+offset_right = -133.802
+offset_bottom = -90.64
+texture = ExtResource("2_dw8qn")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="InnerBackground" type="NinePatchRect" parent="Background"]
+custom_minimum_size = Vector2(183, 90)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.04
+anchor_right = 0.979
+anchor_bottom = 0.96
+offset_left = -0.0110002
+offset_top = -0.0400004
+offset_right = 0.0109863
+offset_bottom = -2.04
+texture = ExtResource("3_fxtbv")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/InnerBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -15.5
+offset_right = 75.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="SellOne" type="Button" parent="Background/InnerBackground/HBoxContainer"]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+text = "Sell 1"
+
+[node name="SellAll" type="Button" parent="Background/InnerBackground/HBoxContainer"]
+custom_minimum_size = Vector2(65, 0)
+layout_mode = 2
+text = "Sell All"
+
+[node name="CloseShopPanel" type="Panel" parent="Background"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.916
+anchor_right = 1.0
+anchor_bottom = 0.127
+offset_left = 0.0439911
+offset_bottom = -0.00200081
+grow_horizontal = 0
+pivot_offset = Vector2(8, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/CloseShopPanel"]
+position = Vector2(0, 1)
+texture = ExtResource("4_6kfrb")
+centered = false
+offset = Vector2(8, -8)
+
+[node name="CloseShopPanelButton" type="Button" parent="Background/CloseShopPanel/Sprite2D"]
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Background/CloseShopPanel/Sprite2D/CloseShopPanelButton" to="." method="_on_close_shop_panel_button_pressed"]

@@ -19,10 +19,7 @@ var target_scene: PackedScene = preload("res://fishing/fishing_minigame/target.t
 func _ready() -> void:
 	GameManager.set_arrow_speed_AND_target_size.connect(set_speed_and_size)
 
-	cooldown_timer = Timer.new()
-	cooldown_timer.set_one_shot(true)
-	cooldown_timer.set_wait_time(1)
-	cooldown_timer.set_autostart(false)
+	cooldown_timer = GameManager.create_timer(1, false, true)
 
 	cooldown_timer.connect("timeout", func(): on_cooldown = false)
 

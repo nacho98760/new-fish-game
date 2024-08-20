@@ -25,6 +25,7 @@ func _ready() -> void:
 	GameManager.load_game()
 	GameManager.updated.emit(inventory)
 	GameManager.sell_fish_actual_inv_stuff.connect(handle_selling)
+	GameManager.sell_all_fish.connect(handle_selling_all)
 	GameManager.show_item_info.connect(show_actual_info)
 	
 	GameManager.player_won_minigame.connect(
@@ -79,7 +80,7 @@ func handle_most_player_animations(direction: float) -> void:
 			else:
 				animation_player.play("idle")
 
-	if !is_on_floor():
+	if not is_on_floor():
 		animation_player.play("idle")
 
 
@@ -90,7 +91,7 @@ func check_fishing_rod_visibility() -> void:
 	else:
 		$PlayerFishingRodColor.visible = true
 		$PlayerEndOfFishingRodColor.visible = true
-		
+
 
 func _on_actual_spot_body_entered(body: PhysicsBody2D) -> void:
 	if body.name == "Player":
@@ -110,7 +111,7 @@ func _on_animation_player_animation_finished(anim_name) -> void:
 			FishingSystem.is_already_fishing = false
 
 
-func handle_selling(slot, item_info, sell_button):
+func handle_selling(slot, item_info, sell_button) -> void:
 
 	if inventory.slots[slot].item == null:
 		return
@@ -126,6 +127,16 @@ func handle_selling(slot, item_info, sell_button):
 	if inventory.slots[slot].amount > 1:
 		GameManager.update_coins.emit(inventory.slots[slot].item.value)
 		inventory.slots[slot].amount -= 1
+		$InventoryGUI.update(inventory)
+
+
+func handle_selling_all(slot, item_info, sell_button) -> void:
+	if inventory.slots[slot].amount >= 1:
+		GameManager.update_coins.emit(inventory.slots[slot].amount * inventory.slots[slot].item.value)
+		inventory.slots[slot].item = null
+		inventory.slots[slot].amount = 0
+		item_info.visible = false
+		sell_button.set_default_cursor_shape(Input.CURSOR_ARROW)
 		$InventoryGUI.update(inventory)
 
 

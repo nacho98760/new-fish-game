@@ -2,6 +2,7 @@ extends Node
 
 signal updated
 signal sell_fish_actual_inv_stuff
+signal sell_all_fish
 signal update_coins
 signal update_rod
 signal show_item_info
@@ -25,7 +26,19 @@ func handle_rod_types(rod) -> void:
 		"turquoise_rod":
 			fish_array = ["shiny_fish"]
 
-			
+
+
+# -------------------------------- UTIL FUNCTIONS -----------------------------------------
+
+func create_timer(wait_time, does_auto_start: bool, does_it_fire_once: bool) -> Timer:
+	var timer = Timer.new()
+	timer.set_wait_time(wait_time)
+	timer.set_autostart(does_auto_start)
+	timer.set_one_shot(does_it_fire_once)
+
+	return timer
+
+
 
 # -------------------------------- SAVING AND LOADING DATA --------------------------------
 

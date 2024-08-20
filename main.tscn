@@ -372,7 +372,7 @@ mouse_default_cursor_shape = 2
 theme = SubResource("Theme_0ued0")
 text = "Open shop"
 
-[node name="ShopUI" parent="Shop" instance=ExtResource("11_7wbxs")]
+[node name="ShopUI" parent="Shop" groups=["ShopUI"] instance=ExtResource("11_7wbxs")]
 visible = false
 z_index = 1
 offset_left = -104.0
