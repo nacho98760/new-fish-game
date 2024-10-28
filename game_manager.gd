@@ -8,6 +8,7 @@ signal update_rod
 signal show_item_info
 signal set_arrow_speed_AND_target_size
 signal player_won_minigame
+signal player_lost_minigame
 
 var fish_array: Array[String] = ["clown_fish"]
 
@@ -24,7 +25,7 @@ func handle_rod_types(rod) -> void:
 		"blue_rod":
 			fish_array = ["blue_tang_fish"]
 		"turquoise_rod":
-			fish_array = ["shiny_fish"]
+			fish_array = ["clown_fish", "rare_fish", "blue_tang_fish", "shiny_fish"]
 
 
 
@@ -35,7 +36,7 @@ func create_timer(wait_time, does_auto_start: bool, does_it_fire_once: bool) -> 
 	timer.set_wait_time(wait_time)
 	timer.set_autostart(does_auto_start)
 	timer.set_one_shot(does_it_fire_once)
-
+	
 	return timer
 
 

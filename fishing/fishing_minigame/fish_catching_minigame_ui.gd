@@ -5,6 +5,7 @@ var target_height: int
 var default_target_width: int = 16
 var arrow_minimum_range: int = 0
 var arrow_maximum_range: int = 220
+var is_minigame_ongoing: bool = false
 
 var cooldown_timer: Timer
 var on_cooldown: bool = false
@@ -17,6 +18,9 @@ var target_scene: PackedScene = preload("res://fishing/fishing_minigame/target.t
 
 
 func _ready() -> void:
+	
+	progress_bar.value = 1
+	
 	GameManager.set_arrow_speed_AND_target_size.connect(set_speed_and_size)
 
 	cooldown_timer = GameManager.create_timer(1, false, true)
@@ -45,6 +49,8 @@ func _input(event) -> void:
 			target.queue_free()
 			progress_bar.value += 20
 			spawn_target()
+		else:
+			progress_bar.value -= 20
 
 
 func set_speed_and_size(SPEED, HEIGHT) -> void:
@@ -66,4 +72,8 @@ func move_arrow() -> void:
 func check_progress_bar_value() -> void:
 	if progress_bar.value >= 100:
 		GameManager.player_won_minigame.emit()
-		progress_bar.value = 0
+		progress_bar.value = 1
+		
+	if progress_bar.value <= 0:
+		GameManager.player_lost_minigame.emit()
+		progress_bar.value = 1

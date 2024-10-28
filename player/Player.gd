@@ -33,6 +33,19 @@ func _ready() -> void:
 			FishingSystem.handle_hooking(self, end_of_rod, exclamation_mark_sprite, fishing_minigame)
 	)
 	
+	GameManager.player_lost_minigame.connect(
+		func():
+			if fishing_minigame.visible:
+				fishing_minigame.visible = false
+				FishingSystem.is_already_fishing = false
+				FishingSystem.is_already_catching_a_fish = false
+				
+				var fishing_minigame_container = fishing_minigame.get_node("MainPanel").get_node("NinePatchRect")
+				if fishing_minigame_container.get_child_count() > 1:
+					fishing_minigame_container.get_child(1).queue_free()
+				FishingSystem.action_being_performed = "not fishing stuff"
+	)
+	
 
 func _process(_delta: float) -> void:
 	var direction = Input.get_axis("left", "right")
