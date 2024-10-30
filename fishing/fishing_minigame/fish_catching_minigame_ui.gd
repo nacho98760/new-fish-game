@@ -5,7 +5,6 @@ var target_height: int
 var default_target_width: int = 16
 var arrow_minimum_range: int = 0
 var arrow_maximum_range: int = 220
-var is_minigame_ongoing: bool = false
 
 var cooldown_timer: Timer
 var on_cooldown: bool = false

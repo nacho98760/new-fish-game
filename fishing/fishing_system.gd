@@ -1,6 +1,16 @@
 extends Node2D
 
-@export var action_being_performed: String = "not fishing stuff"
+# -------------------------------- ACTIONS -----------------------------------------
+enum ACTIONS {
+	NOT_FISHING_STUFF,
+	EQUIPPING_ROD,
+	CASTING,
+	FISHING,
+	HOOKING,
+}
+
+@export var action_being_performed = ACTIONS.NOT_FISHING_STUFF
+
 @export var is_able_to_fish: bool = false
 @export var is_there_a_fish: bool = false
 @export var is_already_fishing: bool = false
@@ -21,10 +31,10 @@ func handle_inventory_items(parent: Player, player_sprite: Sprite2D) -> void:
 		if not parent.is_on_floor() or is_already_fishing or player_sprite.flip_h: 
 			return
 		
-		if action_being_performed == "equipping rod":
-			action_being_performed = "not fishing stuff"
+		if action_being_performed == ACTIONS.EQUIPPING_ROD:
+			action_being_performed = ACTIONS.NOT_FISHING_STUFF
 		else:
-			action_being_performed = "equipping rod"
+			action_being_performed = ACTIONS.EQUIPPING_ROD
 
 
 func fishing_system(parent: Player, end_of_rod: Marker2D, exclamation_mark_sprite: Sprite2D, fish_catch_UI: Control, fishing_minigame: Control) -> void:
@@ -35,13 +45,13 @@ func fishing_system(parent: Player, end_of_rod: Marker2D, exclamation_mark_sprit
 			handle_hooking(parent, end_of_rod, exclamation_mark_sprite, fishing_minigame)
 			is_there_a_fish = false
 		
-		if action_being_performed == "equipping rod" and is_already_fishing == false:
+		if action_being_performed == ACTIONS.EQUIPPING_ROD and is_already_fishing == false:
 			handle_casting(parent, exclamation_mark_sprite)
 
 
 func handle_casting(parent: Player, exclamation_mark_sprite: Sprite2D) -> void:
 	
-	action_being_performed = "casting"
+	action_being_performed = ACTIONS.CASTING
 	is_already_fishing = true
 
 	time_when_there_is_no_fish = GameManager.create_timer(randi_range(3, 7), false, true)
@@ -88,7 +98,7 @@ func handle_hooking(parent: Player, end_of_rod: Marker2D, exclamation_mark_sprit
 		fishing_minigame.spawn_target()
 		fishing_minigame.move_arrow()
 	else:
-		action_being_performed = "hooking"
+		action_being_performed = ACTIONS.HOOKING
 		hooked_fish.being_hooked(end_of_rod)
 		fishing_minigame.visible = false
 		is_already_catching_a_fish = false
