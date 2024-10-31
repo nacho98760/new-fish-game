@@ -37,6 +37,7 @@ func _ready() -> void:
 	GameManager.player_lost_minigame.connect(
 		func():
 			if fishing_minigame.visible:
+				print("Lost")
 				fishing_minigame.visible = false
 				FishingSystem.is_already_fishing = false
 				FishingSystem.is_already_catching_a_fish = false
@@ -84,7 +85,7 @@ func handle_most_player_animations(direction: float) -> void:
 			animation_player.play("cast")
 		FishingSystem.ACTIONS.FISHING:
 			animation_player.play("fish_idle")
-		FishingSystem.ACTIONS.FISHING:
+		FishingSystem.ACTIONS.HOOKING:
 			animation_player.play("hook")
 		FishingSystem.ACTIONS.NOT_FISHING_STUFF:
 			if direction != 0:
