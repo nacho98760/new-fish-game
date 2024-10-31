@@ -38,6 +38,10 @@ var buttons: Dictionary = {
 @onready var shop_item_panel_2: Panel = $NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel2 
 @onready var shop_item_panel_3: Panel = $NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel3
 
+@onready var rod_model_color_1: Sprite2D = shop_item_panel_1.get_rod_model_color()
+@onready var rod_model_color_2: Sprite2D = shop_item_panel_2.get_rod_model_color()
+@onready var rod_model_color_3: Sprite2D = shop_item_panel_3.get_rod_model_color()
+
 @onready var sprite_1: Sprite2D = shop_item_panel_1.get_sprite()
 @onready var sprite_2: Sprite2D = shop_item_panel_2.get_sprite()
 @onready var sprite_3: Sprite2D = shop_item_panel_3.get_sprite()
@@ -55,6 +59,10 @@ func _on_close_shop_panel_button_pressed() -> void:
 
 func _ready() -> void:
 	coins = get_tree().get_first_node_in_group("Coins")
+	
+	rod_model_color_1.self_modulate = red_rod_color
+	rod_model_color_2.self_modulate = blue_rod_color
+	rod_model_color_3.self_modulate = turquoise_rod_color
 	
 	match type_of_rod:
 		"default":

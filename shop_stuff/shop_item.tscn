@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://degpypdmjjsul"]
+[gd_scene load_steps=9 format=3 uid="uid://degpypdmjjsul"]
 
 [ext_resource type="Script" path="res://shop_stuff/shop_item.gd" id="1_tb8oi"]
 [ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="2_tg5g3"]
-[ext_resource type="Texture2D" uid="uid://cuqxotly4b0vb" path="res://assets/simpletree.png" id="3_5wtv5"]
+[ext_resource type="Texture2D" uid="uid://wy2w0ffh3r3s" path="res://assets/rodModel.png" id="3_a40af"]
+[ext_resource type="Texture2D" uid="uid://dd5rxe37g1ree" path="res://assets/rodModelColor.png" id="4_bce5t"]
 [ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="4_pa33y"]
 [ext_resource type="Texture2D" uid="uid://cdfs8q8a0ft8e" path="res://shop_stuff/shop_assets/shopUIBuyButton.png" id="5_iiaso"]
 
@@ -65,10 +66,15 @@ grow_vertical = 2
 [node name="Panel" type="Panel" parent="NinePatchRect/CenterContainer/Panel/CenterContainer"]
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel"]
-position = Vector2(0, -17)
+[node name="RodModel" type="Sprite2D" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel"]
+position = Vector2(12, -13)
 scale = Vector2(3, 3)
-texture = ExtResource("3_5wtv5")
+texture = ExtResource("3_a40af")
+
+[node name="RodModelColor" type="Sprite2D" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel"]
+position = Vector2(12, -13)
+scale = Vector2(3, 3)
+texture = ExtResource("4_bce5t")
 
 [node name="BuyButton" type="Button" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel"]
 self_modulate = Color(1, 1, 1, 0)
