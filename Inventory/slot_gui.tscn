@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="2_dwaeu"]
 [ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="3_5ygxn"]
 [ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="4_vppwn"]
-[ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/coin.png" id="5_y4vb1"]
+[ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/icons/coin.png" id="5_7xcic"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5u2cg"]
 font = ExtResource("4_vppwn")
@@ -183,7 +183,7 @@ offset_right = 0.0100002
 offset_bottom = -0.0199966
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("5_y4vb1")
+texture = ExtResource("5_7xcic")
 expand_mode = 2
 
 [node name="ItemValue" type="Label" parent="ItemInfo/MarginContainer/VBoxContainer/NinePatchRect2"]

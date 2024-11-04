@@ -1,11 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4cu3ihy5hegm"]
+[gd_scene load_steps=11 format=3 uid="uid://b4cu3ihy5hegm"]
 
 [ext_resource type="Script" path="res://fishing/fish_catch_ui/fish_catch_ui.gd" id="1_4hpcr"]
 [ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="2_7q424"]
 [ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="3_ytat0"]
 [ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="4_q4m1n"]
-[ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/coin.png" id="5_clwah"]
-[ext_resource type="Texture2D" uid="uid://uf6e13xotbsf" path="res://assets/Weight.png" id="6_yhxon"]
+[ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/icons/coin.png" id="5_clwah"]
+[ext_resource type="Texture2D" uid="uid://0h2l5sif4sqv" path="res://assets/icons/Width.png" id="6_6roew"]
+[ext_resource type="Texture2D" uid="uid://uf6e13xotbsf" path="res://assets/icons/Weight.png" id="6_yhxon"]
 [ext_resource type="Texture2D" uid="uid://cncn1lkr6pl1x" path="res://shop_stuff/shop_assets/closeMenuButton.png" id="7_rogr8"]
 
 [sub_resource type="Theme" id="Theme_t1xiw"]
@@ -26,6 +27,38 @@ offset_bottom = -0.12001
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4hpcr")
+
+[node name="CatchedAlertSign" type="NinePatchRect" parent="."]
+z_index = 1
+custom_minimum_size = Vector2(70, 14)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = -0.047
+anchor_right = 0.85
+anchor_bottom = 0.047
+offset_top = 0.0500002
+offset_bottom = -0.0500002
+grow_horizontal = 2
+texture = ExtResource("3_ytat0")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Label" type="Label" parent="CatchedAlertSign"]
+custom_minimum_size = Vector2(70, 14)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_q4m1n")
+theme_override_font_sizes/font_size = 5
+text = "You´ve catched..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 custom_minimum_size = Vector2(100, 150)
@@ -125,10 +158,10 @@ vertical_alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/MainPanel"]
 custom_minimum_size = Vector2(90, 60)
 layout_mode = 0
-offset_top = 67.0
+offset_top = 71.0
 offset_right = 90.0
-offset_bottom = 130.0
-theme_override_constants/separation = 5
+offset_bottom = 131.0
+theme_override_constants/separation = 10
 
 [node name="Stat1" type="NinePatchRect" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer"]
 custom_minimum_size = Vector2(90, 12)
@@ -190,6 +223,7 @@ offset_left = 0.0199999
 offset_top = -0.00400019
 offset_right = 0.00999928
 offset_bottom = 0.00399971
+texture = ExtResource("6_6roew")
 expand_mode = 2
 
 [node name="FishWidth" type="Label" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer/Stat2"]
@@ -230,45 +264,6 @@ texture = ExtResource("6_yhxon")
 expand_mode = 4
 
 [node name="FishHeight" type="Label" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer/Stat3"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.467
-anchor_top = 0.167
-anchor_right = 0.533
-anchor_bottom = 0.833
-offset_left = -0.0299988
-offset_top = -0.00400019
-offset_right = 0.029995
-offset_bottom = 0.00399971
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_q4m1n")
-theme_override_font_sizes/font_size = 5
-text = "10"
-
-[node name="Stat4" type="NinePatchRect" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer"]
-custom_minimum_size = Vector2(90, 12)
-layout_mode = 2
-texture = ExtResource("3_ytat0")
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
-
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer/Stat4"]
-custom_minimum_size = Vector2(8, 0)
-layout_mode = 2
-anchor_left = 0.022
-anchor_top = 0.167
-anchor_right = 0.111
-anchor_bottom = 0.833
-offset_left = 0.0199999
-offset_top = -0.00400019
-offset_right = 0.00999928
-offset_bottom = 0.00399971
-expand_mode = 4
-
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer/Stat4"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.467

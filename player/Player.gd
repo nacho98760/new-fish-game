@@ -37,16 +37,17 @@ func _ready() -> void:
 	GameManager.player_lost_minigame.connect(
 		func():
 			if fishing_minigame.visible:
-				print("Lost")
 				fishing_minigame.visible = false
 				FishingSystem.is_already_fishing = false
 				FishingSystem.is_already_catching_a_fish = false
 				
+				FishingSystem.hooked_fish.queue_free()
+				
 				if fishing_minigame_container.get_child_count() > 1:
 					fishing_minigame_container.get_child(1).queue_free()
+					
 				FishingSystem.action_being_performed = FishingSystem.ACTIONS.NOT_FISHING_STUFF
 	)
-	
 
 func _process(_delta: float) -> void:
 	var direction = Input.get_axis("left", "right")

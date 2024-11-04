@@ -942,14 +942,15 @@ grow_vertical = 0
 
 [node name="FishCatchingMinigameUI" parent="." instance=ExtResource("5_yypvd")]
 visible = false
+z_index = 2
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
-offset_left = 90.0
-offset_top = -246.0
-offset_right = 161.0
-offset_bottom = 0.0
+offset_left = 100.0
+offset_top = -200.0
+offset_right = 171.0
+offset_bottom = 46.0
 grow_horizontal = 1
 grow_vertical = 0
 

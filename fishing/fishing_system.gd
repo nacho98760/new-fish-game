@@ -22,7 +22,7 @@ var time_when_there_is_no_fish: Timer
 var time_when_there_is_a_fish: Timer
 
 var fish_scene: PackedScene = preload("res://fishing/fish/fish.tscn")
-var hooked_fish: CharacterBody2D
+@export var hooked_fish: CharacterBody2D
 
 func handle_inventory_items(parent: Player, player_sprite: Sprite2D) -> void:
 
@@ -93,7 +93,7 @@ func handle_hooking(parent: Player, end_of_rod: Marker2D, exclamation_mark_sprit
 		hooked_fish.randomize_fish()
 		hooked_fish.position = random_fish_position
 		exclamation_mark_sprite.visible = false
-		fishing_minigame.visible = true	
+		fishing_minigame.visible = true
 
 		fishing_minigame.spawn_target()
 		fishing_minigame.move_arrow()
