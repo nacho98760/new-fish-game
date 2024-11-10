@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv7sjjpb2h182"
-path="res://.godot/imported/montañitas raritatas.png-01b140ba7f078af856a456609fe9c723.ctex"
+uid="uid://dvbco1rlg6lid"
+path="res://.godot/imported/gameBackground.png-2ef23fb2dfe4bb49b8b2dfc12a858472.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background/montañitas raritatas.png"
-dest_files=["res://.godot/imported/montañitas raritatas.png-01b140ba7f078af856a456609fe9c723.ctex"]
+source_file="res://assets/background/gameBackground.png"
+dest_files=["res://.godot/imported/gameBackground.png-2ef23fb2dfe4bb49b8b2dfc12a858472.ctex"]
 
 [params]
 

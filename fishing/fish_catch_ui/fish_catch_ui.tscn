@@ -28,7 +28,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4hpcr")
 
-[node name="CatchedAlertSign" type="NinePatchRect" parent="."]
+[node name="CaughtAlertSign" type="NinePatchRect" parent="."]
 z_index = 1
 custom_minimum_size = Vector2(70, 14)
 layout_mode = 1
@@ -46,7 +46,7 @@ patch_margin_top = 2
 patch_margin_right = 2
 patch_margin_bottom = 2
 
-[node name="Label" type="Label" parent="CatchedAlertSign"]
+[node name="Label" type="Label" parent="CaughtAlertSign"]
 custom_minimum_size = Vector2(70, 14)
 layout_mode = 1
 anchors_preset = -1
@@ -56,7 +56,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_q4m1n")
 theme_override_font_sizes/font_size = 5
-text = "You´ve catched..."
+text = "You´ve caught..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
