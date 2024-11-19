@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://deghux3vsmge3"]
+[gd_scene load_steps=25 format=3 uid="uid://deghux3vsmge3"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_nyciw"]
 [ext_resource type="Texture2D" uid="uid://cp8mvr88ln3wm" path="res://player/playerSprites/exclamationmark.png" id="2_2a5hw"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://b4cu3ihy5hegm" path="res://fishing/fish_catch_ui/fish_catch_ui.tscn" id="4_lnbcy"]
 [ext_resource type="PackedScene" uid="uid://71g5iuto87hk" path="res://fishing/fishing_minigame/fish_catching_minigame_ui.tscn" id="5_yypvd"]
 [ext_resource type="PackedScene" uid="uid://8mikgurld41e" path="res://sell_ui.tscn" id="6_viref"]
+[ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="7_wf5ih"]
+[ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="8_uw6m2"]
+[ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="9_ljp22"]
+[ext_resource type="Texture2D" uid="uid://cncn1lkr6pl1x" path="res://shop_stuff/shop_assets/closeMenuButton.png" id="9_ofkcs"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_otw6w"]
 load_path = "res://.godot/imported/fisherman32x32_Custom_Structure.png-2f2c46c8c1b752c8ac91834ebb23c650.ctex"
@@ -973,4 +977,110 @@ offset_right = 95.5
 offset_bottom = 0.0
 grow_vertical = 0
 
+[node name="QuestDialogUI" type="Control" parent="." groups=["QuestDialog"]]
+process_mode = 3
+z_index = 2
+custom_minimum_size = Vector2(450, 50)
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.0
+offset_top = 40.0
+offset_right = 225.0
+offset_bottom = 90.0
+grow_horizontal = 2
+
+[node name="DialogBackground" type="NinePatchRect" parent="QuestDialogUI"]
+custom_minimum_size = Vector2(450, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("7_wf5ih")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="QuestDialogUI/DialogBackground"]
+custom_minimum_size = Vector2(442, 42)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.091
+anchor_right = 0.99
+anchor_bottom = 0.92
+offset_left = -0.5
+offset_top = -0.55
+offset_right = 0.499969
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_uw6m2")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Panel" type="Panel" parent="QuestDialogUI/DialogBackground/NinePatchRect"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(370, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -16.0
+offset_right = 185.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="QuestDialogUI/DialogBackground/NinePatchRect/Panel" groups=["QuestDialogText"]]
+custom_minimum_size = Vector2(370, 32)
+layout_mode = 0
+offset_right = 370.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("9_ljp22")
+theme_override_font_sizes/font_size = 8
+text = "Howdy, get me 3 rare fish and ill reward you with 150 coins.
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseQuestDialogPanel" type="Panel" parent="QuestDialogUI"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.964
+anchor_right = 1.0
+anchor_bottom = 0.32
+offset_left = 0.199982
+grow_horizontal = 0
+pivot_offset = Vector2(8, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="QuestDialogUI/CloseQuestDialogPanel"]
+position = Vector2(0, 1)
+texture = ExtResource("9_ofkcs")
+centered = false
+offset = Vector2(8, -8)
+
+[node name="CloseQuestDialogPanelButton" type="Button" parent="QuestDialogUI/CloseQuestDialogPanel/Sprite2D"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="QuestDialogUI/CloseQuestDialogPanel/Sprite2D/CloseQuestDialogPanelButton" to="." method="_on_close_quest_dialog_panel_button_pressed"]

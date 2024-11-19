@@ -20,6 +20,9 @@ var area_name: String
 @onready var fish_catch_ui: Control = $FishCatchUI
 @onready var fishing_minigame: Control = $FishCatchingMinigameUI
 @onready var fishing_minigame_container = fishing_minigame.get_node("MainPanel").get_node("NinePatchRect")
+@onready var close_quest_dialog_panel = $QuestDialogUI/CloseQuestDialogPanel
+
+@onready var quest_dialog_ui = get_tree().get_first_node_in_group("QuestDialog")
 
 
 func _ready() -> void:
@@ -72,9 +75,12 @@ func handle_player_physics() -> void:
 
 	if Input.is_action_just_pressed("jump") and FishingSystem.action_being_performed == FishingSystem.ACTIONS.NOT_FISHING_STUFF and is_on_floor():
 		velocity.y -= jump_force
-		
+	
 	if not is_on_floor():
 		velocity.y += gravity
+	
+	if quest_dialog_ui.visible:
+		get_tree().paused = true
 
 
 func handle_most_player_animations(direction: float) -> void:
@@ -109,11 +115,11 @@ func check_fishing_rod_visibility() -> void:
 
 
 func _on_actual_spot_body_entered(body: PhysicsBody2D) -> void:
-	if body.name == "Player":
+	if body is Player:
 		FishingSystem.is_able_to_fish = true
 
 func _on_actual_spot_body_exited(body: PhysicsBody2D) -> void:
-	if body.name == "Player":
+	if body is Player:
 		FishingSystem.is_able_to_fish = false
 		FishingSystem.action_being_performed = FishingSystem.ACTIONS.NOT_FISHING_STUFF
 
@@ -187,3 +193,8 @@ func load_data(save: PlayerData) -> void:
 	
 	inventory = save.player_inventory
 	global_position = save.player_position
+
+
+func _on_close_quest_dialog_panel_button_pressed():
+	quest_dialog_ui.visible = false
+	get_tree().paused = false

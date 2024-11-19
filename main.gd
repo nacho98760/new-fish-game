@@ -18,7 +18,7 @@ func _input(event) -> void:
 		else:
 			resume_game()
 
-		
+
 func pause_game() -> void:
 	$CanvasLayer/CloseGamePanel.visible = true
 	is_close_menu_open = true
@@ -28,6 +28,7 @@ func resume_game() -> void:
 	$CanvasLayer/CloseGamePanel.visible = false
 	is_close_menu_open = false
 	get_tree().paused = false
+
 
 
 func _on_save_and_quit_button_pressed() -> void:

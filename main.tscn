@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bx15fvqd0m5ju"]
+[gd_scene load_steps=24 format=3 uid="uid://bx15fvqd0m5ju"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6p1ww"]
 [ext_resource type="Texture2D" uid="uid://d2y0ebtqdn3i4" path="res://assets/tilesets/grass tilemap.png" id="2_3b43k"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://player/coins_label.gd" id="8_fa0i4"]
 [ext_resource type="Texture2D" uid="uid://dvbco1rlg6lid" path="res://assets/background/gameBackground.png" id="10_cdjtt"]
 [ext_resource type="PackedScene" uid="uid://dijpk10vvju1t" path="res://shop_stuff/shop_ui.tscn" id="11_7wbxs"]
+[ext_resource type="PackedScene" uid="uid://briev35c1jk82" path="res://Quests/quest_npc.tscn" id="11_73yab"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8l4bi"]
 texture = ExtResource("2_3b43k")
@@ -401,8 +402,11 @@ scroll_base_scale = Vector2(0.5, 0)
 
 [node name="MainBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 z_index = -2
-position = Vector2(258, 144)
+position = Vector2(262, 145)
 texture = ExtResource("10_cdjtt")
+
+[node name="QuestNPC" parent="." instance=ExtResource("11_73yab")]
+position = Vector2(-119, 311)
 
 [connection signal="body_entered" from="ActualSpot" to="Player" method="_on_actual_spot_body_entered"]
 [connection signal="body_exited" from="ActualSpot" to="Player" method="_on_actual_spot_body_exited"]
