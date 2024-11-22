@@ -979,6 +979,7 @@ grow_vertical = 0
 
 [node name="QuestDialogUI" type="Control" parent="." groups=["QuestDialog"]]
 process_mode = 3
+visible = false
 z_index = 2
 custom_minimum_size = Vector2(450, 50)
 layout_mode = 3

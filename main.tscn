@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bx15fvqd0m5ju"]
+[gd_scene load_steps=26 format=3 uid="uid://bx15fvqd0m5ju"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6p1ww"]
 [ext_resource type="Texture2D" uid="uid://d2y0ebtqdn3i4" path="res://assets/tilesets/grass tilemap.png" id="2_3b43k"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dvbco1rlg6lid" path="res://assets/background/gameBackground.png" id="10_cdjtt"]
 [ext_resource type="PackedScene" uid="uid://dijpk10vvju1t" path="res://shop_stuff/shop_ui.tscn" id="11_7wbxs"]
 [ext_resource type="PackedScene" uid="uid://briev35c1jk82" path="res://Quests/quest_npc.tscn" id="11_73yab"]
+[ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="12_yys24"]
+[ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="13_pv7b4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8l4bi"]
 texture = ExtResource("2_3b43k")
@@ -344,6 +346,86 @@ offset_right = 0.159973
 offset_bottom = -0.0399628
 mouse_default_cursor_shape = 2
 text = "RESUME"
+
+[node name="QuestActiveUI" type="Control" parent="CanvasLayer" groups=["QuestActiveUI"]]
+visible = false
+custom_minimum_size = Vector2(93, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 198.0
+offset_right = 97.0
+offset_bottom = 230.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/QuestActiveUI"]
+custom_minimum_size = Vector2(93, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_yys24")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/QuestActiveUI/NinePatchRect"]
+custom_minimum_size = Vector2(89, 28)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -44.5
+offset_top = -14.0
+offset_right = 44.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_pv7b4")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/QuestActiveUI/NinePatchRect/NinePatchRect"]
+custom_minimum_size = Vector2(89, 28)
+layout_mode = 0
+offset_right = 89.0
+offset_bottom = 28.0
+
+[node name="QuestProgressTitle" type="Label" parent="CanvasLayer/QuestActiveUI/NinePatchRect/NinePatchRect/Panel"]
+custom_minimum_size = Vector2(89, 10)
+layout_mode = 0
+offset_right = 89.0
+offset_bottom = 12.0
+theme_override_fonts/font = ExtResource("7_46pfm")
+theme_override_font_sizes/font_size = 8
+text = "Quest Progress"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuestProgress" type="Label" parent="CanvasLayer/QuestActiveUI/NinePatchRect/NinePatchRect/Panel" groups=["QuestProgress"]]
+custom_minimum_size = Vector2(89, 15)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -44.5
+offset_top = -17.0
+offset_right = 44.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("7_46pfm")
+theme_override_font_sizes/font_size = 12
+text = "0/3"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Shop" type="Node2D" parent="."]
 position = Vector2(521, 308)

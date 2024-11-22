@@ -6,14 +6,14 @@ extends CharacterBody2D
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
 @onready var quest_dialog: Control = get_tree().get_first_node_in_group("QuestDialog")
 @onready var quest_dialog_text: Label = get_tree().get_first_node_in_group("QuestDialogText")
+@onready var quest_active_UI: Control = get_tree().get_first_node_in_group("QuestActiveUI")
+@onready var quest_progress: Label = get_tree().get_first_node_in_group("QuestProgress")
 
+var already_has_a_quest: bool = false
 
-var random_quests: Array = [
-	"Hello, bring me 5 common fish and I will reward you with 100 coins.",
-	"Howdy, get me 3 rare fish and ill reward you with 150 coins.",
-	"Get me 2 legendary fish and ill give you 500 coins."
-]
-
+func _process(delta):
+	print(GameManager.fish_type_chosen)
+	print(GameManager.quest_progress_number)
 
 func _on_area_2d_body_entered(body: PhysicsBody2D):
 	if body is Player:
@@ -27,7 +27,18 @@ func _on_area_2d_body_exited(body):
 
 func _on_talk_to_npc_button_pressed():
 	talk_to_npc_UI.visible = false
-	quest_dialog.visible = true
-	var random_quest = random_quests.pick_random()
-	quest_dialog_text.text = random_quest
 	
+	if already_has_a_quest:
+		if GameManager.quest_progress_number >= GameManager.quantity_needed_to_finish:
+			GameManager.update_coins.emit(30)
+			quest_progress.text = str(0) + "/" + str(GameManager.quantity_needed_to_finish)
+			quest_active_UI.visible = false
+			already_has_a_quest = false
+		else:
+			quest_dialog_text.text = "Come back when you finish your current quest."
+			return
+	
+	else:
+		GameManager.fish_type_chosen = GameManager.fish_types_for_quests.pick_random()
+		quest_active_UI.visible = true
+		already_has_a_quest = true

@@ -12,6 +12,17 @@ signal player_lost_minigame
 
 var fish_array: Array[String] = ["clown_fish"]
 
+var fish_types_for_quests: Array = [
+	"Rare",
+	"Super Rare",
+	"Epic",
+	"Legendary",
+]
+
+var fish_type_chosen
+var quest_progress_number: int
+var quantity_needed_to_finish: int = 3
+
 
 func _ready():
 	GameManager.update_rod.connect(handle_rod_types)
@@ -25,7 +36,7 @@ func handle_rod_types(rod) -> void:
 		"blue_rod":
 			fish_array = ["blue_tang_fish"]
 		"turquoise_rod":
-			fish_array = ["clown_fish", "rare_fish", "blue_tang_fish", "shiny_fish"]
+			fish_array = ["shiny_fish"]
 
 
 
