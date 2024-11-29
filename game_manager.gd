@@ -12,6 +12,13 @@ signal player_lost_minigame
 
 var fish_array: Array[String] = ["clown_fish"]
 
+var current_fish_rarity_values: Dictionary = {
+	"Rare": 10,
+	"Super Rare": 20,
+	"Epic": 30,
+	"Legendary": 70,
+}
+
 var fish_types_for_quests: Array = [
 	"Rare",
 	"Super Rare",
@@ -21,11 +28,12 @@ var fish_types_for_quests: Array = [
 
 var fish_type_chosen
 var quest_progress_number: int
-var quantity_needed_to_finish: int = 3
+var quantity_needed_to_finish_quest: int = 3
 
 
 func _ready():
 	GameManager.update_rod.connect(handle_rod_types)
+
 
 func handle_rod_types(rod) -> void:
 	match rod:
@@ -60,7 +68,7 @@ func save_game() -> void:
 	
 	for node in saved_nodes:
 		node.save_data(save)
-		
+	
 	ResourceSaver.save(save, "user://savefile.tres")
 
 func load_game() -> void:
@@ -69,7 +77,7 @@ func load_game() -> void:
 	
 	if ResourceLoader.exists("user://savefile.tres"):
 		save = PlayerData.new()
-		save = ResourceLoader.load("user://savefile.tres", "", ResourceLoader.CACHE_MODE_REPLACE)	
+		save = ResourceLoader.load("user://savefile.tres", "", ResourceLoader.CACHE_MODE_REPLACE)
 		for node in saved_nodes:
 			node.load_data(save)
 	else:

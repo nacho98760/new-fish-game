@@ -39,7 +39,7 @@ func being_hooked(end_of_rod: Marker2D) -> void:
 	velocity = Vector2(-hook_force_x, -hook_force_y)
 
 func _on_area_2d_body_entered(body: PhysicsBody2D) -> void:
-	if body.name == "Player":
+	if body is Player:
 		body.inventory.insert(inventory_item)
 		
 		var fish_catch_UI = body.get_node("FishCatchUI")
@@ -60,12 +60,16 @@ func _on_area_2d_body_entered(body: PhysicsBody2D) -> void:
 		fish_width.text = str(inventory_item.width) + "cm"
 		fish_weight.text = str(inventory_item.weight) + "kg"
 		
-		if fish_rarity.text == "(" + GameManager.fish_type_chosen + ")":
-			GameManager.quest_progress_number += 1
-			quest_progress.text = str(GameManager.quest_progress_number) + "/" + str(GameManager.quantity_needed_to_finish)
-			
+		check_if_it_counts_for_quest()
 		
 		queue_free() 
+
+
+func check_if_it_counts_for_quest():
+	if GameManager.fish_type_chosen != null:
+		if GameManager.fish_type_chosen == inventory_item.rarity:
+			GameManager.quest_progress_number += 1
+			quest_progress.text = str(GameManager.quest_progress_number) + "/" + str(GameManager.quantity_needed_to_finish_quest)
 
 
 func randomize_fish() -> void:

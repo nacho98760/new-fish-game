@@ -488,7 +488,7 @@ position = Vector2(262, 145)
 texture = ExtResource("10_cdjtt")
 
 [node name="QuestNPC" parent="." instance=ExtResource("11_73yab")]
-position = Vector2(-119, 311)
+position = Vector2(465, 311)
 
 [connection signal="body_entered" from="ActualSpot" to="Player" method="_on_actual_spot_body_entered"]
 [connection signal="body_exited" from="ActualSpot" to="Player" method="_on_actual_spot_body_exited"]

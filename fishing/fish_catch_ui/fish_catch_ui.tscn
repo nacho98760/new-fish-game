@@ -150,7 +150,7 @@ vertical_alignment = 1
 self_modulate = Color(0.998181, 0.000830159, 0.998945, 1)
 layout_mode = 2
 theme = SubResource("Theme_q0ni2")
-text = "(Epic)
+text = "Epic
 "
 horizontal_alignment = 1
 vertical_alignment = 1
