@@ -78,9 +78,6 @@ func handle_player_physics() -> void:
 	
 	if not is_on_floor():
 		velocity.y += gravity
-	
-	if quest_dialog_ui.visible:
-		get_tree().paused = true
 
 
 func handle_most_player_animations(direction: float) -> void:
@@ -195,6 +192,6 @@ func load_data(save: PlayerData) -> void:
 	global_position = save.player_position
 
 
+
 func _on_close_quest_dialog_panel_button_pressed():
 	quest_dialog_ui.visible = false
-	get_tree().paused = false

@@ -12,6 +12,13 @@ signal player_lost_minigame
 
 var fish_array: Array[String] = ["clown_fish"]
 
+
+# ------------------------------ QUEST SYSTEM VARIABLES -------------------------------------
+
+var fish_type_chosen
+var quest_progress_number: int
+var quantity_needed_to_finish_quest: int = 3
+
 var current_fish_rarity_values: Dictionary = {
 	"Rare": 10,
 	"Super Rare": 20,
@@ -26,9 +33,6 @@ var fish_types_for_quests: Array = [
 	"Legendary",
 ]
 
-var fish_type_chosen
-var quest_progress_number: int
-var quantity_needed_to_finish_quest: int = 3
 
 
 func _ready():
