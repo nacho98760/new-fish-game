@@ -5,8 +5,6 @@ extends CharacterBody2D
 @export var hook_force_y: int = 205
 @export var is_being_hooked: bool = false
 
-@onready var quest_progress = get_tree().get_first_node_in_group("QuestProgress")
-
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var arrow_speed: Dictionary = {
@@ -60,16 +58,7 @@ func _on_area_2d_body_entered(body: PhysicsBody2D) -> void:
 		fish_width.text = str(inventory_item.width) + "cm"
 		fish_weight.text = str(inventory_item.weight) + "kg"
 		
-		check_if_it_counts_for_quest()
-		
 		queue_free() 
-
-
-func check_if_it_counts_for_quest():
-	if GameManager.fish_type_chosen != null:
-		if GameManager.fish_type_chosen == inventory_item.rarity:
-			GameManager.quest_progress_number += 1
-			quest_progress.text = str(GameManager.quest_progress_number) + "/" + str(GameManager.quantity_needed_to_finish_quest)
 
 
 func randomize_fish() -> void:

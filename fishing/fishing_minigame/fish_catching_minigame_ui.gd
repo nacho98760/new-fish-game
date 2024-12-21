@@ -35,15 +35,15 @@ func _process(_delta: float) -> void:
 
 func _input(event) -> void:
 	if event.is_action_pressed("fishing_minigame_key") and self.visible == true:
-
+		
 		if on_cooldown:
 			return
-
+		
 		on_cooldown = true
 		cooldown_timer.start()
-
+		
 		var target = nine_patch_rect.get_child(1)
-
+		
 		if ((arrow.position.y + arrow.size.y / 2) > target.position.y) and ((arrow.position.y - arrow.size.y / 2) < target.position.y + target.size.y):
 			target.queue_free()
 			progress_bar.value += 20

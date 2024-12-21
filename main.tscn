@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bx15fvqd0m5ju"]
+[gd_scene load_steps=22 format=3 uid="uid://bx15fvqd0m5ju"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6p1ww"]
 [ext_resource type="Texture2D" uid="uid://d2y0ebtqdn3i4" path="res://assets/tilesets/grass tilemap.png" id="2_3b43k"]
@@ -8,11 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/icons/coin.png" id="6_jdgaa"]
 [ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="7_46pfm"]
 [ext_resource type="Script" path="res://player/coins_label.gd" id="8_fa0i4"]
-[ext_resource type="Texture2D" uid="uid://dvbco1rlg6lid" path="res://assets/background/gameBackground.png" id="10_cdjtt"]
 [ext_resource type="PackedScene" uid="uid://dijpk10vvju1t" path="res://shop_stuff/shop_ui.tscn" id="11_7wbxs"]
-[ext_resource type="PackedScene" uid="uid://briev35c1jk82" path="res://Quests/quest_npc.tscn" id="11_73yab"]
-[ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="12_yys24"]
-[ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="13_pv7b4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8l4bi"]
 texture = ExtResource("2_3b43k")
@@ -347,86 +343,6 @@ offset_bottom = -0.0399628
 mouse_default_cursor_shape = 2
 text = "RESUME"
 
-[node name="QuestActiveUI" type="Control" parent="CanvasLayer" groups=["QuestActiveUI"]]
-visible = false
-custom_minimum_size = Vector2(93, 32)
-layout_mode = 3
-anchors_preset = 0
-offset_left = 4.0
-offset_top = 198.0
-offset_right = 97.0
-offset_bottom = 230.0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/QuestActiveUI"]
-custom_minimum_size = Vector2(93, 32)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("12_yys24")
-patch_margin_left = 1
-patch_margin_top = 1
-patch_margin_right = 1
-patch_margin_bottom = 1
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/QuestActiveUI/NinePatchRect"]
-custom_minimum_size = Vector2(89, 28)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -44.5
-offset_top = -14.0
-offset_right = 44.5
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("13_pv7b4")
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
-
-[node name="Panel" type="Panel" parent="CanvasLayer/QuestActiveUI/NinePatchRect/NinePatchRect"]
-custom_minimum_size = Vector2(89, 28)
-layout_mode = 0
-offset_right = 89.0
-offset_bottom = 28.0
-
-[node name="QuestProgressTitle" type="Label" parent="CanvasLayer/QuestActiveUI/NinePatchRect/NinePatchRect/Panel"]
-custom_minimum_size = Vector2(89, 10)
-layout_mode = 0
-offset_right = 89.0
-offset_bottom = 12.0
-theme_override_fonts/font = ExtResource("7_46pfm")
-theme_override_font_sizes/font_size = 8
-text = "Quest Progress"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="QuestProgress" type="Label" parent="CanvasLayer/QuestActiveUI/NinePatchRect/NinePatchRect/Panel" groups=["QuestProgress"]]
-custom_minimum_size = Vector2(89, 15)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -44.5
-offset_top = -17.0
-offset_right = 44.5
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("7_46pfm")
-theme_override_font_sizes/font_size = 12
-text = "0/3"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Shop" type="Node2D" parent="."]
 position = Vector2(521, 308)
 
@@ -466,7 +382,7 @@ offset_bottom = 12.0
 
 [node name="Wateranim1-sheet" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(765, 382)
+position = Vector2(765, 384)
 scale = Vector2(2.85568, 1)
 texture = SubResource("CompressedTexture2D_hv52k")
 hframes = 17
@@ -484,11 +400,8 @@ scroll_base_scale = Vector2(0.5, 0)
 
 [node name="MainBackground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 z_index = -2
-position = Vector2(262, 145)
-texture = ExtResource("10_cdjtt")
-
-[node name="QuestNPC" parent="." instance=ExtResource("11_73yab")]
-position = Vector2(465, 311)
+position = Vector2(29, 212)
+scale = Vector2(4.428, 2.01847)
 
 [connection signal="body_entered" from="ActualSpot" to="Player" method="_on_actual_spot_body_entered"]
 [connection signal="body_exited" from="ActualSpot" to="Player" method="_on_actual_spot_body_exited"]
