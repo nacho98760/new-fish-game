@@ -18,19 +18,12 @@ var fish_array: Array[String] = ["clown_fish"]
 var fish_type_chosen
 
 var current_fish_rarity_values: Dictionary = {
-	"Rare": 10,
-	"Super Rare": 20,
+	"Common": 5,
+	"Uncommon": 15,
+	"Rare": 20,
 	"Epic": 30,
 	"Legendary": 70,
 }
-
-var fish_types_for_quests: Array = [
-	"Rare",
-	"Super Rare",
-	"Epic",
-	"Legendary",
-]
-
 
 
 func _ready():
@@ -40,13 +33,13 @@ func _ready():
 func handle_rod_types(rod) -> void:
 	match rod:
 		"default":
-			fish_array = ["clown_fish"]
+			fish_array = ["gray_fish", "gray_fish", "clown_fish", "clown_fish", "yellowtail_kingfish"]
 		"red_rod":
-			fish_array = ["rare_fish"]
+			fish_array = ["yellowtail_kingfish", "yellowtail_kingfish", "brown_fish"]
 		"blue_rod":
-			fish_array = ["blue_tang_fish"]
+			fish_array = ["brown_fish", "brown_fish", "blue_tang_fish"]
 		"turquoise_rod":
-			fish_array = ["shiny_fish"]
+			fish_array = ["blue_tang_fish", "blue_tang_fish", "shiny_fish", "striped_tigerbarb_fish"]
 
 
 

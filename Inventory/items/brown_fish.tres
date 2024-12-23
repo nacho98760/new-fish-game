@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://rei64big6g6y"]
+
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_pcshh"]
+[ext_resource type="Texture2D" uid="uid://s10imutc0dnx" path="res://fishing/fish/fish_textures/rare_fish.png" id="2_3vukj"]
+
+[resource]
+script = ExtResource("1_pcshh")
+name = "Brown Fish"
+texture = ExtResource("2_3vukj")
+value = 20
+description = "A super rare ocean fish."
+rarity = "Rare"
+rarity_color = Color(0.233149, 0.457125, 1, 1)
+width = 50
+weight = 3

@@ -8,15 +8,17 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var arrow_speed: Dictionary = {
-	"RARE": 2.5,
-	"SUPER_RARE": 1.85,
-	"EPIC": 1.2,
-	"LEGENDARY": 0.8,
+	"COMMON": 2.5,
+	"UNCOMMON": 2.1,
+	"RARE": 1.75,
+	"EPIC": 1.3,
+	"LEGENDARY": 0.95,
 }
 
 var target_height: Dictionary = {
-	"RARE": 45,
-	"SUPER_RARE": 35,
+	"COMMON": 50,
+	"UNCOMMON": 45,
+	"RARE": 35,
 	"EPIC": 25,
 	"LEGENDARY": 15,
 }
@@ -65,24 +67,35 @@ func randomize_fish() -> void:
 	var selected_fish = GameManager.fish_array[randi_range(0, GameManager.fish_array.size() - 1)]
 	
 	match selected_fish:
+		"gray_fish":
+			fish_sprite.texture = load("res://fishing/fish/fish_textures/gray_fish.png")
+			inventory_item = preload("res://Inventory/items/gray_fish.tres")
 		"clown_fish":
 			fish_sprite.texture = load("res://fishing/fish/fish_textures/clown_fish.png")
 			inventory_item = preload("res://Inventory/items/clown_fish.tres")
-		"rare_fish":
+		"yellowtail_kingfish":
+			fish_sprite.texture = load("res://fishing/fish/fish_textures/yellowtail_kingfish.png")
+			inventory_item = preload("res://Inventory/items/yellowtail_kingfish.tres")
+		"brown_fish":
 			fish_sprite.texture = load("res://fishing/fish/fish_textures/rare_fish.png")
-			inventory_item = preload("res://Inventory/items/rare_fish.tres")
+			inventory_item = preload("res://Inventory/items/brown_fish.tres")
 		"blue_tang_fish":
 			fish_sprite.texture = load("res://fishing/fish/fish_textures/blue_tang_fish.png")
 			inventory_item = preload("res://Inventory/items/blue_tang_fish.tres")
 		"shiny_fish":
 			fish_sprite.texture = load("res://fishing/fish/fish_textures/shiny_fish.png")
 			inventory_item = preload("res://Inventory/items/shiny_fish.tres")
+		"striped_tigerbarb_fish":
+			fish_sprite.texture = load("res://fishing/fish/fish_textures/striped_tigerbarb_fish.png")
+			inventory_item = preload("res://Inventory/items/striped_tigerbarb_fish.tres")
 	
 	match inventory_item.rarity:
+		"Common":
+			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["COMMON"], target_height["COMMON"])
+		"Uncommon":
+			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["UNCOMMON"], target_height["UNCOMMON"])
 		"Rare":
 			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["RARE"], target_height["RARE"])
-		"Super Rare":
-			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["SUPER_RARE"], target_height["SUPER_RARE"])
 		"Epic":
 			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["EPIC"], target_height["EPIC"])
 		"Legendary":
