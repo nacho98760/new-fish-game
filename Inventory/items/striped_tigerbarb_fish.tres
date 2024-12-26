@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://c158gcgu7xrj8"]
 
-[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_d47w3"]
-[ext_resource type="Texture2D" uid="uid://doq1e42mu213y" path="res://fishing/fish/fish_textures/striped_tigerbarb_fish.png" id="2_0jwdt"]
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_resig"]
+[ext_resource type="Texture2D" uid="uid://doq1e42mu213y" path="res://fishing/fish/fish_textures/striped_tigerbarb_fish.png" id="2_52yrd"]
 
 [resource]
-script = ExtResource("1_d47w3")
-name = "Striped Tigerbarb Fish"
-texture = ExtResource("2_0jwdt")
-value = 70
+script = ExtResource("1_resig")
+name = "Tigerbarb Fish"
+texture = ExtResource("2_52yrd")
+value = 60
 description = "An extremely rare fish only found deep in the ocean! "
 rarity = "Legendary"
 rarity_color = Color(1, 1, 0.211765, 1)

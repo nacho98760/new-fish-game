@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b4cu3ihy5hegm"]
+[gd_scene load_steps=12 format=3 uid="uid://b4cu3ihy5hegm"]
 
 [ext_resource type="Script" path="res://fishing/fish_catch_ui/fish_catch_ui.gd" id="1_4hpcr"]
 [ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="2_7q424"]
 [ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="3_ytat0"]
 [ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="4_q4m1n"]
+[ext_resource type="Texture2D" uid="uid://doq1e42mu213y" path="res://fishing/fish/fish_textures/striped_tigerbarb_fish.png" id="5_42o5v"]
 [ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/icons/coin.png" id="5_clwah"]
 [ext_resource type="Texture2D" uid="uid://0h2l5sif4sqv" path="res://assets/icons/Width.png" id="6_6roew"]
 [ext_resource type="Texture2D" uid="uid://uf6e13xotbsf" path="res://assets/icons/Weight.png" id="6_yhxon"]
@@ -106,6 +107,7 @@ pivot_offset = Vector2(16, 16)
 
 [node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/MarginContainer/MainPanel/FishFrame"]
 scale = Vector2(2, 2)
+texture = ExtResource("5_42o5v")
 centered = false
 
 [node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/MarginContainer/MainPanel"]
@@ -142,15 +144,15 @@ theme_override_constants/separation = -1
 [node name="FishName" type="Label" parent="NinePatchRect/MarginContainer/MainPanel/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_t1xiw")
-text = "Clown Fish"
+text = "???"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="FishRarity" type="Label" parent="NinePatchRect/MarginContainer/MainPanel/NinePatchRect/VBoxContainer"]
-self_modulate = Color(0.998181, 0.000830159, 0.998945, 1)
+self_modulate = Color(1, 1, 0.286275, 1)
 layout_mode = 2
 theme = SubResource("Theme_q0ni2")
-text = "Epic
+text = "Legendary
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -201,7 +203,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_q4m1n")
 theme_override_font_sizes/font_size = 5
-text = "10"
+text = "???"
 
 [node name="Stat2" type="NinePatchRect" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer"]
 custom_minimum_size = Vector2(90, 12)
@@ -241,7 +243,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_q4m1n")
 theme_override_font_sizes/font_size = 5
-text = "10"
+text = "???"
 
 [node name="Stat3" type="NinePatchRect" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer"]
 custom_minimum_size = Vector2(90, 12)
@@ -278,7 +280,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("4_q4m1n")
 theme_override_font_sizes/font_size = 5
-text = "10"
+text = "???"
 
 [node name="CloseShopPanel" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)

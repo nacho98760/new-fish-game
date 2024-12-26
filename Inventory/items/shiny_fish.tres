@@ -7,7 +7,7 @@
 script = ExtResource("1_n36w4")
 name = "Shiny Fish"
 texture = ExtResource("2_2678p")
-value = 70
+value = 60
 description = "An extremely rare fish only found deep in the ocean! "
 rarity = "Legendary"
 rarity_color = Color(1, 1, 0.211765, 1)

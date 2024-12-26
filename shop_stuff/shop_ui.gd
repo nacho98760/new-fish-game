@@ -3,9 +3,9 @@ extends Control
 signal rod_color_changed
 
 enum ROD_PRICES {
-	RED = 60,
-	BLUE = 100,
-	TURQUOISE = 150
+	RED = 15,
+	BLUE = 40,
+	TURQUOISE = 75
 }
 
 var type_of_rod: String
@@ -46,6 +46,10 @@ var buttons: Dictionary = {
 @onready var sprite_2: Sprite2D = shop_item_panel_2.get_sprite()
 @onready var sprite_3: Sprite2D = shop_item_panel_3.get_sprite()
 
+@onready var rod_price_label_1: Label = shop_item_panel_1.get_rod_price_label()
+@onready var rod_price_label_2: Label = shop_item_panel_2.get_rod_price_label()
+@onready var rod_price_label_3: Label = shop_item_panel_3.get_rod_price_label()
+
 @onready var buy_button_1: Label = sprite_1.get_child(0) # <- button's name ("Buy", "Equip", or "Equipped")
 @onready var buy_button_2: Label = sprite_2.get_child(0) # <- button's name ("Buy", "Equip", or "Equipped")
 @onready var buy_button_3: Label = sprite_3.get_child(0) # <- button's name ("Buy", "Equip", or "Equipped")
@@ -63,6 +67,10 @@ func _ready() -> void:
 	rod_model_color_1.self_modulate = red_rod_color
 	rod_model_color_2.self_modulate = blue_rod_color
 	rod_model_color_3.self_modulate = turquoise_rod_color
+	
+	rod_price_label_1.text = str(ROD_PRICES.RED)
+	rod_price_label_2.text = str(ROD_PRICES.BLUE)
+	rod_price_label_3.text = str(ROD_PRICES.TURQUOISE)
 	
 	match type_of_rod:
 		"default":

@@ -13,19 +13,6 @@ signal player_lost_minigame
 var fish_array: Array[String] = ["clown_fish"]
 
 
-# ------------------------------ QUEST SYSTEM VARIABLES -------------------------------------
-
-var fish_type_chosen
-
-var current_fish_rarity_values: Dictionary = {
-	"Common": 5,
-	"Uncommon": 15,
-	"Rare": 20,
-	"Epic": 30,
-	"Legendary": 70,
-}
-
-
 func _ready():
 	GameManager.update_rod.connect(handle_rod_types)
 

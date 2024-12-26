@@ -112,13 +112,16 @@ func check_fishing_rod_visibility() -> void:
 func _on_actual_spot_body_entered(body: PhysicsBody2D) -> void:
 	if body is Player:
 		FishingSystem.is_able_to_fish = true
-		key_to_equip_rod_UI.visible = true
+		if FishingSystem.action_being_performed == FishingSystem.ACTIONS.NOT_FISHING_STUFF:
+			key_to_equip_rod_UI.visible = true
+		else:
+			key_to_equip_rod_UI.visible = false
 
 func _on_actual_spot_body_exited(body: PhysicsBody2D) -> void:
 	if body is Player:
 		FishingSystem.is_able_to_fish = false
-		key_to_equip_rod_UI.visible = false
 		FishingSystem.action_being_performed = FishingSystem.ACTIONS.NOT_FISHING_STUFF
+		key_to_equip_rod_UI.visible = false
 
 func _on_animation_player_animation_finished(anim_name) -> void:
 	match anim_name:
@@ -190,5 +193,3 @@ func load_data(save: PlayerData) -> void:
 	
 	inventory = save.player_inventory
 	global_position = save.player_position
-
-

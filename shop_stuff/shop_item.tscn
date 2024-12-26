@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://degpypdmjjsul"]
+[gd_scene load_steps=10 format=3 uid="uid://degpypdmjjsul"]
 
 [ext_resource type="Script" path="res://shop_stuff/shop_item.gd" id="1_tb8oi"]
 [ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="2_tg5g3"]
 [ext_resource type="Texture2D" uid="uid://wy2w0ffh3r3s" path="res://assets/rodModel.png" id="3_a40af"]
 [ext_resource type="Texture2D" uid="uid://dd5rxe37g1ree" path="res://assets/rodModelColor.png" id="4_bce5t"]
 [ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="4_pa33y"]
+[ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/icons/coin.png" id="5_b8gcr"]
 [ext_resource type="Texture2D" uid="uid://cdfs8q8a0ft8e" path="res://shop_stuff/shop_assets/shopUIBuyButton.png" id="5_iiaso"]
 
 [sub_resource type="Theme" id="Theme_ymd5m"]
@@ -67,22 +68,56 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="RodModel" type="Sprite2D" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel"]
-position = Vector2(12, -13)
+position = Vector2(12, -17)
 scale = Vector2(3, 3)
 texture = ExtResource("3_a40af")
 
 [node name="RodModelColor" type="Sprite2D" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel"]
-position = Vector2(12, -13)
+position = Vector2(12, -17)
 scale = Vector2(3, 3)
 texture = ExtResource("4_bce5t")
+
+[node name="RodPricePanel" type="Panel" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(28, 10)
+layout_mode = 0
+offset_left = -14.0
+offset_top = 17.0
+offset_right = 14.0
+offset_bottom = 27.0
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel/RodPricePanel"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.071
+anchor_right = 0.429
+anchor_bottom = 1.0
+offset_left = 0.012
+offset_right = -0.012001
+texture = ExtResource("5_b8gcr")
+
+[node name="Label" type="Label" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel/RodPricePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.429
+anchor_right = 0.893
+anchor_bottom = 1.0
+offset_left = -0.012001
+offset_right = -0.00400162
+theme_override_fonts/font = ExtResource("4_pa33y")
+theme_override_font_sizes/font_size = 6
+text = "150"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BuyButton" type="Button" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel"]
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 offset_left = -16.0
-offset_top = 22.0
+offset_top = 30.0
 offset_right = 16.0
-offset_bottom = 36.0
+offset_bottom = 47.0
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_ymd5m")
 text = "Buy"
