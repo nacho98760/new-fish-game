@@ -106,6 +106,7 @@ fishing_minigame_key={
 2d_physics/layer_4="InvisibleWall"
 2d_physics/layer_5="fish"
 2d_physics/layer_6="waterFloor"
+2d_physics/layer_7="FishSign"
 
 [physics]
 

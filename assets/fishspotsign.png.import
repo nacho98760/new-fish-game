@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cydg05usvorlm"
-path="res://.godot/imported/grass tilemap.png-0d51ff451efba1c857e109e5e5dba9e5.ctex"
+uid="uid://cg85gsst0esm1"
+path="res://.godot/imported/fishspotsign.png-a5e1d52187e02d524cfe0d770e9ad9dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tilesets/grass tilemap.png"
-dest_files=["res://.godot/imported/grass tilemap.png-0d51ff451efba1c857e109e5e5dba9e5.ctex"]
+source_file="res://assets/fishspotsign.png"
+dest_files=["res://.godot/imported/fishspotsign.png-a5e1d52187e02d524cfe0d770e9ad9dd.ctex"]
 
 [params]
 

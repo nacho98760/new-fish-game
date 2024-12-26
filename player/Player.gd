@@ -19,6 +19,7 @@ var area_name: String
 @onready var exclamation_mark_sprite: Sprite2D = $FishAlert
 @onready var fish_catch_ui: Control = $FishCatchUI
 @onready var fishing_minigame: Control = $FishCatchingMinigameUI
+@onready var key_to_equip_rod_UI: Control = get_tree().get_first_node_in_group("KeyToEquipRodUI")
 @onready var fishing_minigame_container = fishing_minigame.get_node("MainPanel").get_node("NinePatchRect")
 
 
@@ -45,7 +46,7 @@ func _ready() -> void:
 				
 				if fishing_minigame_container.get_child_count() > 1:
 					fishing_minigame_container.get_child(1).queue_free()
-					
+				
 				FishingSystem.action_being_performed = FishingSystem.ACTIONS.NOT_FISHING_STUFF
 	)
 
@@ -111,10 +112,12 @@ func check_fishing_rod_visibility() -> void:
 func _on_actual_spot_body_entered(body: PhysicsBody2D) -> void:
 	if body is Player:
 		FishingSystem.is_able_to_fish = true
+		key_to_equip_rod_UI.visible = true
 
 func _on_actual_spot_body_exited(body: PhysicsBody2D) -> void:
 	if body is Player:
 		FishingSystem.is_able_to_fish = false
+		key_to_equip_rod_UI.visible = false
 		FishingSystem.action_being_performed = FishingSystem.ACTIONS.NOT_FISHING_STUFF
 
 func _on_animation_player_animation_finished(anim_name) -> void:

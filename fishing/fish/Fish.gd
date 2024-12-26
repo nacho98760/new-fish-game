@@ -12,7 +12,7 @@ var arrow_speed: Dictionary = {
 	"UNCOMMON": 2.1,
 	"RARE": 1.75,
 	"EPIC": 1.3,
-	"LEGENDARY": 0.95,
+	"LEGENDARY": 0.9,
 }
 
 var target_height: Dictionary = {
