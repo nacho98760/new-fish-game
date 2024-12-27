@@ -54,10 +54,6 @@ func _ready() -> void:
 	)
 
 func _process(_delta: float) -> void:
-	
-	for i in range(min(inventory.slots.size(), 9)):
-		print(str(inventory.slots[i].item) + ": " + str(inventory.slots[i].amount))
-	
 	var direction = Input.get_axis("left", "right")
 	handle_most_player_animations(direction)
 	check_fishing_rod_visibility()
@@ -69,11 +65,9 @@ func _process(_delta: float) -> void:
 		if is_fish_index_open:
 			fish_index_UI.visible = false
 			is_fish_index_open = false
-			get_tree().paused = false
 		else:
 			fish_index_UI.visible = true
 			is_fish_index_open = true
-			get_tree().paused = true
 
 
 func _physics_process(_delta: float) -> void:

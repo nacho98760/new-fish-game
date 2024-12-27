@@ -74,6 +74,9 @@ layout_mode = 2
 [node name="ShopItemPanel3" parent="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer" instance=ExtResource("2_dl77k")]
 layout_mode = 2
 
+[node name="ShopItemPanel4" parent="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer" instance=ExtResource("2_dl77k")]
+layout_mode = 2
+
 [node name="CloseShopPanel" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 3
@@ -109,4 +112,5 @@ mouse_default_cursor_shape = 2
 [connection signal="buy_button_pressed" from="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel" to="." method="_on_shop_item_panel_buy_button_pressed"]
 [connection signal="buy_button_pressed" from="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel2" to="." method="_on_shop_item_panel_2_buy_button_pressed"]
 [connection signal="buy_button_pressed" from="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel3" to="." method="_on_shop_item_panel_3_buy_button_pressed"]
+[connection signal="buy_button_pressed" from="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel4" to="." method="_on_shop_item_panel_buy_button_pressed"]
 [connection signal="pressed" from="CloseShopPanel/Sprite2D/CloseShopPanelButton" to="." method="_on_close_shop_panel_button_pressed"]
