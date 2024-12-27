@@ -4,6 +4,8 @@ class_name Player
 var inventory: Inventory
 var amount_of_inv_slots: int = 9
 
+var is_fish_index_open: bool = false
+
 var speed: int = 100
 var jump_force: int = 100
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -19,6 +21,7 @@ var area_name: String
 @onready var exclamation_mark_sprite: Sprite2D = $FishAlert
 @onready var fish_catch_ui: Control = $FishCatchUI
 @onready var fishing_minigame: Control = $FishCatchingMinigameUI
+@onready var fish_index_UI = get_tree().get_first_node_in_group("FishIndexUI")
 @onready var key_to_equip_rod_UI: Control = get_tree().get_first_node_in_group("KeyToEquipRodUI")
 @onready var fishing_minigame_container = fishing_minigame.get_node("MainPanel").get_node("NinePatchRect")
 
@@ -51,11 +54,26 @@ func _ready() -> void:
 	)
 
 func _process(_delta: float) -> void:
+	
+	for i in range(min(inventory.slots.size(), 9)):
+		print(str(inventory.slots[i].item) + ": " + str(inventory.slots[i].amount))
+	
 	var direction = Input.get_axis("left", "right")
 	handle_most_player_animations(direction)
 	check_fishing_rod_visibility()
 	FishingSystem.handle_inventory_items(self, player_sprite)
 	FishingSystem.fishing_system(self, end_of_rod, exclamation_mark_sprite, fish_catch_ui, fishing_minigame)
+	
+	if Input.is_action_just_pressed("open_fish_index"):
+		
+		if is_fish_index_open:
+			fish_index_UI.visible = false
+			is_fish_index_open = false
+			get_tree().paused = false
+		else:
+			fish_index_UI.visible = true
+			is_fish_index_open = true
+			get_tree().paused = true
 
 
 func _physics_process(_delta: float) -> void:

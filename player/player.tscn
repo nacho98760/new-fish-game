@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://deghux3vsmge3"]
+[gd_scene load_steps=26 format=3 uid="uid://deghux3vsmge3"]
 
 [ext_resource type="Script" path="res://player/Player.gd" id="1_nyciw"]
 [ext_resource type="Texture2D" uid="uid://cp8mvr88ln3wm" path="res://player/playerSprites/exclamationmark.png" id="2_2a5hw"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="8_uw6m2"]
 [ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="9_ljp22"]
 [ext_resource type="Texture2D" uid="uid://cncn1lkr6pl1x" path="res://shop_stuff/shop_assets/closeMenuButton.png" id="9_ofkcs"]
+[ext_resource type="PackedScene" uid="uid://bfdkjfo2kqqw5" path="res://fish_index_ui.tscn" id="11_smuj6"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_otw6w"]
 load_path = "res://.godot/imported/fisherman32x32_Custom_Structure.png-2f2c46c8c1b752c8ac91834ebb23c650.ctex"
@@ -881,6 +882,7 @@ _data = {
 size = Vector2(16, 22)
 
 [node name="Player" type="CharacterBody2D" groups=["Player", "ThingsToSave"]]
+process_mode = 3
 collision_mask = 10
 script = ExtResource("1_nyciw")
 
@@ -1082,6 +1084,22 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
+
+[node name="FishIndexUI" parent="." instance=ExtResource("11_smuj6")]
+process_mode = 3
+visible = false
+z_index = 10
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -90.0
+offset_right = 40.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="QuestDialogUI/CloseQuestDialogPanel/Sprite2D/CloseQuestDialogPanelButton" to="." method="_on_close_quest_dialog_panel_button_pressed"]

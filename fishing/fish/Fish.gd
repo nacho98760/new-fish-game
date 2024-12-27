@@ -5,6 +5,16 @@ extends CharacterBody2D
 @export var hook_force_y: int = 205
 @export var is_being_hooked: bool = false
 
+@onready var fish_index_UI = get_tree().get_first_node_in_group("FishIndexUI")
+@onready var fish_index_label = fish_index_UI.get_node("NinePatchRect").get_node("Label")
+@onready var gray_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("GrayFishFrame")
+@onready var clown_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("ClownFishFrame")
+@onready var yellowtail_kingfish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("YellowTailKingFishFrame")
+@onready var brown_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("BrownFishFrame")
+@onready var blue_tang_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("BlueTangFishFrame")
+@onready var shiny_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("ShinyFishFrame")
+@onready var striped_tigerbarb_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("StripedTigerbarbFishFrame")
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var arrow_speed: Dictionary = {
@@ -60,6 +70,9 @@ func _on_area_2d_body_entered(body: PhysicsBody2D) -> void:
 		fish_width.text = str(inventory_item.width) + "cm"
 		fish_weight.text = str(inventory_item.weight) + "kg"
 		
+		
+		add_fish_to_index(inventory_item)
+		
 		queue_free() 
 
 
@@ -100,3 +113,64 @@ func randomize_fish() -> void:
 			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["EPIC"], target_height["EPIC"])
 		"Legendary":
 			GameManager.set_arrow_speed_AND_target_size.emit(arrow_speed["LEGENDARY"], target_height["LEGENDARY"])
+
+
+
+func add_fish_to_index(inventory_item):
+	
+	match inventory_item.name:
+		"Gray Fish":
+			if fish_index_UI.player_has_gray_fish == false:
+				fish_index_UI.fish_types_the_player_has.append("gray_fish")
+				fish_index_label.text = str(fish_index_UI.fish_types_the_player_has.size()) + "/" + str(fish_index_UI.amount_of_fish_types_in_game) + " species found"
+			
+			fish_index_UI.player_has_gray_fish = true
+			gray_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/gray_fish.png")
+		
+		"Clown Fish":
+			if fish_index_UI.player_has_clown_fish == false:
+				fish_index_UI.fish_types_the_player_has.append("clown_fish")
+				fish_index_label.text = str(fish_index_UI.fish_types_the_player_has.size()) + "/" + str(fish_index_UI.amount_of_fish_types_in_game) + " species found"
+			
+			fish_index_UI.player_has_clown_fish = true
+			clown_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/clown_fish.png")
+		
+		"Yellowtail Kingfish":
+			if fish_index_UI.player_has_yellowtail_kingfish == false:
+				fish_index_UI.fish_types_the_player_has.append("yellowtail_kingfish")
+				fish_index_label.text = str(fish_index_UI.fish_types_the_player_has.size()) + "/" + str(fish_index_UI.amount_of_fish_types_in_game) + " species found"
+			
+			fish_index_UI.player_has_yellowtail_kingfish = true
+			yellowtail_kingfish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/yellowtail_kingfish.png")
+		
+		"Brown Fish":
+			if fish_index_UI.player_has_brown_fish == false:
+				fish_index_UI.fish_types_the_player_has.append("brown_fish")
+				fish_index_label.text = str(fish_index_UI.fish_types_the_player_has.size()) + "/" + str(fish_index_UI.amount_of_fish_types_in_game) + " species found"
+			
+			fish_index_UI.player_has_brown_fish = true
+			brown_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/rare_fish.png")
+		
+		"Blue Tang Fish":
+			if fish_index_UI.player_has_blue_tang_fish == false:
+				fish_index_UI.fish_types_the_player_has.append("blue_tang_fish")
+				fish_index_label.text = str(fish_index_UI.fish_types_the_player_has.size()) + "/" + str(fish_index_UI.amount_of_fish_types_in_game) + " species found"
+			
+			fish_index_UI.player_has_blue_tang_fish = true
+			blue_tang_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/blue_tang_fish.png")
+		
+		"Shiny Fish":
+			if fish_index_UI.player_has_shiny_fish == false:
+				fish_index_UI.fish_types_the_player_has.append("shiny_fish")
+				fish_index_label.text = str(fish_index_UI.fish_types_the_player_has.size()) + "/" + str(fish_index_UI.amount_of_fish_types_in_game) + " species found"
+			
+			fish_index_UI.player_has_shiny_fish = true
+			shiny_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/shiny_fish.png")
+		
+		"Tigerbarb Fish":
+			if fish_index_UI.player_has_striped_tigerbarb_fish == false:
+				fish_index_UI.fish_types_the_player_has.append("striped_tigerbarb_fish")
+				fish_index_label.text = str(fish_index_UI.fish_types_the_player_has.size()) + "/" + str(fish_index_UI.amount_of_fish_types_in_game) + " species found"
+			
+			fish_index_UI.player_has_striped_tigerbarb_fish = true
+			striped_tigerbarb_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/striped_tigerbarb_fish.png")
