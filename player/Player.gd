@@ -156,11 +156,13 @@ func handle_selling(slot, item_info, sell_button) -> void:
 		item_info.visible = false
 		sell_button.set_default_cursor_shape(Input.CURSOR_ARROW)
 		$InventoryGUI.update(inventory)
+		return
 	
 	if inventory.slots[slot].amount > 1:
 		GameManager.update_coins.emit(inventory.slots[slot].item.value)
 		inventory.slots[slot].amount -= 1
 		$InventoryGUI.update(inventory)
+		return
 
 
 func handle_selling_all(slot, item_info, sell_button) -> void:
@@ -171,6 +173,7 @@ func handle_selling_all(slot, item_info, sell_button) -> void:
 		item_info.visible = false
 		sell_button.set_default_cursor_shape(Input.CURSOR_ARROW)
 		$InventoryGUI.update(inventory)
+		return
 
 
 func show_actual_info(slot, item_info, item_name, item_rarity, item_description, item_value, sell_button) -> void:

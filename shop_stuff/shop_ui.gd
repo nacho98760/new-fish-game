@@ -108,6 +108,7 @@ func equip_button(button_to_equip, other_button_1, other_button_2, other_button_
 	buttons[other_button_3]["Equipped"] = false
 	
 	type_of_rod = rod
+	print(type_of_rod)
 	change_rod_color_and_emit_signal(rod, rod_color)
 	check_all_buttons()
 
@@ -143,7 +144,7 @@ func _on_shop_item_panel_buy_button_pressed() -> void:
 			
 			equip_button("1", "2", "3", "4", "default", default_rod_color)
 	else:
-		equip_button("1", "2", "3", "4", "red_rod", default_rod_color)
+		equip_button("1", "2", "3", "4", "default", default_rod_color)
 
 
 func _on_shop_item_panel_2_buy_button_pressed() -> void:
@@ -159,6 +160,7 @@ func _on_shop_item_panel_2_buy_button_pressed() -> void:
 
 
 func _on_shop_item_panel_3_buy_button_pressed() -> void:
+	print(buttons["3"]["Bought"])
 	if buttons["3"]["Bought"] == false:
 		var current_coins_amount = coins.get_coins()
 		if current_coins_amount >= ROD_PRICES.BLUE:
@@ -171,6 +173,7 @@ func _on_shop_item_panel_3_buy_button_pressed() -> void:
 
 
 func _on_shop_item_panel_4_buy_button_pressed() -> void:
+	print(buttons["4"]["Bought"])
 	if buttons["4"]["Bought"] == false:
 		var current_coins_amount = coins.get_coins()
 		if current_coins_amount >= ROD_PRICES.TURQUOISE:
@@ -189,12 +192,12 @@ func save_data(save: PlayerData) -> void:
 	save.button_1_bought = buttons["1"]["Bought"]
 	save.button_2_bought = buttons["2"]["Bought"]
 	save.button_3_bought = buttons["3"]["Bought"]
-	save.button_3_bought = buttons["4"]["Bought"]
+	save.button_4_bought = buttons["4"]["Bought"]
 	
 	save.button_1_equipped = buttons["1"]["Equipped"]
 	save.button_2_equipped = buttons["2"]["Equipped"]
 	save.button_3_equipped = buttons["3"]["Equipped"]
-	save.button_3_equipped = buttons["4"]["Equipped"]
+	save.button_4_equipped = buttons["4"]["Equipped"]
 
 func load_data(save: PlayerData) -> void:
 	if save == null:
@@ -215,9 +218,9 @@ func load_data(save: PlayerData) -> void:
 	buttons["1"]["Bought"] = save.button_1_bought
 	buttons["2"]["Bought"] = save.button_2_bought
 	buttons["3"]["Bought"] = save.button_3_bought
-	buttons["4"]["Bought"] = save.button_3_bought
+	buttons["4"]["Bought"] = save.button_4_bought
 	
 	buttons["1"]["Equipped"] = save.button_1_equipped
 	buttons["2"]["Equipped"] = save.button_2_equipped
 	buttons["3"]["Equipped"] = save.button_3_equipped
-	buttons["4"]["Equipped"] = save.button_3_equipped
+	buttons["4"]["Equipped"] = save.button_4_equipped
