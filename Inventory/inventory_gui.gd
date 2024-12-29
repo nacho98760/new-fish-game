@@ -2,8 +2,6 @@ extends Control
 
 var isOpen: bool = false
 
-var button_cooldown: Timer = GameManager.create_timer(2, false, true)
-
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
@@ -60,42 +58,40 @@ func update(inventory: Inventory) -> void:
 	for i in range(min(inventory.slots.size(), slots.size())):
 		slots[i].update(inventory.slots[i])
 
-func sell_fish(slot, item_info, sell_button) -> void:
 
+func sell_fish(slot, item_info, sell_button) -> void:
+	
 	if player.inventory.slots[slot].item == null:
 		return
 
 	close()
 	get_tree().paused = true
 	sellUI_node.visible = true
-
+	
 	sell_one_button.connect(
 		"pressed",
 		func():
-			print("Sold one")
+			sell_one_button.disabled = true
 			GameManager.sell_fish_actual_inv_stuff.emit(slot, item_info, sell_button)
+			print("Sold one")
 			sellUI_node.visible = false
 			get_tree().paused = false
-			sell_one_button.disabled = true
-			
-			button_cooldown.connect(
-				"timeout",
-				func cooldown_function():
-					sell_one_button.disabled = false
-			)
-			
-			add_child(button_cooldown)
-			button_cooldown.start()
+			await get_tree().create_timer(1).timeout
+			sell_one_button.disabled = false
 	)
 
 	sell_all_button.connect(
 		"pressed",
 		func():
-			print("Sold all")
+			sell_all_button.disabled = true
 			GameManager.sell_all_fish.emit(slot, item_info, sell_button)
+			print("Sold all")
 			sellUI_node.visible = false
 			get_tree().paused = false
+			await get_tree().create_timer(1).timeout
+			sell_all_button.disabled = false
 	)
+
 
 func show_info(slot, item_info, item_name, item_rarity, item_description, item_value, sell_button) -> void:
 	GameManager.show_item_info.emit(slot, item_info, item_name, item_rarity, item_description, item_value, sell_button)

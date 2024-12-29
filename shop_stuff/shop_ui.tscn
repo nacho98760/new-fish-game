@@ -112,5 +112,5 @@ mouse_default_cursor_shape = 2
 [connection signal="buy_button_pressed" from="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel" to="." method="_on_shop_item_panel_buy_button_pressed"]
 [connection signal="buy_button_pressed" from="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel2" to="." method="_on_shop_item_panel_2_buy_button_pressed"]
 [connection signal="buy_button_pressed" from="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel3" to="." method="_on_shop_item_panel_3_buy_button_pressed"]
-[connection signal="buy_button_pressed" from="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel4" to="." method="_on_shop_item_panel_buy_button_pressed"]
+[connection signal="buy_button_pressed" from="NinePatchRect/ScrollContainer/MarginContainer/CenterContainer/HBoxContainer/ShopItemPanel4" to="." method="_on_shop_item_panel_4_buy_button_pressed"]
 [connection signal="pressed" from="CloseShopPanel/Sprite2D/CloseShopPanelButton" to="." method="_on_close_shop_panel_button_pressed"]
