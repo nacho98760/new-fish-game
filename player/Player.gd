@@ -5,6 +5,7 @@ var inventory: Inventory
 var amount_of_inv_slots: int = 9
 
 var is_fish_index_open: bool = false
+var is_able_to_sell: bool = true
 
 var speed: int = 100
 var jump_force: int = 100
@@ -145,34 +146,47 @@ func _on_animation_player_animation_finished(anim_name) -> void:
 
 
 func handle_selling(slot, item_info, sell_button) -> void:
-	print(slot)
-
-	if inventory.slots[slot].item == null:
-		return
 	
-	if inventory.slots[slot].amount == 1:
-		GameManager.update_coins.emit(inventory.slots[slot].item.value)
-		inventory.slots[slot].item = null
-		inventory.slots[slot].amount = 0
-		item_info.visible = false
-		sell_button.set_default_cursor_shape(Input.CURSOR_ARROW)
-		$InventoryGUI.update(inventory)
-	
-	if inventory.slots[slot].amount > 1:
-		GameManager.update_coins.emit(inventory.slots[slot].item.value)
-		inventory.slots[slot].amount -= 1
-		$InventoryGUI.update(inventory)
+	if is_able_to_sell:
+		if inventory.slots[slot].item == null:
+			return
+		
+		if inventory.slots[slot].amount == 1:
+			GameManager.update_coins.emit(inventory.slots[slot].item.value)
+			inventory.slots[slot].item = null
+			inventory.slots[slot].amount = 0
+			item_info.visible = false
+			sell_button.set_default_cursor_shape(Input.CURSOR_ARROW)
+			$InventoryGUI.update(inventory)
+			is_able_to_sell = false
+			await get_tree().create_timer(2).timeout
+			is_able_to_sell = true
+		
+		if inventory.slots[slot].amount > 1:
+			GameManager.update_coins.emit(inventory.slots[slot].item.value)
+			inventory.slots[slot].amount -= 1
+			$InventoryGUI.update(inventory)
+			is_able_to_sell = false
+			await get_tree().create_timer(2).timeout
+			is_able_to_sell = true
+	else:
+		return  
 
 
 func handle_selling_all(slot, item_info, sell_button) -> void:
-	if inventory.slots[slot].amount >= 1:
-		GameManager.update_coins.emit(inventory.slots[slot].amount * inventory.slots[slot].item.value)
-		inventory.slots[slot].item = null
-		inventory.slots[slot].amount = 0
-		item_info.visible = false
-		sell_button.set_default_cursor_shape(Input.CURSOR_ARROW)
-		$InventoryGUI.update(inventory)
-		return
+	if is_able_to_sell:
+		if inventory.slots[slot].amount >= 1:
+			GameManager.update_coins.emit(inventory.slots[slot].amount * inventory.slots[slot].item.value)
+			inventory.slots[slot].item = null
+			inventory.slots[slot].amount = 0
+			item_info.visible = false
+			sell_button.set_default_cursor_shape(Input.CURSOR_ARROW)
+			$InventoryGUI.update(inventory)
+			is_able_to_sell = false
+			await get_tree().create_timer(2).timeout
+			is_able_to_sell = true
+		else: 
+			return
 
 
 func show_actual_info(slot, item_info, item_name, item_rarity, item_description, item_value, sell_button) -> void:

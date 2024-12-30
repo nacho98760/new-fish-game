@@ -108,7 +108,6 @@ func equip_button(button_to_equip, other_button_1, other_button_2, other_button_
 	buttons[other_button_3]["Equipped"] = false
 	
 	type_of_rod = rod
-	print(type_of_rod)
 	change_rod_color_and_emit_signal(rod, rod_color)
 	check_all_buttons()
 
@@ -173,7 +172,6 @@ func _on_shop_item_panel_3_buy_button_pressed() -> void:
 
 
 func _on_shop_item_panel_4_buy_button_pressed() -> void:
-	print(buttons["4"]["Bought"])
 	if buttons["4"]["Bought"] == false:
 		var current_coins_amount = coins.get_coins()
 		if current_coins_amount >= ROD_PRICES.TURQUOISE:

@@ -71,25 +71,17 @@ func sell_fish(slot, item_info, sell_button) -> void:
 	sell_one_button.connect(
 		"pressed",
 		func():
-			sell_one_button.disabled = true
 			GameManager.sell_fish_actual_inv_stuff.emit(slot, item_info, sell_button)
-			print("Sold one")
 			sellUI_node.visible = false
 			get_tree().paused = false
-			await get_tree().create_timer(1).timeout
-			sell_one_button.disabled = false
 	)
 
 	sell_all_button.connect(
 		"pressed",
 		func():
-			sell_all_button.disabled = true
 			GameManager.sell_all_fish.emit(slot, item_info, sell_button)
-			print("Sold all")
 			sellUI_node.visible = false
 			get_tree().paused = false
-			await get_tree().create_timer(1).timeout
-			sell_all_button.disabled = false
 	)
 
 
