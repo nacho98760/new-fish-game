@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_6p1ww"]
 [ext_resource type="Texture2D" uid="uid://cydg05usvorlm" path="res://assets/tilesets/grass tilemap.png" id="2_3b43k"]
-[ext_resource type="PackedScene" uid="uid://deghux3vsmge3" path="res://player/player.tscn" id="3_0oq2p"]
 [ext_resource type="Texture2D" uid="uid://rb6j07tq5uk1" path="res://assets/selfmadehouse.png" id="4_6ba6v"]
 [ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/icons/coin.png" id="6_jdgaa"]
 [ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="7_46pfm"]
@@ -15,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dijpk10vvju1t" path="res://shop_stuff/shop_ui.tscn" id="11_7wbxs"]
 [ext_resource type="Texture2D" uid="uid://cg85gsst0esm1" path="res://assets/fishspotsign.png" id="11_iwwto"]
 [ext_resource type="AudioStream" uid="uid://vq1xjeowhm0x" path="res://music/music1.wav" id="12_f5u5j"]
+[ext_resource type="PackedScene" uid="uid://deghux3vsmge3" path="res://player/player.tscn" id="15_dlekf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o3m1i"]
 texture = ExtResource("2_3b43k")
@@ -225,9 +225,8 @@ size = Vector2(25, 24)
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_6p1ww")
 
-[node name="Player" parent="." instance=ExtResource("3_0oq2p")]
-z_index = 1
-position = Vector2(510, 307)
+[node name="Player" parent="." instance=ExtResource("15_dlekf")]
+position = Vector2(549, 307)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_r5jqq")
