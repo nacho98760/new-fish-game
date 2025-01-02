@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://8mikgurld41e"]
 
-[ext_resource type="Script" path="res://SellUI.gd" id="1_4icgv"]
+[ext_resource type="Script" path="res://SellUI/SellUI.gd" id="1_4icgv"]
 [ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="2_dw8qn"]
 [ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="3_fxtbv"]
 [ext_resource type="Texture2D" uid="uid://cncn1lkr6pl1x" path="res://shop_stuff/shop_assets/closeMenuButton.png" id="4_6kfrb"]

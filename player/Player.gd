@@ -54,6 +54,7 @@ func _ready() -> void:
 				FishingSystem.action_being_performed = FishingSystem.ACTIONS.NOT_FISHING_STUFF
 	)
 
+
 func _process(_delta: float) -> void:
 	
 	var direction = Input.get_axis("left", "right")
@@ -124,7 +125,6 @@ func check_fishing_rod_visibility() -> void:
 
 
 func _on_actual_spot_body_entered(body: PhysicsBody2D) -> void:
-	print("entered")
 	if body is Player:
 		FishingSystem.is_able_to_fish = true
 		if FishingSystem.action_being_performed == FishingSystem.ACTIONS.NOT_FISHING_STUFF:
