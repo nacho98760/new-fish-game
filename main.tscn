@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://main.gd" id="1_6p1ww"]
 [ext_resource type="Texture2D" uid="uid://cydg05usvorlm" path="res://assets/tilesets/grass tilemap.png" id="2_3b43k"]
-[ext_resource type="PackedScene" uid="uid://deghux3vsmge3" path="res://player/player.tscn" id="3_0oq2p"]
 [ext_resource type="Texture2D" uid="uid://rb6j07tq5uk1" path="res://assets/selfmadehouse.png" id="4_6ba6v"]
 [ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/icons/coin.png" id="6_jdgaa"]
 [ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="7_46pfm"]
@@ -15,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dijpk10vvju1t" path="res://shop_stuff/shop_ui.tscn" id="11_7wbxs"]
 [ext_resource type="Texture2D" uid="uid://cg85gsst0esm1" path="res://assets/fishspotsign.png" id="11_iwwto"]
 [ext_resource type="AudioStream" uid="uid://vq1xjeowhm0x" path="res://music/music1.wav" id="12_f5u5j"]
+[ext_resource type="PackedScene" uid="uid://deghux3vsmge3" path="res://player/player.tscn" id="15_dlekf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o3m1i"]
 texture = ExtResource("2_3b43k")
@@ -225,9 +225,8 @@ size = Vector2(25, 24)
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_6p1ww")
 
-[node name="Player" parent="." instance=ExtResource("3_0oq2p")]
-z_index = 1
-position = Vector2(510, 307)
+[node name="Player" parent="." instance=ExtResource("15_dlekf")]
+position = Vector2(549, 307)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_r5jqq")
@@ -277,9 +276,9 @@ anchor_left = 0.016
 anchor_top = 0.867
 anchor_right = 0.133
 anchor_bottom = 0.95
-offset_left = -0.240001
+offset_left = -3.24
 offset_top = -0.120026
-offset_right = -0.120003
+offset_right = -3.12
 offset_bottom = -3.05176e-05
 grow_vertical = 0
 pivot_offset = Vector2(30, 15)
@@ -424,7 +423,6 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/SoundPanel/NinePatchRect"]
-custom_minimum_size = Vector2(18, 18)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -444,7 +442,7 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="SoundSprite" type="Sprite2D" parent="CanvasLayer/SoundPanel/NinePatchRect/NinePatchRect"]
-scale = Vector2(1.125, 1.125)
+position = Vector2(1.00006, 1)
 texture = ExtResource("8_41wxe")
 centered = false
 
@@ -457,13 +455,64 @@ anchor_left = 0.091
 anchor_top = 0.091
 anchor_right = 0.909
 anchor_bottom = 0.909
-offset_left = -0.00200009
-offset_top = -0.00200009
-offset_right = 0.0019989
-offset_bottom = 0.0019989
+offset_left = -1.00194
+offset_top = -1.002
+offset_right = -0.997938
+offset_bottom = -0.997999
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
+
+[node name="TutorialPanel" type="Panel" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(22, 22)
+offset_left = 5.0
+offset_top = 194.0
+offset_right = 27.0
+offset_bottom = 216.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/TutorialPanel"]
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("8_8ttxr")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/TutorialPanel/NinePatchRect"]
+custom_minimum_size = Vector2(18, 18)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_120rp")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="OpenTutorialMenuButton" type="Button" parent="CanvasLayer/TutorialPanel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(22, 22)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.014
+offset_right = -14.0
+offset_bottom = -14.308
 mouse_default_cursor_shape = 2
 
 [node name="Shop" type="Node2D" parent="."]
@@ -572,6 +621,7 @@ theme_override_font_sizes/font_size = 7
 text = "Press E to equip rod and Left Click to use it."
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("12_f5u5j")
 autoplay = true
 
@@ -580,6 +630,7 @@ autoplay = true
 [connection signal="pressed" from="CanvasLayer/CloseGamePanel/SaveAndQuitButton" to="." method="_on_save_and_quit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/CloseGamePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SoundPanel/MuteButton" to="." method="_on_mute_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/TutorialPanel/OpenTutorialMenuButton" to="." method="_on_open_tutorial_menu_button_pressed"]
 [connection signal="body_entered" from="Shop/ShopConceptArea" to="." method="_on_shop_concept_area_body_entered"]
 [connection signal="body_exited" from="Shop/ShopConceptArea" to="." method="_on_shop_concept_area_body_exited"]
 [connection signal="pressed" from="Shop/ShopConceptArea/OpenShopButton" to="." method="_on_open_shop_button_pressed"]

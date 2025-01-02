@@ -11,6 +11,7 @@ var music_position = 0
 @onready var anim_player = $AnimationPlayer
 
 @onready var player = $Player
+@onready var game_tutorial_UI: Control = get_tree().get_first_node_in_group("GameTutorial")
 
 
 func _ready() -> void:
@@ -75,3 +76,8 @@ func _on_mute_button_pressed():
 		bg_music.play()
 		bg_music.seek(temp)
 		sound_sprite.texture = preload("res://assets/icons/sound_on.png")
+
+
+func _on_open_tutorial_menu_button_pressed():
+	game_tutorial_UI.visible = true
+	get_tree().paused = true

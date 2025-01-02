@@ -15,6 +15,7 @@ enum ACTIONS {
 @export var is_there_a_fish: bool = false
 @export var is_already_fishing: bool = false
 @export var is_already_catching_a_fish: bool = false
+@export var hooked_fish: CharacterBody2D
 
 var random_fish_position := Vector2(1000, 1000)
 
@@ -22,7 +23,6 @@ var time_when_there_is_no_fish: Timer
 var time_when_there_is_a_fish: Timer
 
 var fish_scene: PackedScene = preload("res://fishing/fish/fish.tscn")
-@export var hooked_fish: CharacterBody2D
 
 func handle_inventory_items(parent: Player, player_sprite: Sprite2D) -> void:
 

@@ -54,7 +54,9 @@ func _ready() -> void:
 				FishingSystem.action_being_performed = FishingSystem.ACTIONS.NOT_FISHING_STUFF
 	)
 
+
 func _process(_delta: float) -> void:
+	
 	var direction = Input.get_axis("left", "right")
 	handle_most_player_animations(direction)
 	check_fishing_rod_visibility()
@@ -115,11 +117,11 @@ func handle_most_player_animations(direction: float) -> void:
 
 func check_fishing_rod_visibility() -> void:
 	if FishingSystem.action_being_performed == FishingSystem.ACTIONS.NOT_FISHING_STUFF:
-		$PlayerFishingRodColor.visible = false
-		$PlayerEndOfFishingRodColor.visible = false
+		fishing_rod_handle_sprite.visible = false
+		fishing_rod_end_part_sprite.visible = false
 	else:
-		$PlayerFishingRodColor.visible = true
-		$PlayerEndOfFishingRodColor.visible = true
+		fishing_rod_handle_sprite.visible = true
+		fishing_rod_end_part_sprite.visible = true
 
 
 func _on_actual_spot_body_entered(body: PhysicsBody2D) -> void:
