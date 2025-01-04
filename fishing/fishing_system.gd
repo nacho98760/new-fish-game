@@ -94,7 +94,11 @@ func handle_hooking(parent: Player, end_of_rod: Marker2D, exclamation_mark_sprit
 		hooked_fish.position = random_fish_position
 		exclamation_mark_sprite.visible = false
 		fishing_minigame.visible = true
-
+		
+		
+		if fishing_minigame_container.get_child_count() > 1:
+			fishing_minigame_container.get_child(1).queue_free()
+		
 		fishing_minigame.spawn_target()
 		fishing_minigame.move_arrow()
 	else:

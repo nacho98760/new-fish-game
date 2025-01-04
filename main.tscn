@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cydg05usvorlm" path="res://assets/tilesets/grass tilemap.png" id="2_3b43k"]
 [ext_resource type="Texture2D" uid="uid://rb6j07tq5uk1" path="res://assets/selfmadehouse.png" id="4_6ba6v"]
 [ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/icons/coin.png" id="6_jdgaa"]
-[ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="7_46pfm"]
 [ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="8_8ttxr"]
 [ext_resource type="Texture2D" uid="uid://bnp2m1ap1x01s" path="res://assets/icons/sound_on.png" id="8_41wxe"]
 [ext_resource type="Texture2D" uid="uid://dnrkxn52qstjr" path="res://assets/shop.png" id="8_a5pte"]
@@ -13,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bim8lv8fntpj2" path="res://assets/background/orig.png" id="10_tn23q"]
 [ext_resource type="PackedScene" uid="uid://dijpk10vvju1t" path="res://shop_stuff/shop_ui.tscn" id="11_7wbxs"]
 [ext_resource type="Texture2D" uid="uid://cg85gsst0esm1" path="res://assets/fishspotsign.png" id="11_iwwto"]
+[ext_resource type="FontFile" uid="uid://cdap55ercsuve" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="11_x0est"]
 [ext_resource type="AudioStream" uid="uid://vq1xjeowhm0x" path="res://music/music1.wav" id="12_f5u5j"]
 [ext_resource type="PackedScene" uid="uid://deghux3vsmge3" path="res://player/player.tscn" id="15_dlekf"]
 
@@ -96,14 +96,14 @@ size = Vector2(5.5, 128)
 size = Vector2(8, 86)
 
 [sub_resource type="Theme" id="Theme_v0bmd"]
-default_font = ExtResource("7_46pfm")
-default_font_size = 13
+default_font = ExtResource("11_x0est")
+default_font_size = 12
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4q0p"]
 size = Vector2(56, 48.5625)
 
 [sub_resource type="Theme" id="Theme_0ued0"]
-default_font = ExtResource("7_46pfm")
+default_font = ExtResource("11_x0est")
 default_font_size = 5
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hv52k"]
@@ -342,23 +342,29 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 offset_left = -42.0
-offset_top = -11.0
+offset_top = -8.99997
 offset_right = -4.0
-offset_bottom = 11.0
+offset_bottom = 13.0
 grow_horizontal = 0
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/CoinsPanel/NinePatchRect/NinePatchRect/CenterContainer" groups=["Coins", "ThingsToSave"]]
 layout_mode = 2
 theme = SubResource("Theme_v0bmd")
+vertical_alignment = 1
 script = ExtResource("8_fa0i4")
 
 [node name="CloseGamePanel" type="Panel" parent="CanvasLayer"]
 process_mode = 3
 visible = false
+z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(320, 180)
@@ -392,18 +398,12 @@ text = "RESUME"
 
 [node name="SoundPanel" type="Panel" parent="CanvasLayer"]
 self_modulate = Color(1, 1, 1, 0)
+z_index = 1
 custom_minimum_size = Vector2(22, 22)
-anchors_preset = -1
-anchor_left = 0.962
-anchor_top = 0.892
-anchor_right = 0.997
-anchor_bottom = 0.953
-offset_left = 0.319946
-offset_top = -0.119995
-offset_right = -0.0800171
-offset_bottom = -0.0800171
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 27.0
+offset_bottom = 27.0
 pivot_offset = Vector2(10, 10)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/SoundPanel"]
@@ -464,56 +464,43 @@ grow_vertical = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 
-[node name="TutorialPanel" type="Panel" parent="CanvasLayer"]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(22, 22)
-offset_left = 5.0
-offset_top = 194.0
-offset_right = 27.0
-offset_bottom = 216.0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/TutorialPanel"]
-custom_minimum_size = Vector2(22, 22)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource("8_8ttxr")
-patch_margin_left = 1
-patch_margin_top = 1
-patch_margin_right = 1
-patch_margin_bottom = 1
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/TutorialPanel/NinePatchRect"]
-custom_minimum_size = Vector2(18, 18)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -9.0
-offset_top = -9.0
-offset_right = 9.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_120rp")
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
-
-[node name="OpenTutorialMenuButton" type="Button" parent="CanvasLayer/TutorialPanel"]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(22, 22)
-layout_mode = 1
+[node name="InventoryKeyText" type="Label" parent="CanvasLayer"]
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.014
-offset_right = -14.0
-offset_bottom = -14.308
-mouse_default_cursor_shape = 2
+anchor_left = 0.808
+anchor_top = 0.925
+anchor_right = 0.983
+anchor_bottom = 0.958
+offset_left = 0.880005
+offset_top = -12.0
+offset_right = -0.119995
+offset_bottom = -12.88
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("11_x0est")
+theme_override_font_sizes/font_size = 6
+text = "Press \"I\" to open inventory"
+
+[node name="FishIndexKeyText" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.808
+anchor_top = 0.925
+anchor_right = 0.983
+anchor_bottom = 0.958
+offset_left = 0.880005
+offset_top = -3.05176e-05
+offset_right = 3.88
+offset_bottom = 0.119965
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("11_x0est")
+theme_override_font_sizes/font_size = 6
+text = "Press \"P\" to open fish index"
 
 [node name="Shop" type="Node2D" parent="."]
 position = Vector2(460, 293)
@@ -541,7 +528,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 theme = SubResource("Theme_0ued0")
-theme_override_constants/outline_size = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = "Open shop"
 
 [node name="ShopUI" parent="Shop" groups=["ShopUI"] instance=ExtResource("11_7wbxs")]
@@ -608,16 +596,17 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = 623.0
 offset_top = 279.0
-offset_right = 663.0
+offset_right = 764.0
 offset_bottom = 319.0
 
 [node name="Label" type="Label" parent="KeyToEquipRodUI"]
 layout_mode = 0
-offset_right = 48.0
-offset_bottom = 22.3333
-theme_override_constants/outline_size = 1
-theme_override_fonts/font = ExtResource("7_46pfm")
-theme_override_font_sizes/font_size = 7
+offset_right = 141.0
+offset_bottom = 13.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("11_x0est")
+theme_override_font_sizes/font_size = 6
 text = "Press E to equip rod and Left Click to use it."
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
@@ -630,7 +619,6 @@ autoplay = true
 [connection signal="pressed" from="CanvasLayer/CloseGamePanel/SaveAndQuitButton" to="." method="_on_save_and_quit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/CloseGamePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/SoundPanel/MuteButton" to="." method="_on_mute_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/TutorialPanel/OpenTutorialMenuButton" to="." method="_on_open_tutorial_menu_button_pressed"]
 [connection signal="body_entered" from="Shop/ShopConceptArea" to="." method="_on_shop_concept_area_body_entered"]
 [connection signal="body_exited" from="Shop/ShopConceptArea" to="." method="_on_shop_concept_area_body_exited"]
 [connection signal="pressed" from="Shop/ShopConceptArea/OpenShopButton" to="." method="_on_open_shop_button_pressed"]

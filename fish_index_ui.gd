@@ -2,6 +2,7 @@ extends Control
 
 @export var player_has_gray_fish: bool = false
 @export var player_has_clown_fish: bool = false
+@export var player_has_blue_fish: bool = false
 @export var player_has_yellowtail_kingfish: bool = false
 @export var player_has_brown_fish: bool = false
 @export var player_has_blue_tang_fish: bool = false
@@ -9,12 +10,13 @@ extends Control
 @export var player_has_striped_tigerbarb_fish: bool = false
 
 @export var fish_types_the_player_has: Array = []
-@export var amount_of_fish_types_in_game = 7
+@export var amount_of_fish_types_in_game = 8
 
 @onready var fish_found_label = $NinePatchRect/Label
 
 @onready var gray_fish_frame = $NinePatchRect/GridContainer/GrayFishFrame
 @onready var clown_fish_frame = $NinePatchRect/GridContainer/ClownFishFrame
+@onready var blue_fish_frame = $NinePatchRect/GridContainer/BlueFishFrame
 @onready var yellow_tail_king_fish_frame = $NinePatchRect/GridContainer/YellowTailKingFishFrame
 @onready var brown_fish_frame = $NinePatchRect/GridContainer/BrownFishFrame
 @onready var blue_tang_fish_frame = $NinePatchRect/GridContainer/BlueTangFishFrame
@@ -38,6 +40,13 @@ func _process(delta):
 	else:
 		clown_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/unknown_fish.png")
 		clown_fish_frame.get_node("Label").visible = true
+	
+	if player_has_blue_fish:
+		blue_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/blue_fish.png")
+		blue_fish_frame.get_node("Label").visible = false
+	else:
+		blue_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/unknown_fish.png")
+		blue_fish_frame.get_node("Label").visible = true
 	
 	if player_has_yellowtail_kingfish:
 		yellow_tail_king_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/yellowtail_kingfish.png")
@@ -78,6 +87,7 @@ func save_data(save: PlayerData):
 	save.fish_types_the_player_has = fish_types_the_player_has
 	save.player_has_gray_fish = player_has_gray_fish
 	save.player_has_clown_fish = player_has_clown_fish
+	save.player_has_blue_fish = player_has_blue_fish
 	save.player_has_yellowtail_kingfish = player_has_yellowtail_kingfish
 	save.player_has_brown_fish = player_has_brown_fish
 	save.player_has_blue_tang_fish = player_has_blue_tang_fish
@@ -89,6 +99,7 @@ func load_data(save: PlayerData):
 		fish_types_the_player_has = []
 		player_has_gray_fish = false
 		player_has_clown_fish = false
+		player_has_blue_fish = false
 		player_has_yellowtail_kingfish = false
 		player_has_brown_fish = false
 		player_has_blue_tang_fish = false
@@ -99,10 +110,10 @@ func load_data(save: PlayerData):
 	fish_types_the_player_has = save.fish_types_the_player_has
 	player_has_gray_fish = save.player_has_gray_fish
 	player_has_clown_fish = save.player_has_clown_fish
+	player_has_blue_fish = save.player_has_blue_fish
 	player_has_yellowtail_kingfish = save.player_has_yellowtail_kingfish
 	player_has_brown_fish = save.player_has_brown_fish
 	player_has_blue_tang_fish = save.player_has_blue_tang_fish
 	player_has_shiny_fish = save.player_has_shiny_fish
 	player_has_striped_tigerbarb_fish = save.player_has_striped_tigerbarb_fish
-	
 

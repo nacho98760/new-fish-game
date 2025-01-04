@@ -11,8 +11,7 @@ var speed: int = 100
 var jump_force: int = 100
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var entered_area_to_transition: bool = false
-var area_name: String
+var is_inside_fishing_spot: bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var player_sprite: Sprite2D = $PlayerStructure
@@ -56,15 +55,14 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	
 	var direction = Input.get_axis("left", "right")
 	handle_most_player_animations(direction)
 	check_fishing_rod_visibility()
+	check_if_key_to_equip_rod_UI_is_needed()
 	FishingSystem.handle_inventory_items(self, player_sprite)
 	FishingSystem.fishing_system(self, end_of_rod, exclamation_mark_sprite, fish_catch_ui, fishing_minigame)
 	
 	if Input.is_action_just_pressed("open_fish_index"):
-		
 		if is_fish_index_open:
 			fish_index_UI.visible = false
 			is_fish_index_open = false
@@ -124,19 +122,25 @@ func check_fishing_rod_visibility() -> void:
 		fishing_rod_end_part_sprite.visible = true
 
 
-func _on_actual_spot_body_entered(body: PhysicsBody2D) -> void:
-	if body is Player:
-		FishingSystem.is_able_to_fish = true
-		if FishingSystem.action_being_performed == FishingSystem.ACTIONS.NOT_FISHING_STUFF:
+func check_if_key_to_equip_rod_UI_is_needed():
+	if is_inside_fishing_spot:
+		if FishingSystem.action_being_performed == FishingSystem.ACTIONS.NOT_FISHING_STUFF or FishingSystem.action_being_performed == FishingSystem.ACTIONS.EQUIPPING_ROD:
 			key_to_equip_rod_UI.visible = true
 		else:
 			key_to_equip_rod_UI.visible = false
+	else:
+		key_to_equip_rod_UI.visible = false
+
+
+func _on_actual_spot_body_entered(body: PhysicsBody2D) -> void:
+	if body is Player:
+		FishingSystem.is_able_to_fish = true
+		is_inside_fishing_spot = true
 
 func _on_actual_spot_body_exited(body: PhysicsBody2D) -> void:
 	if body is Player:
 		FishingSystem.is_able_to_fish = false
-		FishingSystem.action_being_performed = FishingSystem.ACTIONS.NOT_FISHING_STUFF
-		key_to_equip_rod_UI.visible = false
+		is_inside_fishing_spot = false
 
 func _on_animation_player_animation_finished(anim_name) -> void:
 	match anim_name:
@@ -161,7 +165,7 @@ func handle_selling(slot, item_info, sell_button) -> void:
 			sell_button.set_default_cursor_shape(Input.CURSOR_ARROW)
 			$InventoryGUI.update(inventory)
 			is_able_to_sell = false
-			await get_tree().create_timer(2).timeout
+			await get_tree().create_timer(1).timeout
 			is_able_to_sell = true
 		
 		if inventory.slots[slot].amount > 1:
@@ -169,7 +173,7 @@ func handle_selling(slot, item_info, sell_button) -> void:
 			inventory.slots[slot].amount -= 1
 			$InventoryGUI.update(inventory)
 			is_able_to_sell = false
-			await get_tree().create_timer(2).timeout
+			await get_tree().create_timer(1).timeout
 			is_able_to_sell = true
 	else:
 		return  

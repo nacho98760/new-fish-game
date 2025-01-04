@@ -6,7 +6,7 @@
 
 [node name="InventoryGUI" type="Control"]
 process_mode = 3
-z_index = 1
+z_index = 2
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 3
 anchor_right = 0.109

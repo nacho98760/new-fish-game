@@ -2,6 +2,8 @@ extends Node2D
 
 var is_close_menu_open: bool = false
 
+var is_tutorialUI_open: bool = false
+
 var temp 
 var music_position = 0
 @onready var bg_music = $AudioStreamPlayer2D
@@ -76,8 +78,3 @@ func _on_mute_button_pressed():
 		bg_music.play()
 		bg_music.seek(temp)
 		sound_sprite.texture = preload("res://assets/icons/sound_on.png")
-
-
-func _on_open_tutorial_menu_button_pressed():
-	game_tutorial_UI.visible = true
-	get_tree().paused = true

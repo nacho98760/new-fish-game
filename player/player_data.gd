@@ -16,6 +16,7 @@ class_name PlayerData
 @export var fish_types_the_player_has: Array
 @export var player_has_gray_fish: bool
 @export var player_has_clown_fish: bool
+@export var player_has_blue_fish: bool
 @export var player_has_yellowtail_kingfish: bool
 @export var player_has_brown_fish: bool
 @export var player_has_blue_tang_fish: bool

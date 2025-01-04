@@ -17,12 +17,11 @@ var target_scene: PackedScene = preload("res://fishing/fishing_minigame/target.t
 
 
 func _ready() -> void:
-	
 	progress_bar.value = 1
 	
 	GameManager.set_arrow_speed_AND_target_size.connect(set_speed_and_size)
 
-	cooldown_timer = GameManager.create_timer(1, false, true)
+	cooldown_timer = GameManager.create_timer(0.5, false, true)
 
 	cooldown_timer.connect("timeout", func(): on_cooldown = false)
 
@@ -58,6 +57,7 @@ func set_speed_and_size(SPEED, HEIGHT) -> void:
 
 func spawn_target() -> void:
 	var new_target = target_scene.instantiate()
+	new_target.name = "Target"
 	nine_patch_rect.add_child(new_target)
 	new_target.size = Vector2(default_target_width, target_height)
 	new_target.position = Vector2(2, randf_range(1, nine_patch_rect.size.y - target_height))

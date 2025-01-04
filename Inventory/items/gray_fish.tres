@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_vufi5")
-name = "Gray Fish"
+name = "Grayfish"
 texture = ExtResource("2_euisn")
 value = 5
 description = "A common ocean fish"
 rarity = "Common"
 rarity_color = Color(0.458405, 0.458405, 0.458405, 1)
 width = 40
-weight = 2
+weight = 1

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_jinbb")
-name = "Clown Fish"
+name = "Clownfish"
 texture = ExtResource("2_knnso")
 value = 5
 description = "A common ocean fish."

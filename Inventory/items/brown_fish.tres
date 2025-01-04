@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_pcshh")
-name = "Brown Fish"
+name = "Brownfish"
 texture = ExtResource("2_3vukj")
 value = 25
 description = "A super rare ocean fish."
 rarity = "Rare"
 rarity_color = Color(0.233149, 0.457125, 1, 1)
 width = 50
-weight = 3
+weight = 2

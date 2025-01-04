@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var fish_index_label = fish_index_UI.get_node("NinePatchRect").get_node("Label")
 @onready var gray_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("GrayFishFrame")
 @onready var clown_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("ClownFishFrame")
+@onready var blue_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("BlueFishFrame")
 @onready var yellowtail_kingfish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("YellowTailKingFishFrame")
 @onready var brown_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("BrownFishFrame")
 @onready var blue_tang_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("BlueTangFishFrame")
@@ -86,6 +87,9 @@ func randomize_fish() -> void:
 		"clown_fish":
 			fish_sprite.texture = load("res://fishing/fish/fish_textures/clown_fish.png")
 			inventory_item = preload("res://Inventory/items/clown_fish.tres")
+		"blue_fish":
+			fish_sprite.texture = load("res://fishing/fish/fish_textures/blue_fish.png")
+			inventory_item = preload("res://Inventory/items/blue_fish.tres")
 		"yellowtail_kingfish":
 			fish_sprite.texture = load("res://fishing/fish/fish_textures/yellowtail_kingfish.png")
 			inventory_item = preload("res://Inventory/items/yellowtail_kingfish.tres")
@@ -119,7 +123,7 @@ func randomize_fish() -> void:
 func add_fish_to_index(inventory_item):
 	
 	match inventory_item.name:
-		"Gray Fish":
+		"Grayfish":
 			if fish_index_UI.player_has_gray_fish == false:
 				fish_index_UI.fish_types_the_player_has.append("gray_fish")
 				fish_index_label.text = str(fish_index_UI.fish_types_the_player_has.size()) + "/" + str(fish_index_UI.amount_of_fish_types_in_game) + " species found"
@@ -127,13 +131,21 @@ func add_fish_to_index(inventory_item):
 			fish_index_UI.player_has_gray_fish = true
 			gray_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/gray_fish.png")
 		
-		"Clown Fish":
+		"Clownfish":
 			if fish_index_UI.player_has_clown_fish == false:
 				fish_index_UI.fish_types_the_player_has.append("clown_fish")
 				fish_index_label.text = str(fish_index_UI.fish_types_the_player_has.size()) + "/" + str(fish_index_UI.amount_of_fish_types_in_game) + " species found"
 			
 			fish_index_UI.player_has_clown_fish = true
 			clown_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/clown_fish.png")
+		
+		"Bluefish":
+			if fish_index_UI.player_has_blue_fish == false:
+				fish_index_UI.fish_types_the_player_has.append("blue_fish")
+				fish_index_label.text = str(fish_index_UI.fish_types_the_player_has.size()) + "/" + str(fish_index_UI.amount_of_fish_types_in_game) + " species found"
+			
+			fish_index_UI.player_has_blue_fish = true
+			blue_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/blue_fish.png")
 		
 		"Yellowtail Kingfish":
 			if fish_index_UI.player_has_yellowtail_kingfish == false:
@@ -143,7 +155,7 @@ func add_fish_to_index(inventory_item):
 			fish_index_UI.player_has_yellowtail_kingfish = true
 			yellowtail_kingfish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/yellowtail_kingfish.png")
 		
-		"Brown Fish":
+		"Brownfish":
 			if fish_index_UI.player_has_brown_fish == false:
 				fish_index_UI.fish_types_the_player_has.append("brown_fish")
 				fish_index_label.text = str(fish_index_UI.fish_types_the_player_has.size()) + "/" + str(fish_index_UI.amount_of_fish_types_in_game) + " species found"

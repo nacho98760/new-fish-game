@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://degpypdmjjsul"]
+[gd_scene load_steps=11 format=3 uid="uid://degpypdmjjsul"]
 
 [ext_resource type="Script" path="res://shop_stuff/shop_item.gd" id="1_tb8oi"]
 [ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="2_tg5g3"]
@@ -7,14 +7,15 @@
 [ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="4_pa33y"]
 [ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/icons/coin.png" id="5_b8gcr"]
 [ext_resource type="Texture2D" uid="uid://cdfs8q8a0ft8e" path="res://shop_stuff/shop_assets/shopUIBuyButton.png" id="5_iiaso"]
+[ext_resource type="FontFile" uid="uid://cdap55ercsuve" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="6_g0khp"]
 
 [sub_resource type="Theme" id="Theme_ymd5m"]
 default_font = ExtResource("4_pa33y")
 default_font_size = 6
 
 [sub_resource type="Theme" id="Theme_e3irj"]
-default_font = ExtResource("4_pa33y")
-default_font_size = 6
+default_font = ExtResource("6_g0khp")
+default_font_size = 4
 
 [node name="ShopItemPanel" type="Panel"]
 custom_minimum_size = Vector2(70, 100)
@@ -100,15 +101,14 @@ texture = ExtResource("5_b8gcr")
 [node name="Label" type="Label" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel/RodPricePanel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.429
-anchor_right = 0.893
-anchor_bottom = 1.0
-offset_left = -0.012001
-offset_right = -0.00400162
-theme_override_fonts/font = ExtResource("4_pa33y")
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.964
+anchor_bottom = 1.1
+offset_right = 0.00799751
+theme_override_fonts/font = ExtResource("6_g0khp")
 theme_override_font_sizes/font_size = 6
 text = "150"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BuyButton" type="Button" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel"]
@@ -130,15 +130,16 @@ centered = false
 [node name="Label" type="Label" parent="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel/BuyButton/Sprite2D"]
 anchors_preset = -1
 anchor_left = 0.094
-anchor_top = 0.235
+anchor_top = 0.176
 anchor_right = 0.937
-anchor_bottom = 0.882
-offset_left = -0.00800014
-offset_top = 0.00499964
-offset_right = 0.0159988
-offset_bottom = 0.00599957
+anchor_bottom = 0.824
+offset_left = -1.008
+offset_top = 0.00799966
+offset_right = 1.016
+offset_bottom = -0.00800133
 theme = SubResource("Theme_e3irj")
 text = "Buy"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="NinePatchRect/CenterContainer/Panel/CenterContainer/Panel/BuyButton" to="." method="_on_buy_button_pressed"]

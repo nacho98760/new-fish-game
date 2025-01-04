@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://fishing/fish_catch_ui/fish_catch_ui.gd" id="1_4hpcr"]
 [ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="2_7q424"]
+[ext_resource type="FontFile" uid="uid://cdap55ercsuve" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="3_1boa5"]
 [ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="3_ytat0"]
-[ext_resource type="FontFile" uid="uid://dwvnucq3ajek6" path="res://fonts/a.ttf" id="4_q4m1n"]
 [ext_resource type="Texture2D" uid="uid://doq1e42mu213y" path="res://fishing/fish/fish_textures/striped_tigerbarb_fish.png" id="5_42o5v"]
 [ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/icons/coin.png" id="5_clwah"]
 [ext_resource type="Texture2D" uid="uid://0h2l5sif4sqv" path="res://assets/icons/Width.png" id="6_6roew"]
@@ -11,12 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://cncn1lkr6pl1x" path="res://shop_stuff/shop_assets/closeMenuButton.png" id="7_rogr8"]
 
 [sub_resource type="Theme" id="Theme_t1xiw"]
-default_font = ExtResource("4_q4m1n")
-default_font_size = 5
+default_font = ExtResource("3_1boa5")
+default_font_size = 4
 
 [sub_resource type="Theme" id="Theme_q0ni2"]
-default_font = ExtResource("4_q4m1n")
-default_font_size = 4
+default_font = ExtResource("3_1boa5")
+default_font_size = 3
 
 [node name="FishCatchUI" type="Control"]
 custom_minimum_size = Vector2(100, 150)
@@ -55,7 +55,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_q4m1n")
+theme_override_fonts/font = ExtResource("3_1boa5")
 theme_override_font_sizes/font_size = 5
 text = "You´ve caught..."
 horizontal_alignment = 1
@@ -130,21 +130,21 @@ patch_margin_right = 2
 patch_margin_bottom = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/MainPanel/NinePatchRect"]
-custom_minimum_size = Vector2(64, 14)
+custom_minimum_size = Vector2(64, 12)
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.062
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 0.00799996
-offset_bottom = -1.0
+offset_top = 2.00801
+offset_bottom = 1.14441e-05
 grow_horizontal = 2
-theme_override_constants/separation = -1
+theme_override_constants/separation = 3
 
 [node name="FishName" type="Label" parent="NinePatchRect/MarginContainer/MainPanel/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_t1xiw")
-text = "???"
+text = "Tigerbarb fish"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -152,7 +152,7 @@ vertical_alignment = 1
 self_modulate = Color(1, 1, 0.286275, 1)
 layout_mode = 2
 theme = SubResource("Theme_q0ni2")
-text = "Legendary
+text = "(Legendary)
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -191,19 +191,21 @@ expand_mode = 4
 [node name="FishValue" type="Label" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer/Stat1"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.467
-anchor_top = 0.167
-anchor_right = 0.533
-anchor_bottom = 0.833
-offset_left = -0.0299988
-offset_top = -0.00400019
-offset_right = 0.029995
-offset_bottom = 0.00399971
+anchor_left = 0.422
+anchor_top = 0.25
+anchor_right = 0.589
+anchor_bottom = 0.917
+offset_left = 0.0199966
+offset_right = -0.010006
+offset_bottom = -0.00400066
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_q4m1n")
+theme_override_fonts/font = ExtResource("3_1boa5")
 theme_override_font_sizes/font_size = 5
-text = "???"
+text = "$150
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Stat2" type="NinePatchRect" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer"]
 custom_minimum_size = Vector2(90, 12)
@@ -235,15 +237,17 @@ anchor_left = 0.467
 anchor_top = 0.167
 anchor_right = 0.533
 anchor_bottom = 0.833
-offset_left = -0.0299988
-offset_top = -0.00400019
-offset_right = 0.029995
-offset_bottom = 0.00399971
+offset_left = -5.03
+offset_top = 0.996007
+offset_right = 5.03
+offset_bottom = 1.00401
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_q4m1n")
+theme_override_fonts/font = ExtResource("3_1boa5")
 theme_override_font_sizes/font_size = 5
-text = "???"
+text = "40cm"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Stat3" type="NinePatchRect" parent="NinePatchRect/MarginContainer/MainPanel/VBoxContainer"]
 custom_minimum_size = Vector2(90, 12)
@@ -272,15 +276,16 @@ anchor_left = 0.467
 anchor_top = 0.167
 anchor_right = 0.533
 anchor_bottom = 0.833
-offset_left = -0.0299988
-offset_top = -0.00400019
-offset_right = 0.029995
-offset_bottom = 0.00399971
+offset_left = -2.03
+offset_top = 1.99601
+offset_right = 3.03
+offset_bottom = 2.00401
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_q4m1n")
+theme_override_fonts/font = ExtResource("3_1boa5")
 theme_override_font_sizes/font_size = 5
-text = "???"
+text = "3kg"
+horizontal_alignment = 1
 
 [node name="CloseShopPanel" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)

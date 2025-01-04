@@ -20,13 +20,32 @@ func _ready():
 func handle_rod_types(rod) -> void:
 	match rod:
 		"default":
-			fish_array = ["gray_fish", "gray_fish", "clown_fish", "clown_fish", "yellowtail_kingfish"]
+			fish_array = [
+				"gray_fish", "gray_fish", "gray_fish", 
+				"clown_fish", "clown_fish", "clown_fish",
+				"blue_fish", "blue_fish", 
+				"yellowtail_kingfish", "yellowtail_kingfish",
+			]
+		
 		"red_rod":
-			fish_array = ["yellowtail_kingfish", "yellowtail_kingfish", "brown_fish"]
+			fish_array = [
+				"blue_fish", "blue_fish", "blue_fish",
+				"yellowtail_kingfish", "yellowtail_kingfish", "yellowtail_kingfish",
+				"brown_fish", "brown_fish",
+			]
+		
 		"blue_rod":
-			fish_array = ["brown_fish", "brown_fish", "blue_tang_fish"]
+			fish_array = [
+				"brown_fish", "brown_fish", "brown_fish",
+				"blue_tang_fish", "blue_tang_fish",
+			]
+		
 		"turquoise_rod":
-			fish_array = ["blue_tang_fish", "blue_tang_fish", "shiny_fish", "striped_tigerbarb_fish"]
+			fish_array = [
+			"blue_tang_fish", "blue_tang_fish", "blue_tang_fish",
+			"shiny_fish", "shiny_fish",
+			"striped_tigerbarb_fish", "striped_tigerbarb_fish",
+			]
 
 
 
