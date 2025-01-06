@@ -4,13 +4,14 @@ extends Control
 @export var player_has_clown_fish: bool = false
 @export var player_has_blue_fish: bool = false
 @export var player_has_yellowtail_kingfish: bool = false
+@export var player_has_green_widow_fish: bool = false
 @export var player_has_brown_fish: bool = false
 @export var player_has_blue_tang_fish: bool = false
 @export var player_has_shiny_fish: bool = false
 @export var player_has_striped_tigerbarb_fish: bool = false
 
 @export var fish_types_the_player_has: Array = []
-@export var amount_of_fish_types_in_game = 8
+@export var amount_of_fish_types_in_game = 9
 
 @onready var fish_found_label = $NinePatchRect/Label
 
@@ -18,6 +19,7 @@ extends Control
 @onready var clown_fish_frame = $NinePatchRect/GridContainer/ClownFishFrame
 @onready var blue_fish_frame = $NinePatchRect/GridContainer/BlueFishFrame
 @onready var yellow_tail_king_fish_frame = $NinePatchRect/GridContainer/YellowTailKingFishFrame
+@onready var green_widow_fish_frame = $NinePatchRect/GridContainer/GreenWidowFishFrame
 @onready var brown_fish_frame = $NinePatchRect/GridContainer/BrownFishFrame
 @onready var blue_tang_fish_frame = $NinePatchRect/GridContainer/BlueTangFishFrame
 @onready var shiny_fish_frame = $NinePatchRect/GridContainer/ShinyFishFrame
@@ -55,6 +57,13 @@ func _process(delta):
 		yellow_tail_king_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/unknown_fish.png")
 		yellow_tail_king_fish_frame.get_node("Label").visible = true
 	
+	if player_has_green_widow_fish:
+		green_widow_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/green_widow_fish.png")
+		green_widow_fish_frame.get_node("Label").visible = false
+	else:
+		green_widow_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/unknown_fish.png")
+		green_widow_fish_frame.get_node("Label").visible = true
+	
 	if player_has_brown_fish:
 		brown_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/rare_fish.png")
 		brown_fish_frame.get_node("Label").visible = false
@@ -89,6 +98,7 @@ func save_data(save: PlayerData):
 	save.player_has_clown_fish = player_has_clown_fish
 	save.player_has_blue_fish = player_has_blue_fish
 	save.player_has_yellowtail_kingfish = player_has_yellowtail_kingfish
+	save.player_has_green_widow_fish = player_has_green_widow_fish
 	save.player_has_brown_fish = player_has_brown_fish
 	save.player_has_blue_tang_fish = player_has_blue_tang_fish
 	save.player_has_shiny_fish = player_has_shiny_fish
@@ -101,6 +111,7 @@ func load_data(save: PlayerData):
 		player_has_clown_fish = false
 		player_has_blue_fish = false
 		player_has_yellowtail_kingfish = false
+		player_has_green_widow_fish = false
 		player_has_brown_fish = false
 		player_has_blue_tang_fish = false
 		player_has_shiny_fish = false
@@ -112,6 +123,7 @@ func load_data(save: PlayerData):
 	player_has_clown_fish = save.player_has_clown_fish
 	player_has_blue_fish = save.player_has_blue_fish
 	player_has_yellowtail_kingfish = save.player_has_yellowtail_kingfish
+	player_has_green_widow_fish = save.player_has_green_widow_fish
 	player_has_brown_fish = save.player_has_brown_fish
 	player_has_blue_tang_fish = save.player_has_blue_tang_fish
 	player_has_shiny_fish = save.player_has_shiny_fish

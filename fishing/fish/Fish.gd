@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var clown_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("ClownFishFrame")
 @onready var blue_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("BlueFishFrame")
 @onready var yellowtail_kingfish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("YellowTailKingFishFrame")
+@onready var green_widow_fish_frame =  fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("GreenWidowFishFrame")
 @onready var brown_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("BrownFishFrame")
 @onready var blue_tang_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("BlueTangFishFrame")
 @onready var shiny_fish_frame = fish_index_UI.get_node("NinePatchRect").get_node("GridContainer").get_node("ShinyFishFrame")
@@ -93,6 +94,9 @@ func randomize_fish() -> void:
 		"yellowtail_kingfish":
 			fish_sprite.texture = load("res://fishing/fish/fish_textures/yellowtail_kingfish.png")
 			inventory_item = preload("res://Inventory/items/yellowtail_kingfish.tres")
+		"green_widow_fish":
+			fish_sprite.texture = load("res://fishing/fish/fish_textures/green_widow_fish.png")
+			inventory_item = preload("res://Inventory/items/green_widow_fish.tres")
 		"brown_fish":
 			fish_sprite.texture = load("res://fishing/fish/fish_textures/rare_fish.png")
 			inventory_item = preload("res://Inventory/items/brown_fish.tres")
@@ -154,6 +158,14 @@ func add_fish_to_index(inventory_item):
 			
 			fish_index_UI.player_has_yellowtail_kingfish = true
 			yellowtail_kingfish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/yellowtail_kingfish.png")
+		
+		"Green Widow Fish":
+			if fish_index_UI.player_has_green_widow_fish == false:
+				fish_index_UI.fish_types_the_player_has.append("green_widow_fish")
+				fish_index_label.text = str(fish_index_UI.fish_types_the_player_has.size()) + "/" + str(fish_index_UI.amount_of_fish_types_in_game) + " species found"
+			
+			fish_index_UI.player_has_green_widow_fish = true
+			green_widow_fish_frame.get_node("Sprite2D").texture = preload("res://fishing/fish/fish_textures/green_widow_fish.png")
 		
 		"Brownfish":
 			if fish_index_UI.player_has_brown_fish == false:

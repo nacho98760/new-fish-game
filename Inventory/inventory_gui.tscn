@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcr32uc5rttem"]
+[gd_scene load_steps=5 format=3 uid="uid://dcr32uc5rttem"]
 
 [ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="1_gh863"]
 [ext_resource type="Script" path="res://Inventory/inventory_gui.gd" id="1_ja06b"]
+[ext_resource type="FontFile" uid="uid://cdap55ercsuve" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="2_d3a17"]
 [ext_resource type="PackedScene" uid="uid://cg6gjyuj2dmal" path="res://Inventory/slot_gui.tscn" id="2_ny31k"]
 
 [node name="InventoryGUI" type="Control"]
 process_mode = 3
 z_index = 2
-custom_minimum_size = Vector2(70, 70)
+custom_minimum_size = Vector2(110, 70)
 layout_mode = 3
 anchor_right = 0.109
 anchor_bottom = 0.194
@@ -15,8 +16,22 @@ offset_right = -45.84
 offset_bottom = -46.64
 script = ExtResource("1_ja06b")
 
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -12.0
+offset_bottom = -6.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_d3a17")
+theme_override_font_sizes/font_size = 6
+text = "Click on a fish to sell it!"
+horizontal_alignment = 1
+
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-custom_minimum_size = Vector2(70, 70)
+custom_minimum_size = Vector2(110, 70)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.999
@@ -47,7 +62,7 @@ offset_right = 28.0
 offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 3
+columns = 5
 
 [node name="Slot" parent="NinePatchRect/GridContainer" instance=ExtResource("2_ny31k")]
 layout_mode = 2
@@ -74,4 +89,22 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Slot9" parent="NinePatchRect/GridContainer" instance=ExtResource("2_ny31k")]
+layout_mode = 2
+
+[node name="Slot10" parent="NinePatchRect/GridContainer" instance=ExtResource("2_ny31k")]
+layout_mode = 2
+
+[node name="Slot11" parent="NinePatchRect/GridContainer" instance=ExtResource("2_ny31k")]
+layout_mode = 2
+
+[node name="Slot12" parent="NinePatchRect/GridContainer" instance=ExtResource("2_ny31k")]
+layout_mode = 2
+
+[node name="Slot13" parent="NinePatchRect/GridContainer" instance=ExtResource("2_ny31k")]
+layout_mode = 2
+
+[node name="Slot14" parent="NinePatchRect/GridContainer" instance=ExtResource("2_ny31k")]
+layout_mode = 2
+
+[node name="Slot15" parent="NinePatchRect/GridContainer" instance=ExtResource("2_ny31k")]
 layout_mode = 2

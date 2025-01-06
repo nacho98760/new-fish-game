@@ -23,7 +23,7 @@ func handle_rod_types(rod) -> void:
 			fish_array = [
 				"gray_fish", "gray_fish", "gray_fish", 
 				"clown_fish", "clown_fish", "clown_fish",
-				"blue_fish", "blue_fish", 
+				"blue_fish", "blue_fish",
 				"yellowtail_kingfish", "yellowtail_kingfish",
 			]
 		
@@ -31,11 +31,13 @@ func handle_rod_types(rod) -> void:
 			fish_array = [
 				"blue_fish", "blue_fish", "blue_fish",
 				"yellowtail_kingfish", "yellowtail_kingfish", "yellowtail_kingfish",
+				"green_widow_fish", "green_widow_fish",
 				"brown_fish", "brown_fish",
 			]
 		
 		"blue_rod":
 			fish_array = [
+				"green_widow_fish", "green_widow_fish", "green_widow_fish",
 				"brown_fish", "brown_fish", "brown_fish",
 				"blue_tang_fish", "blue_tang_fish",
 			]

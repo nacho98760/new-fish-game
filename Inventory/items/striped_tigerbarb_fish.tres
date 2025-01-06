@@ -11,5 +11,5 @@ value = 60
 description = "An extremely rare fish only found deep in the ocean! "
 rarity = "Legendary"
 rarity_color = Color(1, 1, 0.211765, 1)
-width = 45
+width = 55
 weight = 1

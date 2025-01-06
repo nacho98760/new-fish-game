@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 var inventory: Inventory
-var amount_of_inv_slots: int = 9
+var amount_of_inv_slots: int = 15
 
 var is_fish_index_open: bool = false
 var is_able_to_sell: bool = true
@@ -204,6 +204,8 @@ func show_actual_info(slot, item_info, item_name, item_rarity, item_description,
 	
 	item_info.visible = true
 	item_name.text = inventory.slots[slot].item.name
+	if inventory.slots[slot].item.name == "Yellowtail Kingfish":
+		item_name.text = "Y. Kingfish"
 	item_rarity.text = "(" + str(inventory.slots[slot].item.rarity) + ")"
 	item_rarity.self_modulate = inventory.slots[slot].item.rarity_color
 	item_description.text = inventory.slots[slot].item.description

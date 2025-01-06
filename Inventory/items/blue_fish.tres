@@ -11,5 +11,5 @@ value = 15
 description = "A nice-looking and uncommon fish"
 rarity = "Uncommon"
 rarity_color = Color(0.227451, 0.843137, 0.294118, 1)
-width = 40
+width = 45
 weight = 3

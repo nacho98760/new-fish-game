@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://0l7mfj7yedfg"]
+
+[ext_resource type="Script" path="res://Inventory/inventory_item.gd" id="1_iw7uc"]
+[ext_resource type="Texture2D" uid="uid://4ku5y711n3dy" path="res://fishing/fish/fish_textures/green_widow_fish.png" id="2_3keo7"]
+
+[resource]
+script = ExtResource("1_iw7uc")
+name = "Green Widow Fish"
+texture = ExtResource("2_3keo7")
+value = 25
+description = "A super rare ocean fish."
+rarity = "Rare"
+rarity_color = Color(0.231373, 0.458824, 1, 1)
+width = 35
+weight = 3
