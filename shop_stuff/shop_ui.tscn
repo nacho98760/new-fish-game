@@ -1,23 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dijpk10vvju1t"]
+[gd_scene load_steps=7 format=3 uid="uid://dijpk10vvju1t"]
 
 [ext_resource type="Script" path="res://shop_stuff/shop_ui.gd" id="1_k0nt6"]
 [ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="1_qvwv5"]
 [ext_resource type="PackedScene" uid="uid://degpypdmjjsul" path="res://shop_stuff/shop_item.tscn" id="2_dl77k"]
 [ext_resource type="Texture2D" uid="uid://cncn1lkr6pl1x" path="res://shop_stuff/shop_assets/closeMenuButton.png" id="4_sq0xd"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yt2ra"]
+[sub_resource type="Theme" id="Theme_8ydhh"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sq3r7"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snpy1"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yd73m"]
-
-[sub_resource type="Theme" id="Theme_g2arq"]
-HScrollBar/styles/grabber = SubResource("StyleBoxEmpty_yt2ra")
-HScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_sq3r7")
-HScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_snpy1")
-HScrollBar/styles/scroll = SubResource("StyleBoxEmpty_yd73m")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eotgw"]
 
 [node name="ShopUI" type="Control" groups=["ThingsToSave"]]
 process_mode = 3
@@ -47,16 +37,19 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect"]
-custom_minimum_size = Vector2(192, 130)
+custom_minimum_size = Vector2(190, 130)
 layout_mode = 2
 anchor_right = 0.96
 anchor_bottom = 1.0
-theme = SubResource("Theme_g2arq")
+offset_left = 4.0
+offset_right = 4.0
+theme = SubResource("Theme_8ydhh")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_eotgw")
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/ScrollContainer"]
 custom_minimum_size = Vector2(200, 130)
 layout_mode = 2
-theme_override_constants/margin_left = 7
+theme_override_constants/margin_left = 0
 
 [node name="CenterContainer" type="CenterContainer" parent="NinePatchRect/ScrollContainer/MarginContainer"]
 custom_minimum_size = Vector2(200, 130)

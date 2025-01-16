@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bx15fvqd0m5ju"]
+[gd_scene load_steps=30 format=3 uid="uid://bx15fvqd0m5ju"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6p1ww"]
 [ext_resource type="Texture2D" uid="uid://cydg05usvorlm" path="res://assets/tilesets/grass tilemap.png" id="2_3b43k"]
@@ -15,6 +15,7 @@
 [ext_resource type="FontFile" uid="uid://cdap55ercsuve" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="11_x0est"]
 [ext_resource type="AudioStream" uid="uid://vq1xjeowhm0x" path="res://music/music1.wav" id="12_f5u5j"]
 [ext_resource type="PackedScene" uid="uid://deghux3vsmge3" path="res://player/player.tscn" id="15_dlekf"]
+[ext_resource type="PackedScene" uid="uid://hv6j8s8dflj3" path="res://main_menu_ui.tscn" id="16_h5a0d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o3m1i"]
 texture = ExtResource("2_3b43k")
@@ -502,6 +503,9 @@ theme_override_fonts/font = ExtResource("11_x0est")
 theme_override_font_sizes/font_size = 6
 text = "Press \"P\" to open fish index"
 
+[node name="MainMenuUI" parent="CanvasLayer" instance=ExtResource("16_h5a0d")]
+z_index = 1
+
 [node name="Shop" type="Node2D" parent="."]
 position = Vector2(460, 293)
 
@@ -607,7 +611,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("11_x0est")
 theme_override_font_sizes/font_size = 6
-text = "Press E to equip rod and Left Click to use it."
+text = "Press E to equip fishing rod and Left Click to use it."
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3

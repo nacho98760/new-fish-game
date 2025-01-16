@@ -203,9 +203,14 @@ func show_actual_info(slot, item_info, item_name, item_rarity, item_description,
 		return
 	
 	item_info.visible = true
-	item_name.text = inventory.slots[slot].item.name
+	
 	if inventory.slots[slot].item.name == "Yellowtail Kingfish":
 		item_name.text = "Y. Kingfish"
+	elif inventory.slots[slot].item.name == "Green Widow Fish":
+		item_name.text = "Green W. Fish"
+	else:
+		item_name.text = inventory.slots[slot].item.name
+	
 	item_rarity.text = "(" + str(inventory.slots[slot].item.rarity) + ")"
 	item_rarity.self_modulate = inventory.slots[slot].item.rarity_color
 	item_description.text = inventory.slots[slot].item.description

@@ -4,9 +4,9 @@ signal rod_color_changed
 
 enum ROD_PRICES {
 	DEFAULT = 0,
-	RED = 15,
-	BLUE = 40,
-	TURQUOISE = 75
+	RED = 20,
+	BLUE = 50,
+	TURQUOISE = 85
 }
 
 var type_of_rod: String

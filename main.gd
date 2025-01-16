@@ -15,6 +15,8 @@ var music_position = 0
 @onready var player = $Player
 @onready var game_tutorial_UI: Control = get_tree().get_first_node_in_group("GameTutorial")
 
+@onready var main_menu_ui = $CanvasLayer/MainMenuUI
+
 
 func _ready() -> void:
 	get_tree().set_auto_accept_quit(false)
@@ -23,11 +25,11 @@ func _ready() -> void:
 
 
 func _process(delta):
-	if player.visible == false:
-		player.visible = true
+	if main_menu_ui.visible:
+		get_tree().paused = true
 
 func _input(event) -> void:
-	if event.is_action_pressed("close_game"):
+	if event.is_action_pressed("close_game") and main_menu_ui.visible == false:
 		if is_close_menu_open == false:
 			pause_game()
 		else:
@@ -78,3 +80,6 @@ func _on_mute_button_pressed():
 		bg_music.play()
 		bg_music.seek(temp)
 		sound_sprite.texture = preload("res://assets/icons/sound_on.png")
+
+
+
