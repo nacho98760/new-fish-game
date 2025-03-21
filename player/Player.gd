@@ -83,9 +83,10 @@ func handle_player_physics() -> void:
 		velocity = Vector2.ZERO
 	else:
 		velocity.x = direction * speed
-
-	if Input.is_action_just_pressed("jump") and FishingSystem.action_being_performed == FishingSystem.ACTIONS.NOT_FISHING_STUFF and is_on_floor():
-		velocity.y -= jump_force
+	
+	#OLD JUMP
+	#if Input.is_action_just_pressed("jump") and FishingSystem.action_being_performed == FishingSystem.ACTIONS.NOT_FISHING_STUFF and is_on_floor():
+		#velocity.y -= jump_force
 	
 	if not is_on_floor():
 		velocity.y += gravity

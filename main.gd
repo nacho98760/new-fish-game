@@ -4,10 +4,10 @@ var is_close_menu_open: bool = false
 
 var is_tutorialUI_open: bool = false
 
-var temp 
-var music_position = 0
-@onready var bg_music = $AudioStreamPlayer2D
+@onready var bg_music = $BackgroundMusic
 @onready var sound_sprite = $CanvasLayer/SoundPanel/NinePatchRect/NinePatchRect/SoundSprite
+
+@onready var settings_UI = $CanvasLayer/SettingsUI
 
 @onready var open_shop_button: Button = $Shop/ShopConceptArea/OpenShopButton
 @onready var anim_player = $AnimationPlayer
@@ -22,6 +22,8 @@ func _ready() -> void:
 	get_tree().set_auto_accept_quit(false)
 	resume_game()
 	anim_player.play("water")
+	
+	
 
 
 func _process(delta):
@@ -71,15 +73,13 @@ func _on_open_shop_button_pressed() -> void:
 	get_tree().paused = true
 
 
-func _on_mute_button_pressed():
-	if bg_music.playing:
-		temp = bg_music.get_playback_position()
-		bg_music.stop()
-		sound_sprite.texture = preload("res://assets/icons/sound_off.png")
+func _on_settings_button_pressed():
+	if settings_UI.visible:
+		settings_UI.visible = false
+		get_tree().paused = false
 	else:
-		bg_music.play()
-		bg_music.seek(temp)
-		sound_sprite.texture = preload("res://assets/icons/sound_on.png")
+		settings_UI.visible = true
+		get_tree().paused = true
 
 
 

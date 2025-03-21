@@ -43,7 +43,10 @@ func _input(event) -> void:
 		
 		var target = nine_patch_rect.get_child(1)
 		
-		if ((arrow.position.y + arrow.size.y / 2) > target.position.y) and ((arrow.position.y - arrow.size.y / 2) < target.position.y + target.size.y):
+		#OLD
+		#if ((arrow.position.y + arrow.size.y / 2) > target.position.y) and ((arrow.position.y - arrow.size.y / 2) < target.position.y + target.size.y):
+		
+		if ((arrow.position.y + arrow.size.y) > target.position.y - target.size.y / 2) and ((arrow.position.y - arrow.size.y) < target.position.y + target.size.y / 2):
 			target.queue_free()
 			progress_bar.value += 20
 			spawn_target()

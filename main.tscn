@@ -1,19 +1,20 @@
-[gd_scene load_steps=30 format=3 uid="uid://bx15fvqd0m5ju"]
+[gd_scene load_steps=31 format=3 uid="uid://bx15fvqd0m5ju"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6p1ww"]
 [ext_resource type="Texture2D" uid="uid://cydg05usvorlm" path="res://assets/tilesets/grass tilemap.png" id="2_3b43k"]
 [ext_resource type="Texture2D" uid="uid://rb6j07tq5uk1" path="res://assets/selfmadehouse.png" id="4_6ba6v"]
 [ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/icons/coin.png" id="6_jdgaa"]
 [ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="8_8ttxr"]
-[ext_resource type="Texture2D" uid="uid://bnp2m1ap1x01s" path="res://assets/icons/sound_on.png" id="8_41wxe"]
 [ext_resource type="Texture2D" uid="uid://dnrkxn52qstjr" path="res://assets/shop.png" id="8_a5pte"]
 [ext_resource type="Script" path="res://player/coins_label.gd" id="8_fa0i4"]
 [ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="9_120rp"]
+[ext_resource type="Texture2D" uid="uid://y8rt6k2kusyj" path="res://assets/icons/settings_icon.png" id="10_l1k18"]
 [ext_resource type="Texture2D" uid="uid://bim8lv8fntpj2" path="res://assets/background/orig.png" id="10_tn23q"]
 [ext_resource type="PackedScene" uid="uid://dijpk10vvju1t" path="res://shop_stuff/shop_ui.tscn" id="11_7wbxs"]
 [ext_resource type="Texture2D" uid="uid://cg85gsst0esm1" path="res://assets/fishspotsign.png" id="11_iwwto"]
 [ext_resource type="FontFile" uid="uid://cdap55ercsuve" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="11_x0est"]
 [ext_resource type="AudioStream" uid="uid://vq1xjeowhm0x" path="res://music/music1.wav" id="12_f5u5j"]
+[ext_resource type="PackedScene" uid="uid://bdvjyo35vyons" path="res://SettingsUI/settings_ui.tscn" id="12_vf78n"]
 [ext_resource type="PackedScene" uid="uid://deghux3vsmge3" path="res://player/player.tscn" id="15_dlekf"]
 [ext_resource type="PackedScene" uid="uid://hv6j8s8dflj3" path="res://main_menu_ui.tscn" id="16_h5a0d"]
 
@@ -401,10 +402,14 @@ text = "RESUME"
 self_modulate = Color(1, 1, 1, 0)
 z_index = 1
 custom_minimum_size = Vector2(22, 22)
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 27.0
-offset_bottom = 27.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -26.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 26.0
+grow_horizontal = 0
 pivot_offset = Vector2(10, 10)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/SoundPanel"]
@@ -413,8 +418,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -2.0
-offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_8ttxr")
@@ -444,10 +447,11 @@ patch_margin_bottom = 1
 
 [node name="SoundSprite" type="Sprite2D" parent="CanvasLayer/SoundPanel/NinePatchRect/NinePatchRect"]
 position = Vector2(1.00006, 1)
-texture = ExtResource("8_41wxe")
+texture = ExtResource("10_l1k18")
 centered = false
 
-[node name="MuteButton" type="Button" parent="CanvasLayer/SoundPanel"]
+[node name="SettingsButton" type="Button" parent="CanvasLayer/SoundPanel"]
+process_mode = 3
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(18, 18)
 layout_mode = 1
@@ -505,6 +509,19 @@ text = "Press \"P\" to open fish index"
 
 [node name="MainMenuUI" parent="CanvasLayer" instance=ExtResource("16_h5a0d")]
 z_index = 1
+
+[node name="SettingsUI" parent="CanvasLayer" instance=ExtResource("12_vf78n")]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -75.0
+offset_right = 100.0
+offset_bottom = 75.0
 
 [node name="Shop" type="Node2D" parent="."]
 position = Vector2(460, 293)
@@ -613,16 +630,17 @@ theme_override_fonts/font = ExtResource("11_x0est")
 theme_override_font_sizes/font_size = 6
 text = "Press E to equip fishing rod and Left Click to use it."
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("12_f5u5j")
 autoplay = true
+bus = &"bgmusic"
 
 [connection signal="body_entered" from="ActualSpot" to="Player" method="_on_actual_spot_body_entered"]
 [connection signal="body_exited" from="ActualSpot" to="Player" method="_on_actual_spot_body_exited"]
 [connection signal="pressed" from="CanvasLayer/CloseGamePanel/SaveAndQuitButton" to="." method="_on_save_and_quit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/CloseGamePanel/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/SoundPanel/MuteButton" to="." method="_on_mute_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/SoundPanel/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="body_entered" from="Shop/ShopConceptArea" to="." method="_on_shop_concept_area_body_entered"]
 [connection signal="body_exited" from="Shop/ShopConceptArea" to="." method="_on_shop_concept_area_body_exited"]
 [connection signal="pressed" from="Shop/ShopConceptArea/OpenShopButton" to="." method="_on_open_shop_button_pressed"]
