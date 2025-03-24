@@ -6,6 +6,7 @@ var isOpen: bool = false
 
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
 @onready var shopUI: Control = get_tree().get_first_node_in_group("ShopUI")
+@onready var fish_index_UI: Control = get_tree().get_first_node_in_group("FishIndexUI")
 @onready var sellUI_node: Control = player.get_node("SellUI")
 @onready var sell_one_button: Button = sellUI_node.get_node("Background").get_node("InnerBackground").get_node("HBoxContainer").get_node("SellOne")
 @onready var sell_all_button: Button = sellUI_node.get_node("Background").get_node("InnerBackground").get_node("HBoxContainer").get_node("SellAll")
@@ -45,7 +46,7 @@ func _process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("openInv"):
 
-		if sellUI_node.visible or shopUI.visible:
+		if sellUI_node.visible or shopUI.visible or fish_index_UI.visible:
 			return
 
 		if isOpen:

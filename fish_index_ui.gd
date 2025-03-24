@@ -1,5 +1,7 @@
 extends Control
 
+var is_fish_index_open: bool = false
+
 @export var player_has_gray_fish: bool = false
 @export var player_has_clown_fish: bool = false
 @export var player_has_blue_fish: bool = false
@@ -12,6 +14,10 @@ extends Control
 
 @export var fish_types_the_player_has: Array = []
 @export var amount_of_fish_types_in_game = 9
+
+@onready var inventoryGUI: Control = get_tree().get_first_node_in_group("InventoryGUI")
+@onready var sellUI: Control = get_tree().get_first_node_in_group("SELLUI")
+@onready var shopUI: Control = get_tree().get_first_node_in_group("ShopUI")
 
 @onready var fish_found_label = $NinePatchRect/Label
 
@@ -26,6 +32,19 @@ extends Control
 @onready var striped_tigerbarb_fish_frame = $NinePatchRect/GridContainer/StripedTigerbarbFishFrame
 
 func _process(delta):
+	
+	if Input.is_action_just_pressed("open_fish_index"):
+		if inventoryGUI.visible or sellUI.visible or shopUI.visible:
+			return
+			
+		if is_fish_index_open:
+			visible = false
+			is_fish_index_open = false
+			get_tree().paused = false
+		else:
+			visible = true
+			is_fish_index_open = true
+			get_tree().paused = true
 	
 	fish_found_label.text = str(fish_types_the_player_has.size()) + "/" + str(amount_of_fish_types_in_game) + " species found"
 	
@@ -129,3 +148,8 @@ func load_data(save: PlayerData):
 	player_has_shiny_fish = save.player_has_shiny_fish
 	player_has_striped_tigerbarb_fish = save.player_has_striped_tigerbarb_fish
 
+
+
+func _on_close_shop_panel_button_pressed():
+	self.visible = false
+	get_tree().paused = false

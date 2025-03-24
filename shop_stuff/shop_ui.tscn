@@ -9,7 +9,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eotgw"]
 
-[node name="ShopUI" type="Control" groups=["ThingsToSave"]]
+[node name="ShopUI" type="Control" groups=["ShopUI", "ThingsToSave"]]
 process_mode = 3
 custom_minimum_size = Vector2(200, 130)
 layout_mode = 3
@@ -73,6 +73,7 @@ layout_mode = 2
 [node name="CloseShopPanel" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 3
+custom_minimum_size = Vector2(15, 15)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.925

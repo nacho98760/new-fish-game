@@ -553,8 +553,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 text = "Open shop"
 
-[node name="ShopUI" parent="Shop" groups=["ShopUI"] instance=ExtResource("11_7wbxs")]
-visible = false
+[node name="ShopUI" parent="Shop" instance=ExtResource("11_7wbxs")]
 z_index = 1
 offset_left = -104.0
 offset_top = -118.0

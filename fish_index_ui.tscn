@@ -1,26 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfdkjfo2kqqw5"]
+[gd_scene load_steps=7 format=3 uid="uid://bfdkjfo2kqqw5"]
 
 [ext_resource type="Script" path="res://fish_index_ui.gd" id="1_mw5v5"]
 [ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="1_usmyw"]
 [ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="2_63uo7"]
 [ext_resource type="FontFile" uid="uid://cdap55ercsuve" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="3_qh4ru"]
 [ext_resource type="Texture2D" uid="uid://cpduqileyb0n5" path="res://fishing/fish/fish_textures/unknown_fish.png" id="5_016nq"]
+[ext_resource type="Texture2D" uid="uid://dh8fymfshg7pc" path="res://assets/black_line.png" id="6_xi5vx"]
 
 [node name="FishIndexUI" type="Control" groups=["FishIndexUI", "ThingsToSave"]]
 process_mode = 3
-custom_minimum_size = Vector2(80, 90)
+process_priority = 10
+custom_minimum_size = Vector2(165, 90)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 80.0
-offset_bottom = 90.0
+anchor_right = 0.259
+anchor_bottom = 0.25
+offset_right = -0.76001
 script = ExtResource("1_mw5v5")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-custom_minimum_size = Vector2(80, 90)
+custom_minimum_size = Vector2(166, 90)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_usmyw")
@@ -30,15 +33,16 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="Label" type="Label" parent="NinePatchRect"]
+custom_minimum_size = Vector2(68, 8)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.106
-anchor_top = 0.033
-anchor_right = 0.894
+anchor_left = 0.054
+anchor_top = 0.067
+anchor_right = 0.464
 anchor_bottom = 0.156
-offset_left = 0.0199995
-offset_top = 0.03
-offset_right = -0.0200043
+offset_left = 0.0359993
+offset_top = -0.0300002
+offset_right = -0.0240021
 offset_bottom = -0.04
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -53,11 +57,13 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(68, 68)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.075
+anchor_left = 0.045
 anchor_top = 0.178
-anchor_right = 0.925
+anchor_right = 0.455
 anchor_bottom = 0.933
+offset_left = 0.53
 offset_top = -0.0200005
+offset_right = 0.470001
 offset_bottom = 0.0299988
 grow_horizontal = 2
 grow_vertical = 2
@@ -377,3 +383,98 @@ theme_override_font_sizes/font_size = 4
 text = "?"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BlackLine2" type="Sprite2D" parent="NinePatchRect"]
+position = Vector2(83, 45)
+scale = Vector2(0.9, 1)
+texture = ExtResource("6_xi5vx")
+
+[node name="DetailedFishInfoPanel" type="Panel" parent="NinePatchRect"]
+custom_minimum_size = Vector2(68, 80)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -40.0
+offset_right = -8.0
+offset_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/DetailedFishInfoPanel"]
+custom_minimum_size = Vector2(68, 80)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = ExtResource("2_63uo7")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="NinePatchRect/DetailedFishInfoPanel/NinePatchRect"]
+position = Vector2(18, 4)
+scale = Vector2(2, 2)
+texture = ExtResource("5_016nq")
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/DetailedFishInfoPanel/NinePatchRect"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -38.0
+offset_right = 30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/DetailedFishInfoPanel/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="DetailedFishName" type="Label" parent="NinePatchRect/DetailedFishInfoPanel/NinePatchRect/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(60, 5)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_qh4ru")
+theme_override_font_sizes/font_size = 5
+text = "Clown fish"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DetailedFishRarity" type="Label" parent="NinePatchRect/DetailedFishInfoPanel/NinePatchRect/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(60, 5)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.112, 0.34282, 0.974081, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_qh4ru")
+theme_override_font_sizes/font_size = 4
+text = "(Super rare)"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/DetailedFishInfoPanel/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(60, 26)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("3_qh4ru")
+theme_override_font_sizes/font_size = 4
+text = "A common fish found in the ocean sadaaasssssssssssssss"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

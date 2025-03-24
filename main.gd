@@ -13,6 +13,7 @@ var is_tutorialUI_open: bool = false
 @onready var anim_player = $AnimationPlayer
 
 @onready var player = $Player
+@onready var fish_index_UI: Control = get_tree().get_first_node_in_group("FishIndexUI")
 @onready var game_tutorial_UI: Control = get_tree().get_first_node_in_group("GameTutorial")
 
 @onready var main_menu_ui = $CanvasLayer/MainMenuUI
@@ -62,7 +63,7 @@ func _notification(what) -> void:
 		
 
 func _on_shop_concept_area_body_entered(body: PhysicsBody2D) -> void:
-	if body.name == "Player":
+	if body.name == "Player" and fish_index_UI.visible == false:
 		open_shop_button.visible = true
 func _on_shop_concept_area_body_exited(body: PhysicsBody2D) -> void:
 	if body.name == "Player":

@@ -3,8 +3,6 @@ class_name Player
 
 var inventory: Inventory
 var amount_of_inv_slots: int = 15
-
-var is_fish_index_open: bool = false
 var is_able_to_sell: bool = true
 
 var speed: int = 100
@@ -61,14 +59,6 @@ func _process(_delta: float) -> void:
 	check_if_key_to_equip_rod_UI_is_needed()
 	FishingSystem.handle_inventory_items(self, player_sprite)
 	FishingSystem.fishing_system(self, end_of_rod, exclamation_mark_sprite, fish_catch_ui, fishing_minigame)
-	
-	if Input.is_action_just_pressed("open_fish_index"):
-		if is_fish_index_open:
-			fish_index_UI.visible = false
-			is_fish_index_open = false
-		else:
-			fish_index_UI.visible = true
-			is_fish_index_open = true
 
 
 func _physics_process(_delta: float) -> void:
@@ -166,7 +156,7 @@ func handle_selling(slot, item_info, sell_button) -> void:
 			sell_button.set_default_cursor_shape(Input.CURSOR_ARROW)
 			$InventoryGUI.update(inventory)
 			is_able_to_sell = false
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(0.5).timeout
 			is_able_to_sell = true
 		
 		if inventory.slots[slot].amount > 1:
@@ -174,7 +164,7 @@ func handle_selling(slot, item_info, sell_button) -> void:
 			inventory.slots[slot].amount -= 1
 			$InventoryGUI.update(inventory)
 			is_able_to_sell = false
-			await get_tree().create_timer(1).timeout
+			await get_tree().create_timer(0.5).timeout
 			is_able_to_sell = true
 	else:
 		return  

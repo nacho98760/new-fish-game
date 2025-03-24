@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://cdap55ercsuve" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="2_d3a17"]
 [ext_resource type="PackedScene" uid="uid://cg6gjyuj2dmal" path="res://Inventory/slot_gui.tscn" id="2_ny31k"]
 
-[node name="InventoryGUI" type="Control"]
+[node name="InventoryGUI" type="Control" groups=["InventoryGUI"]]
 process_mode = 3
 z_index = 2
 custom_minimum_size = Vector2(110, 70)
