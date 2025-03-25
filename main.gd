@@ -7,6 +7,7 @@ var is_tutorialUI_open: bool = false
 @onready var bg_music = $BackgroundMusic
 @onready var sound_sprite = $CanvasLayer/SoundPanel/NinePatchRect/NinePatchRect/SoundSprite
 
+@onready var shop_UI = get_tree().get_first_node_in_group("ShopUI")
 @onready var settings_UI = $CanvasLayer/SettingsUI
 
 @onready var open_shop_button: Button = $Shop/ShopConceptArea/OpenShopButton
@@ -70,7 +71,8 @@ func _on_shop_concept_area_body_exited(body: PhysicsBody2D) -> void:
 		open_shop_button.visible = false
 
 func _on_open_shop_button_pressed() -> void:
-	$Shop/ShopUI.visible = true
+	shop_UI.position = Vector2(player.position.x - shop_UI.pivot_offset.x, player.position.y - 130)
+	shop_UI.visible = true
 	get_tree().paused = true
 
 

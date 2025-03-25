@@ -16,6 +16,7 @@ var is_fish_index_open: bool = false
 @export var amount_of_fish_types_in_game = 9
 
 @onready var inventoryGUI: Control = get_tree().get_first_node_in_group("InventoryGUI")
+@onready var main_menu_UI = get_tree().get_first_node_in_group("MainMenuUI")
 @onready var sellUI: Control = get_tree().get_first_node_in_group("SELLUI")
 @onready var shopUI: Control = get_tree().get_first_node_in_group("ShopUI")
 
@@ -34,15 +35,15 @@ var is_fish_index_open: bool = false
 func _process(delta):
 	
 	if Input.is_action_just_pressed("open_fish_index"):
-		if inventoryGUI.visible or sellUI.visible or shopUI.visible:
+		if inventoryGUI.visible or sellUI.visible or shopUI.visible or main_menu_UI.visible:
 			return
 			
 		if is_fish_index_open:
-			visible = false
+			self.visible = false
 			is_fish_index_open = false
 			get_tree().paused = false
 		else:
-			visible = true
+			self.visible = true
 			is_fish_index_open = true
 			get_tree().paused = true
 	

@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://8mikgurld41e"]
+[gd_scene load_steps=9 format=3 uid="uid://8mikgurld41e"]
 
 [ext_resource type="Script" path="res://SellUI/SellUI.gd" id="1_4icgv"]
 [ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="2_dw8qn"]
 [ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="3_fxtbv"]
 [ext_resource type="Texture2D" uid="uid://cncn1lkr6pl1x" path="res://shop_stuff/shop_assets/closeMenuButton.png" id="4_6kfrb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kue6"]
+
+[sub_resource type="Theme" id="Theme_vby3p"]
+Button/styles/focus = SubResource("StyleBoxEmpty_3kue6")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rd0g"]
+
+[sub_resource type="Theme" id="Theme_53g5s"]
+Button/styles/focus = SubResource("StyleBoxEmpty_0rd0g")
 
 [node name="SellUI" type="Control" groups=["SELLUI"]]
 process_mode = 3
@@ -69,12 +79,14 @@ theme_override_constants/separation = 20
 custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
+theme = SubResource("Theme_vby3p")
 text = "Sell 1"
 
 [node name="SellAll" type="Button" parent="Background/InnerBackground/HBoxContainer"]
 custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
 mouse_default_cursor_shape = 2
+theme = SubResource("Theme_53g5s")
 text = "Sell All"
 
 [node name="CloseShopPanel" type="Panel" parent="Background"]

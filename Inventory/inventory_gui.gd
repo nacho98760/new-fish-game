@@ -5,6 +5,7 @@ var isOpen: bool = false
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
 @onready var player: Player = get_tree().get_first_node_in_group("Player")
+@onready var main_menu_UI: Control = get_tree().get_first_node_in_group("MainMenuUI")
 @onready var shopUI: Control = get_tree().get_first_node_in_group("ShopUI")
 @onready var fish_index_UI: Control = get_tree().get_first_node_in_group("FishIndexUI")
 @onready var sellUI_node: Control = player.get_node("SellUI")
@@ -46,7 +47,7 @@ func _process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("openInv"):
 
-		if sellUI_node.visible or shopUI.visible or fish_index_UI.visible:
+		if sellUI_node.visible or shopUI.visible or fish_index_UI.visible or main_menu_UI.visible:
 			return
 
 		if isOpen:

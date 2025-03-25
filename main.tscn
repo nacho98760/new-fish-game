@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bx15fvqd0m5ju"]
+[gd_scene load_steps=32 format=3 uid="uid://bx15fvqd0m5ju"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_6p1ww"]
 [ext_resource type="Texture2D" uid="uid://cydg05usvorlm" path="res://assets/tilesets/grass tilemap.png" id="2_3b43k"]
@@ -102,11 +102,14 @@ default_font = ExtResource("11_x0est")
 default_font_size = 12
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4q0p"]
-size = Vector2(56, 48.5625)
+size = Vector2(59, 48.5625)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ypxrb"]
 
 [sub_resource type="Theme" id="Theme_0ued0"]
 default_font = ExtResource("11_x0est")
 default_font_size = 5
+Button/styles/focus = SubResource("StyleBoxEmpty_ypxrb")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hv52k"]
 load_path = "res://.godot/imported/wateranim1-sheet.png-da4d53ab672db6f5e10fb1a1088fc49b.ctex"
@@ -228,6 +231,7 @@ size = Vector2(25, 24)
 script = ExtResource("1_6p1ww")
 
 [node name="Player" parent="." instance=ExtResource("15_dlekf")]
+visible = true
 position = Vector2(549, 307)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -507,7 +511,7 @@ theme_override_fonts/font = ExtResource("11_x0est")
 theme_override_font_sizes/font_size = 6
 text = "Press \"P\" to open fish index"
 
-[node name="MainMenuUI" parent="CanvasLayer" instance=ExtResource("16_h5a0d")]
+[node name="MainMenuUI" parent="CanvasLayer" groups=["MainMenuUI"] instance=ExtResource("16_h5a0d")]
 z_index = 1
 
 [node name="SettingsUI" parent="CanvasLayer" instance=ExtResource("12_vf78n")]
@@ -532,7 +536,7 @@ position = Vector2(460, 293)
 texture = ExtResource("8_a5pte")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shop/ShopConceptArea"]
-position = Vector2(0, 2)
+position = Vector2(-0.5, 2)
 shape = SubResource("RectangleShape2D_w4q0p")
 
 [node name="OpenShopButton" type="Button" parent="Shop/ShopConceptArea"]
@@ -552,13 +556,6 @@ theme = SubResource("Theme_0ued0")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 text = "Open shop"
-
-[node name="ShopUI" parent="Shop" instance=ExtResource("11_7wbxs")]
-z_index = 1
-offset_left = -104.0
-offset_top = -118.0
-offset_right = 96.0
-offset_bottom = 12.0
 
 [node name="Wateranim1-sheet" type="Sprite2D" parent="."]
 z_index = 1
@@ -634,6 +631,17 @@ process_mode = 3
 stream = ExtResource("12_f5u5j")
 autoplay = true
 bus = &"bgmusic"
+
+[node name="ShopUI" parent="." instance=ExtResource("11_7wbxs")]
+visible = false
+z_index = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 200.0
+offset_bottom = 130.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="body_entered" from="ActualSpot" to="Player" method="_on_actual_spot_body_entered"]
 [connection signal="body_exited" from="ActualSpot" to="Player" method="_on_actual_spot_body_exited"]
