@@ -1,13 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bfdkjfo2kqqw5"]
+[gd_scene load_steps=7 format=3 uid="uid://bfdkjfo2kqqw5"]
 
 [ext_resource type="Script" path="res://fish_index_ui.gd" id="1_mw5v5"]
 [ext_resource type="Texture2D" uid="uid://bwklc3batpott" path="res://Inventory/inventoryBackground.png" id="1_usmyw"]
 [ext_resource type="Texture2D" uid="uid://cmxxnp5l6fpls" path="res://Inventory/inventorySlot.png" id="2_63uo7"]
 [ext_resource type="FontFile" uid="uid://cdap55ercsuve" path="res://fonts/PixelatedEleganceRegular-ovyAA.ttf" id="3_qh4ru"]
 [ext_resource type="Texture2D" uid="uid://cpduqileyb0n5" path="res://fishing/fish/fish_textures/unknown_fish.png" id="5_016nq"]
-[ext_resource type="Theme" uid="uid://b4hnxmihxcrrn" path="res://Themes/button_theme.tres" id="6_gt36o"]
 [ext_resource type="Texture2D" uid="uid://dh8fymfshg7pc" path="res://assets/black_line.png" id="6_xi5vx"]
-[ext_resource type="Texture2D" uid="uid://bqd63ntyrm16k" path="res://assets/icons/coin.png" id="8_ymv7t"]
 
 [node name="FishIndexUI" type="Control" groups=["FishIndexUI", "ThingsToSave"]]
 process_mode = 3
@@ -107,7 +105,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GrayFishDetailedButton" type="Button" parent="NinePatchRect/GridContainer/GrayFishFrame"]
-self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 8
@@ -121,8 +118,6 @@ offset_right = 10.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme = ExtResource("6_gt36o")
 
 [node name="ClownFishFrame" type="NinePatchRect" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -160,7 +155,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ClownFishDetailedButton" type="Button" parent="NinePatchRect/GridContainer/ClownFishFrame"]
-self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 8
@@ -174,8 +168,6 @@ offset_right = 10.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme = ExtResource("6_gt36o")
 
 [node name="BlueFishFrame" type="NinePatchRect" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -213,7 +205,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BlueFishDetailedButton" type="Button" parent="NinePatchRect/GridContainer/BlueFishFrame"]
-self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 8
@@ -227,8 +218,6 @@ offset_right = 10.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme = ExtResource("6_gt36o")
 
 [node name="YellowTailKingFishFrame" type="NinePatchRect" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -266,7 +255,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="YellowTailKingFishDetailedButton" type="Button" parent="NinePatchRect/GridContainer/YellowTailKingFishFrame"]
-self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 8
@@ -280,8 +268,6 @@ offset_right = 10.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme = ExtResource("6_gt36o")
 
 [node name="GreenWidowFishFrame" type="NinePatchRect" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -319,7 +305,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GreenWidowFishDetailedButton" type="Button" parent="NinePatchRect/GridContainer/GreenWidowFishFrame"]
-self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 8
@@ -333,8 +318,6 @@ offset_right = 10.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme = ExtResource("6_gt36o")
 
 [node name="BrownFishFrame" type="NinePatchRect" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -372,7 +355,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BrownFishDetailedButton" type="Button" parent="NinePatchRect/GridContainer/BrownFishFrame"]
-self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 8
@@ -386,8 +368,6 @@ offset_right = 10.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme = ExtResource("6_gt36o")
 
 [node name="BlueTangFishFrame" type="NinePatchRect" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -425,7 +405,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BlueTangFishDetailedButton" type="Button" parent="NinePatchRect/GridContainer/BlueTangFishFrame"]
-self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 8
@@ -439,8 +418,6 @@ offset_right = 10.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme = ExtResource("6_gt36o")
 
 [node name="ShinyFishFrame" type="NinePatchRect" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -478,7 +455,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ShinyFishDetailedButton" type="Button" parent="NinePatchRect/GridContainer/ShinyFishFrame"]
-self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 8
@@ -492,8 +468,6 @@ offset_right = 10.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme = ExtResource("6_gt36o")
 
 [node name="StripedTigerbarbFishFrame" type="NinePatchRect" parent="NinePatchRect/GridContainer"]
 custom_minimum_size = Vector2(20, 20)
@@ -531,7 +505,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StripedTigerBarbFishDetailedButton" type="Button" parent="NinePatchRect/GridContainer/StripedTigerbarbFishFrame"]
-self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 1
 anchors_preset = 8
@@ -545,8 +518,6 @@ offset_right = 10.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme = ExtResource("6_gt36o")
 
 [node name="BlackLine2" type="Sprite2D" parent="NinePatchRect"]
 position = Vector2(83, 45)
@@ -586,7 +557,7 @@ patch_margin_right = 2
 patch_margin_bottom = 2
 
 [node name="DetailedFishSprite" type="Sprite2D" parent="NinePatchRect/DetailedFishInfoPanel/NinePatchRect"]
-position = Vector2(18, 1)
+position = Vector2(18, 4)
 scale = Vector2(2, 2)
 texture = ExtResource("5_016nq")
 centered = false
@@ -600,17 +571,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -30.0
-offset_top = -45.0
+offset_top = -38.0
 offset_right = 30.0
-offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = -1
+theme_override_constants/separation = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/DetailedFishInfoPanel/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 1
-alignment = 1
 
 [node name="DetailedFishName" type="Label" parent="NinePatchRect/DetailedFishInfoPanel/NinePatchRect/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(60, 5)
@@ -626,6 +595,7 @@ vertical_alignment = 1
 [node name="DetailedFishRarity" type="Label" parent="NinePatchRect/DetailedFishInfoPanel/NinePatchRect/VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(60, 5)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.112, 0.34282, 0.974081, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("3_qh4ru")
@@ -645,29 +615,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="DetailedFishValue" type="HBoxContainer" parent="NinePatchRect/DetailedFishInfoPanel/NinePatchRect/VBoxContainer"]
-custom_minimum_size = Vector2(60, 8)
-layout_mode = 2
-theme_override_constants/separation = 2
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/DetailedFishInfoPanel/NinePatchRect/VBoxContainer/DetailedFishValue"]
-custom_minimum_size = Vector2(8, 8)
-layout_mode = 2
-texture = ExtResource("8_ymv7t")
-expand_mode = 4
-
-[node name="Label" type="Label" parent="NinePatchRect/DetailedFishInfoPanel/NinePatchRect/VBoxContainer/DetailedFishValue"]
-custom_minimum_size = Vector2(8, 6)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_qh4ru")
-theme_override_font_sizes/font_size = 6
-text = "20"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="NoFishSelectedText" type="Label" parent="NinePatchRect"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
