@@ -52,11 +52,11 @@ func _process(delta):
 			self.visible = false
 			is_fish_index_open = false
 			get_tree().paused = false
-			show_no_fish_selected_text()
 		else:
 			self.visible = true
 			is_fish_index_open = true
 			get_tree().paused = true
+			show_no_fish_selected_text()
 	
 	fish_found_label.text = str(fish_types_the_player_has.size()) + "/" + str(amount_of_fish_types_in_game) + " species found"
 	
