@@ -144,154 +144,58 @@ func _on_close_shop_panel_button_pressed():
 	get_tree().paused = false
 
 
+func assign_fish_resource_data(_fish_resource: Resource, does_player_has_fish: bool):
+	hide_no_fish_selected_text()
+	
+	var fish_resource: Resource = _fish_resource
+	
+	if does_player_has_fish == false:
+		fish_not_discovered()
+		return
+	
+	detailed_fish_sprite.texture = _fish_resource.texture
+	detailed_fish_name.text = _fish_resource.name
+	detailed_fish_rarity.text = "(" + str(_fish_resource.rarity) + ")"
+	detailed_fish_rarity.self_modulate = _fish_resource.rarity_color
+	detailed_fish_description.text = _fish_resource.description
+	detailed_fish_value.text = str(_fish_resource.value)
+
+
 func _on_gray_fish_detailed_button_pressed():
 	hide_no_fish_selected_text()
-	
-	var fish_resource: Resource = preload("res://Inventory/items/gray_fish.tres")
-	
-	if player_has_gray_fish == false:
-		fish_not_discovered()
-		return
-	
-	detailed_fish_sprite.texture = fish_resource.texture
-	detailed_fish_name.text = fish_resource.name
-	detailed_fish_rarity.text = "(" + str(fish_resource.rarity) + ")"
-	detailed_fish_rarity.self_modulate = fish_resource.rarity_color
-	detailed_fish_description.text = fish_resource.description
-	detailed_fish_value.text = str(fish_resource.value)
-		
+	assign_fish_resource_data(preload("res://Inventory/items/gray_fish.tres"), player_has_gray_fish)
+
 func _on_clown_fish_detailed_button_pressed():
 	hide_no_fish_selected_text()
-	
-	var fish_resource: Resource = preload("res://Inventory/items/clown_fish.tres")
-	
-	if player_has_clown_fish == false:
-		fish_not_discovered()
-		return
-	
-	detailed_fish_sprite.texture = fish_resource.texture
-	detailed_fish_name.text = fish_resource.name
-	detailed_fish_rarity.text = "(" + str(fish_resource.rarity) + ")"
-	detailed_fish_rarity.self_modulate = fish_resource.rarity_color
-	detailed_fish_description.text = fish_resource.description
-	detailed_fish_value.text = str(fish_resource.value)
-
+	assign_fish_resource_data(preload("res://Inventory/items/clown_fish.tres"), player_has_clown_fish)
 
 func _on_blue_fish_detailed_button_pressed():
 	hide_no_fish_selected_text()
-	
-	var fish_resource: Resource = preload("res://Inventory/items/blue_fish.tres")
-	
-	if player_has_blue_fish == false:
-		fish_not_discovered()
-		return
-	
-	detailed_fish_sprite.texture = fish_resource.texture
-	detailed_fish_name.text = fish_resource.name
-	detailed_fish_rarity.text = "(" + str(fish_resource.rarity) + ")"
-	detailed_fish_rarity.self_modulate = fish_resource.rarity_color
-	detailed_fish_description.text = fish_resource.description
-	detailed_fish_value.text = str(fish_resource.value)
+	assign_fish_resource_data(preload("res://Inventory/items/blue_fish.tres"), player_has_blue_fish)
 
 func _on_yellow_tail_king_fish_detailed_button_pressed():
 	hide_no_fish_selected_text()
-	
-	var fish_resource: Resource = preload("res://Inventory/items/yellowtail_kingfish.tres")
-	
-	if player_has_yellowtail_kingfish == false:
-		fish_not_discovered()
-		return
-	
-	detailed_fish_sprite.texture = fish_resource.texture
-	detailed_fish_name.text = fish_resource.name
-	detailed_fish_rarity.text = "(" + str(fish_resource.rarity) + ")"
-	detailed_fish_rarity.self_modulate = fish_resource.rarity_color
-	detailed_fish_description.text = fish_resource.description
-	detailed_fish_value.text = str(fish_resource.value)
+	assign_fish_resource_data(preload("res://Inventory/items/yellowtail_kingfish.tres"), player_has_yellowtail_kingfish)
 
 func _on_green_widow_fish_detailed_button_pressed():
 	hide_no_fish_selected_text()
-	
-	var fish_resource: Resource = preload("res://Inventory/items/green_widow_fish.tres")
-	
-	if player_has_green_widow_fish == false:
-		fish_not_discovered()
-		return
-	
-	detailed_fish_sprite.texture = fish_resource.texture
-	detailed_fish_name.text = fish_resource.name
-	detailed_fish_rarity.text = "(" + str(fish_resource.rarity) + ")"
-	detailed_fish_rarity.self_modulate = fish_resource.rarity_color
-	detailed_fish_description.text = fish_resource.description
-	detailed_fish_value.text = str(fish_resource.value)
-
+	assign_fish_resource_data(preload("res://Inventory/items/green_widow_fish.tres"), player_has_green_widow_fish)
 
 func _on_brown_fish_detailed_button_pressed():
 	hide_no_fish_selected_text()
-	
-	var fish_resource: Resource = preload("res://Inventory/items/brown_fish.tres")
-	
-	if player_has_brown_fish == false:
-		fish_not_discovered()
-		return
-	
-	detailed_fish_sprite.texture = fish_resource.texture
-	detailed_fish_name.text = fish_resource.name
-	detailed_fish_rarity.text = "(" + str(fish_resource.rarity) + ")"
-	detailed_fish_rarity.self_modulate = fish_resource.rarity_color
-	detailed_fish_description.text = fish_resource.description
-	detailed_fish_value.text = str(fish_resource.value)
-
+	assign_fish_resource_data(preload("res://Inventory/items/brown_fish.tres"), player_has_brown_fish)
 
 func _on_blue_tang_fish_detailed_button_pressed():
 	hide_no_fish_selected_text()
-	
-	var fish_resource: Resource = preload("res://Inventory/items/blue_tang_fish.tres")
-	
-	if player_has_blue_tang_fish == false:
-		fish_not_discovered()
-		return
-	
-	detailed_fish_sprite.texture = fish_resource.texture
-	detailed_fish_name.text = fish_resource.name
-	detailed_fish_rarity.text = "(" + str(fish_resource.rarity) + ")"
-	detailed_fish_rarity.self_modulate = fish_resource.rarity_color
-	detailed_fish_description.text = fish_resource.description
-	detailed_fish_value.text = str(fish_resource.value)
-
+	assign_fish_resource_data(preload("res://Inventory/items/blue_tang_fish.tres"), player_has_blue_tang_fish)
 
 func _on_shiny_fish_detailed_button_pressed():
 	hide_no_fish_selected_text()
-	
-	var fish_resource: Resource = preload("res://Inventory/items/shiny_fish.tres")
-	
-	if player_has_shiny_fish == false:
-		fish_not_discovered()
-		return
-	
-	detailed_fish_sprite.texture = fish_resource.texture
-	detailed_fish_name.text = fish_resource.name
-	detailed_fish_rarity.text = "(" + str(fish_resource.rarity) + ")"
-	detailed_fish_rarity.self_modulate = fish_resource.rarity_color
-	detailed_fish_description.text = fish_resource.description
-	detailed_fish_value.text = str(fish_resource.value)
-
+	assign_fish_resource_data(preload("res://Inventory/items/shiny_fish.tres"), player_has_shiny_fish)
 
 func _on_striped_tiger_barb_fish_detailed_button_pressed():
 	hide_no_fish_selected_text()
-	
-	var fish_resource: Resource = preload("res://Inventory/items/striped_tigerbarb_fish.tres")
-	
-	if player_has_striped_tigerbarb_fish == false:
-		fish_not_discovered()
-		return
-	
-	detailed_fish_sprite.texture = fish_resource.texture
-	detailed_fish_name.text = fish_resource.name
-	detailed_fish_rarity.text = "(" + str(fish_resource.rarity) + ")"
-	detailed_fish_rarity.self_modulate = fish_resource.rarity_color
-	detailed_fish_description.text = fish_resource.description
-	detailed_fish_value.text = str(fish_resource.value)
+	assign_fish_resource_data(preload("res://Inventory/items/striped_tigerbarb_fish.tres"), player_has_striped_tigerbarb_fish)
 
 
 
